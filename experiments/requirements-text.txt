@@ -1,0 +1,6 @@
+# Isolated CPU research dependencies; do not install into the Laya runtime.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+joblib==1.5.2
+threadpoolctl==3.6.0
