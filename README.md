@@ -211,6 +211,9 @@ sharing or publishing them. Do not put tokens or model weights in Git.
 The production-shaped target is **one issue per dispatch**. Whole-corpus
 batching is an evaluation convenience, not a requirement for issue triage.
 
+- **Triage one issue** reads one live `microsoft/apm` issue and uploads predictions.
+  It caches the pinned CPU virtualenv, not credentials or issue text. FP32 is
+  the conservative default while the speed/accuracy comparison is running.
 - **Laya smoke experiment** runs a small prefix of the snapshot; default 25.
 - **Single issue performance** compares FP32/INT8 and two/four CPU threads on
   matched hardware. Two runners execute every configuration in opposite orders.
@@ -225,6 +228,27 @@ Use `refresh_snapshot` on a corpus workflow to fetch current public APM issues.
 No custom model secret is required. The built-in GitHub token is used only by
 the snapshot read step. Performance pilots do not change the pinned baseline,
 its questions, its threshold, or its reference labels.
+
+```bash
+# Replace 123 with an actual issue number; this never applies the predictions.
+gh workflow run triage-one.yml --repo danielmeppiel/apm-laya-triage \
+  -f issue_number=123 -f precision=fp32 -f threads=2
+
+# Or run one issue locally after the installation above.
+python triage_one.py --issue 123 --threads 2 --precision fp32
+```
+
+Single-issue output separates GitHub reading, model loading, optional
+quantization, and inference from total invocation time. The workflow's job/step
+timings additionally include runner setup, dependency installation or cache
+restore, and artifact upload. The first cache miss and subsequent cache hits
+are different measurements; a warm model-loop result is not end-to-end latency.
+Issue text and current labels are not saved in the single-issue artifact.
+
+The workflow is manual and read-only. It does not receive APM's issue events
+automatically: an event-triggered caller would need to live in the source
+repository or explicitly dispatch this workflow. This experiment installs no
+APM webhook/workflow and grants no permission to apply labels.
 
 Hosted runs use **CPU**, have a six-hour timeout, and upload raw results,
 the run manifest, snapshot, and report as Actions artifacts. They do
