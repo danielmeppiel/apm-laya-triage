@@ -9,7 +9,7 @@ from benchmark_single import accelerate_cpu
 class SingleIssueConfigurationTests(unittest.TestCase):
     def test_fp32_is_an_explicit_no_conversion_mode(self) -> None:
         agent = SimpleNamespace(device=SimpleNamespace(type="cpu"))
-        self.assertEqual(accelerate_cpu(agent, "fp32"), 0)
+        self.assertEqual(accelerate_cpu(agent, "fp32"), (0, None))
 
     def test_wrong_device_and_unknown_precision_fail(self) -> None:
         with self.assertRaises(ValueError):

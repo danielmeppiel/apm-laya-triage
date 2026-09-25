@@ -52,7 +52,7 @@ def classify(number: int, threads: int, precision: str, output: Path) -> None:
     github_read_seconds = time.perf_counter() - before
     agent, runtime = load_agent(config)
     before = time.perf_counter()
-    quantized_modules = accelerate_cpu(agent, precision)
+    quantized_modules, quantization_backend = accelerate_cpu(agent, precision)
     optimization_seconds = time.perf_counter() - before
     state, input_metadata = prepare_state(issue, agent.tok, config)
     before = time.perf_counter()
@@ -72,6 +72,8 @@ def classify(number: int, threads: int, precision: str, output: Path) -> None:
         **input_metadata,
         "precision": precision,
         "quantized_linear_modules": quantized_modules,
+        "quantization_backend": quantization_backend,
+        "quantization_scope": "encoder-linear-only; decision head remains FP32",
         "config": config,
         "questions": questions,
         "runtime": runtime,

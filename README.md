@@ -220,6 +220,8 @@ batching is an evaluation convenience, not a requirement for issue triage.
   Six predetermined issues are each measured three times per configuration.
   These are separate single-issue calls with all 25 labels, not a throughput batch.
   This is a configuration pilot, not a large-sample accuracy claim.
+  INT8 means dynamically quantized encoder Linear layers; the decision head
+  remains FP32 because PyTorch's fused Transformer head requires float weights.
 - **Full Laya experiment** evaluates every issue in eight disjoint CPU shards.
   It captures one source snapshot for all runners, validates complete coverage
   and compatible runtimes, and retains each original prediction unchanged.

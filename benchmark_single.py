@@ -23,23 +23,32 @@ from experiment import (
 )
 
 
-def accelerate_cpu(agent: Any, precision: str) -> int:
-    """Optionally quantize Linear layers; never silently substitute another mode."""
+def accelerate_cpu(agent: Any, precision: str) -> tuple[int, str | None]:
+    """Quantize encoder Linear layers only; the fused decision head requires FP32 weights."""
     if agent.device.type != "cpu":
         raise ValueError("This comparison requires an actual CPU runtime.")
     if precision == "fp32":
-        return 0
+        return 0, None
     if precision != "int8":
         raise ValueError("Unsupported CPU precision.")
     import torch
     from torch.ao.nn.quantized.dynamic import Linear
     from torch.ao.quantization import quantize_dynamic
 
-    quantize_dynamic(agent.model, {torch.nn.Linear}, dtype=torch.qint8, inplace=True)
-    count = sum(isinstance(module, Linear) for module in agent.model.modules())
+    engines = torch.backends.quantized.supported_engines
+    engine = next(
+        (name for name in ("x86", "fbgemm", "qnnpack") if name in engines), None
+    )
+    if engine is None:
+        raise ValueError("No supported INT8 CPU backend; choose FP32 on this machine.")
+    torch.backends.quantized.engine = engine
+    quantize_dynamic(
+        agent.model.encoder, {torch.nn.Linear}, dtype=torch.qint8, inplace=True
+    )
+    count = sum(isinstance(module, Linear) for module in agent.model.encoder.modules())
     if not count:
         raise ValueError("INT8 requested but no Linear layers were quantized.")
-    return count
+    return count, engine
 
 
 def benchmark(
@@ -57,7 +66,7 @@ def benchmark(
     positions = [index * (len(issues) - 1) // 5 for index in range(6)]
     agent, runtime = load_agent(config)
     optimization_start = time.perf_counter()
-    quantized_modules = accelerate_cpu(agent, precision)
+    quantized_modules, quantization_backend = accelerate_cpu(agent, precision)
     optimization_seconds = time.perf_counter() - optimization_start
     ready_seconds = time.perf_counter() - started
     records = []
@@ -97,6 +106,8 @@ def benchmark(
                     "cpu_threads": threads,
                     "runtime": runtime,
                     "quantized_linear_modules": quantized_modules,
+                    "quantization_backend": quantization_backend,
+                    "quantization_scope": "encoder-linear-only; decision head remains FP32",
                     "optimization_seconds": optimization_seconds,
                     "process_to_model_ready_seconds": ready_seconds,
                     "first_issue_process_seconds": ready_seconds
