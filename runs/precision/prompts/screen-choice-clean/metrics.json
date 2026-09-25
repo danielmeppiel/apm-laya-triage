@@ -1,0 +1,395 @@
+{
+  "partition": "screen24",
+  "variant": "choice-clean",
+  "dimensions_scope": [
+    "type"
+  ],
+  "issue_count": 24,
+  "policy_sha256": "47490874c502cb3f408e4244a9a1c341e50385b9b19b705f8245cfc631070a20",
+  "protocol_sha256": "dbc55b2ab2100d37167d36a631f7d1134f6cf473efeba9cd28829b802a74b8ea",
+  "candidate": {
+    "control_issues": 24,
+    "exact_matches": 12,
+    "exact_agreement": 0.5,
+    "exact_agreement_95ci": {
+      "lower": 0.3142742581957335,
+      "upper": 0.6857257418042665
+    },
+    "true_positives": 13,
+    "false_positives": 11,
+    "false_negatives": 16,
+    "precision": 0.5416666666666666,
+    "recall": 0.4482758620689655,
+    "micro_f1": 0.49056603773584906,
+    "mean_jaccard": 0.5208333333333334,
+    "by_dimension": {
+      "type": {
+        "control_issues": 24,
+        "exact_matches": 12,
+        "exact_agreement": 0.5,
+        "exact_agreement_95ci": {
+          "lower": 0.3142742581957335,
+          "upper": 0.6857257418042665
+        },
+        "true_positives": 13,
+        "false_positives": 11,
+        "false_negatives": 16,
+        "precision": 0.5416666666666666,
+        "recall": 0.4482758620689655,
+        "micro_f1": 0.49056603773584906,
+        "mean_jaccard": 0.5208333333333334
+      }
+    },
+    "by_label": {
+      "type/architecture": {
+        "control_issues_in_dimension": 24,
+        "support": 0,
+        "proposed_count": 2,
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0,
+        "precision_95ci": {
+          "lower": 0.0,
+          "upper": 0.6576197724933469
+        },
+        "recall_95ci": null
+      },
+      "type/automation": {
+        "control_issues_in_dimension": 24,
+        "support": 6,
+        "proposed_count": 2,
+        "true_positives": 0,
+        "false_positives": 2,
+        "false_negatives": 6,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_95ci": {
+          "lower": 0.0,
+          "upper": 0.6576197724933469
+        },
+        "recall_95ci": {
+          "lower": 2.7755575615628914e-17,
+          "upper": 0.3903342879021653
+        }
+      },
+      "type/bug": {
+        "control_issues_in_dimension": 24,
+        "support": 8,
+        "proposed_count": 12,
+        "true_positives": 8,
+        "false_positives": 4,
+        "false_negatives": 0,
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1": 0.8,
+        "precision_95ci": {
+          "lower": 0.39062208887279953,
+          "upper": 0.8618799089087867
+        },
+        "recall_95ci": {
+          "lower": 0.6755924351161198,
+          "upper": 1.0
+        }
+      },
+      "type/docs": {
+        "control_issues_in_dimension": 24,
+        "support": 5,
+        "proposed_count": 1,
+        "true_positives": 0,
+        "false_positives": 1,
+        "false_negatives": 5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_95ci": {
+          "lower": 0.0,
+          "upper": 0.7934506856227626
+        },
+        "recall_95ci": {
+          "lower": 0.0,
+          "upper": 0.43448246478317476
+        }
+      },
+      "type/feature": {
+        "control_issues_in_dimension": 24,
+        "support": 8,
+        "proposed_count": 3,
+        "true_positives": 3,
+        "false_positives": 0,
+        "false_negatives": 5,
+        "precision": 1.0,
+        "recall": 0.375,
+        "f1": 0.5454545454545454,
+        "precision_95ci": {
+          "lower": 0.4385029682449546,
+          "upper": 1.0
+        },
+        "recall_95ci": {
+          "lower": 0.13684428582359742,
+          "upper": 0.6942576053973727
+        }
+      },
+      "type/performance": {
+        "control_issues_in_dimension": 24,
+        "support": 1,
+        "proposed_count": 1,
+        "true_positives": 1,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "precision_95ci": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        },
+        "recall_95ci": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        }
+      },
+      "type/refactor": {
+        "control_issues_in_dimension": 24,
+        "support": 1,
+        "proposed_count": 3,
+        "true_positives": 1,
+        "false_positives": 2,
+        "false_negatives": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "precision_95ci": {
+          "lower": 0.06149194472039621,
+          "upper": 0.7923403991979522
+        },
+        "recall_95ci": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        }
+      },
+      "type/release": {
+        "control_issues_in_dimension": 24,
+        "support": 0,
+        "proposed_count": 0,
+        "true_positives": 0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "precision_95ci": null,
+        "recall_95ci": null
+      }
+    },
+    "issue_coverage": 1.0,
+    "average_proposals": 1.0,
+    "dimension_coverage": {
+      "type": 1.0
+    }
+  },
+  "baseline_same_scope": {
+    "control_issues": 24,
+    "exact_matches": 0,
+    "exact_agreement": 0.0,
+    "exact_agreement_95ci": {
+      "lower": 1.3877787807814457e-17,
+      "upper": 0.13797620467498017
+    },
+    "true_positives": 28,
+    "false_positives": 143,
+    "false_negatives": 1,
+    "precision": 0.16374269005847952,
+    "recall": 0.9655172413793104,
+    "micro_f1": 0.28,
+    "mean_jaccard": 0.17584325396825395,
+    "by_dimension": {
+      "type": {
+        "control_issues": 24,
+        "exact_matches": 0,
+        "exact_agreement": 0.0,
+        "exact_agreement_95ci": {
+          "lower": 1.3877787807814457e-17,
+          "upper": 0.13797620467498017
+        },
+        "true_positives": 28,
+        "false_positives": 143,
+        "false_negatives": 1,
+        "precision": 0.16374269005847952,
+        "recall": 0.9655172413793104,
+        "micro_f1": 0.28,
+        "mean_jaccard": 0.17584325396825395
+      }
+    },
+    "by_label": {
+      "type/architecture": {
+        "control_issues_in_dimension": 24,
+        "support": 0,
+        "proposed_count": 24,
+        "true_positives": 0,
+        "false_positives": 24,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0,
+        "precision_95ci": {
+          "lower": 1.3877787807814457e-17,
+          "upper": 0.13797620467498017
+        },
+        "recall_95ci": null
+      },
+      "type/automation": {
+        "control_issues_in_dimension": 24,
+        "support": 6,
+        "proposed_count": 21,
+        "true_positives": 6,
+        "false_positives": 15,
+        "false_negatives": 0,
+        "precision": 0.2857142857142857,
+        "recall": 1.0,
+        "f1": 0.4444444444444444,
+        "precision_95ci": {
+          "lower": 0.1381386295212213,
+          "upper": 0.49956380716085597
+        },
+        "recall_95ci": {
+          "lower": 0.6096657120978346,
+          "upper": 1.0
+        }
+      },
+      "type/bug": {
+        "control_issues_in_dimension": 24,
+        "support": 8,
+        "proposed_count": 21,
+        "true_positives": 8,
+        "false_positives": 13,
+        "false_negatives": 0,
+        "precision": 0.38095238095238093,
+        "recall": 1.0,
+        "f1": 0.5517241379310345,
+        "precision_95ci": {
+          "lower": 0.20751011368564493,
+          "upper": 0.5912134622488425
+        },
+        "recall_95ci": {
+          "lower": 0.6755924351161198,
+          "upper": 1.0
+        }
+      },
+      "type/docs": {
+        "control_issues_in_dimension": 24,
+        "support": 5,
+        "proposed_count": 23,
+        "true_positives": 5,
+        "false_positives": 18,
+        "false_negatives": 0,
+        "precision": 0.21739130434782608,
+        "recall": 1.0,
+        "f1": 0.35714285714285715,
+        "precision_95ci": {
+          "lower": 0.09663978026586204,
+          "upper": 0.4190348301626401
+        },
+        "recall_95ci": {
+          "lower": 0.5655175352168251,
+          "upper": 1.0
+        }
+      },
+      "type/feature": {
+        "control_issues_in_dimension": 24,
+        "support": 8,
+        "proposed_count": 18,
+        "true_positives": 7,
+        "false_positives": 11,
+        "false_negatives": 1,
+        "precision": 0.3888888888888889,
+        "recall": 0.875,
+        "f1": 0.5384615384615384,
+        "precision_95ci": {
+          "lower": 0.2030524657216362,
+          "upper": 0.613809583977621
+        },
+        "recall_95ci": {
+          "lower": 0.5291118177871464,
+          "upper": 0.9775825085499433
+        }
+      },
+      "type/performance": {
+        "control_issues_in_dimension": 24,
+        "support": 1,
+        "proposed_count": 19,
+        "true_positives": 1,
+        "false_positives": 18,
+        "false_negatives": 0,
+        "precision": 0.05263157894736842,
+        "recall": 1.0,
+        "f1": 0.1,
+        "precision_95ci": {
+          "lower": 0.009351994062300362,
+          "upper": 0.24638731166898786
+        },
+        "recall_95ci": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        }
+      },
+      "type/refactor": {
+        "control_issues_in_dimension": 24,
+        "support": 1,
+        "proposed_count": 22,
+        "true_positives": 1,
+        "false_positives": 21,
+        "false_negatives": 0,
+        "precision": 0.045454545454545456,
+        "recall": 1.0,
+        "f1": 0.08695652173913043,
+        "precision_95ci": {
+          "lower": 0.00806942762126385,
+          "upper": 0.21798045838657332
+        },
+        "recall_95ci": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        }
+      },
+      "type/release": {
+        "control_issues_in_dimension": 24,
+        "support": 0,
+        "proposed_count": 23,
+        "true_positives": 0,
+        "false_positives": 23,
+        "false_negatives": 0,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0,
+        "precision_95ci": {
+          "lower": 0.0,
+          "upper": 0.14311661845042686
+        },
+        "recall_95ci": null
+      }
+    },
+    "issue_coverage": 1.0,
+    "average_proposals": 7.125,
+    "dimension_coverage": {
+      "type": 1.0
+    }
+  },
+  "latency": {
+    "inference_seconds_total": 6.935403625007893,
+    "inference_seconds_mean": 0.28897515104199556,
+    "inference_seconds_median": 0.2063940830012143,
+    "invocation_seconds_segments": 14.737364707994857,
+    "shortened_count": 23
+  },
+  "limitations": [
+    "Silver-label agreement, not verified gold precision.",
+    "Missing control dimensions are unscored, not negative.",
+    "Development screen is nested in development64, not independent.",
+    "Confirmation is reserved from new experiments only; historical baseline saw every issue.",
+    "Choice predicts at most one label per dimension; binary baseline permits multiple."
+  ]
+}

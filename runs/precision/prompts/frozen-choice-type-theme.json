@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "variant": "choice-clean",
+  "dimensions_scope": [
+    "theme",
+    "type"
+  ],
+  "config": {
+    "source_repo": "microsoft/apm",
+    "model_repo": "convaiinnovations/laya",
+    "model_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+    "weights_sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c",
+    "runtime_source_revision": "23a17522aa4942da6cce53a995a275760320b691",
+    "device": "mps",
+    "mixed_precision": false,
+    "cpu_threads": 2,
+    "state_token_budget": 300,
+    "binary_threshold": 0.5,
+    "project_context": "APM is Microsoft's Agent Package Manager: a Python CLI for installing and distributing agent skills, instructions, prompts and agent packages across coding assistants. It includes lockfiles, MCP configuration, policy enforcement, security scanning and CI workflows.",
+    "control_contract_path": "packages/autopilot/autopilot-issue-triage-scheduler/.apm/skills/autopilot-issue-triage-scheduler/assets/label-contract.json",
+    "cpu_precision": "fp32"
+  },
+  "questions": {
+    "theme": {
+      "type": "choice",
+      "instructions": "What is the primary theme of the requested work?",
+      "criteria": {
+        "theme/governance": "policy rules, auditing, enterprise enforcement",
+        "theme/portability": "installing or deploying across environments",
+        "theme/security": "malicious content, integrity, trust boundaries",
+        "none": "none of these, other, or insufficient information"
+      }
+    },
+    "type": {
+      "type": "choice",
+      "instructions": "What is the primary kind of work requested in this issue?",
+      "criteria": {
+        "type/architecture": "new module, design pattern, interface contract",
+        "type/automation": "automation scripts, CI workflows, dependabot",
+        "type/bug": "existing behavior is broken or incorrect",
+        "type/docs": "documentation, prose, examples",
+        "type/feature": "new capability, flag, operation",
+        "type/performance": "speed, throughput, memory usage",
+        "type/refactor": "internal restructuring without behavior change",
+        "type/release": "release, version bump, distribution packaging",
+        "none": "none of these, other, or insufficient information"
+      }
+    }
+  },
+  "questions_sha256": "a31adcd431c6daf15ed1ec66422445faba807e4f147cf12ec7dd793fe3d97a60",
+  "option_counts": {
+    "theme": 4,
+    "type": 9
+  },
+  "decision_rule": "primary-argmax-with-none",
+  "excerpt_policy": "baseline-300-token-head-tail-then-strip-project-if-clean",
+  "protocol_sha256": "dbc55b2ab2100d37167d36a631f7d1134f6cf473efeba9cd28829b802a74b8ea",
+  "source_hashes": {
+    "experiments/precision_prompts.py": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7",
+    "experiments/precision_protocol.py": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698",
+    "experiment.py": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc",
+    "cpu_runtime.py": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da",
+    "requirements.txt": "6d16e33eb5bc7e61da9bac75199891fedc6019b46a1bba04fdfc66fa794fb821"
+  },
+  "model_input_fields": [
+    "title",
+    "body"
+  ],
+  "limitations": [
+    "Silver-label agreement, not verified gold precision.",
+    "Missing control dimensions are unscored, not negative.",
+    "Development screen is nested in development64, not independent.",
+    "Confirmation is reserved from new experiments only; historical baseline saw every issue.",
+    "Choice predicts at most one label per dimension; binary baseline permits multiple."
+  ],
+  "policy_sha256": "cba66c0922802eb3cc1826132a82b24fbe5b132665c844e4241a8eb1a7aff96d"
+}
