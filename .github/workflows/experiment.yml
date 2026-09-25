@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   experiment:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     env:
       USE_TF: "0"

@@ -355,6 +355,18 @@ def report_text(
             f"{pct(result['precision'])} | {pct(result['recall'])} | {pct(result['micro_f1'])} | "
             f"{metrics['multi_label_controls'][dim]} |"
         )
+    comparison = ""
+    if overall["micro_f1"] is not None and naive["micro_f1"] is not None:
+        difference = overall["micro_f1"] - naive["micro_f1"]
+        comparison = (
+            f" Laya is {abs(difference) * 100:.1f} percentage points "
+            f"{'above' if difference >= 0 else 'below'} the no-reading reference on F1. "
+            + (
+                "This shows a useful signal, not proof that unattended labelling is safe."
+                if difference > 0
+                else "This baseline does not demonstrate better F1 than simply using label prevalence."
+            )
+        )
     lines.extend(
         [
             "",
@@ -362,7 +374,7 @@ def report_text(
             "without reading the issue. Its F1 is "
             f"**{pct(naive['micro_f1'])}**, versus **{pct(overall['micro_f1'])}** for Laya. "
             "That reference uses this snapshot's label prevalence; it is a descriptive sanity check, "
-            "not a separately trained or held-out baseline.",
+            "not a separately trained or held-out baseline." + comparison,
             "",
             "## Every individual label",
             "",

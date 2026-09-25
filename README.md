@@ -221,6 +221,13 @@ Local measured latency must not be presented as GitHub-hosted CPU latency.
 The full-corpus run and a hosted smoke run are separate experiments: a
 successful small Actions run does not demonstrate full-corpus hosted latency.
 
+**Observed hosted status:** [the initial manual attempt](https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36115959642)
+was blocked before any job step started. GitHub reported an account
+payment/spending-limit restriction. No hosted inference ran, so the workflow
+is syntax-checked but **not execution-validated**. Resolve the account's
+Actions billing restriction before rerunning it; local execution is independent
+of that restriction.
+
 ## Upstream sources
 
 - [Laya model and license](https://huggingface.co/convaiinnovations/laya)
