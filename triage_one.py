@@ -7,7 +7,6 @@ import time
 from pathlib import Path
 from typing import Any
 
-from benchmark_single import accelerate_cpu
 from experiment import (
     ROOT,
     check_response,
@@ -44,16 +43,18 @@ def classify(number: int, threads: int, precision: str, output: Path) -> None:
     started_at = now()
     started = time.perf_counter()
     config = read_json(ROOT / "config.json")
-    config.update(device="cpu", cpu_threads=threads, mixed_precision=False)
+    config.update(
+        device="cpu",
+        cpu_threads=threads,
+        mixed_precision=False,
+        cpu_precision=precision,
+    )
     snapshot = read_json(ROOT / "data/snapshot.json")
     questions = questions_for(taxonomy(snapshot))
     before = time.perf_counter()
     issue = read_issue(config["source_repo"], number)
     github_read_seconds = time.perf_counter() - before
     agent, runtime = load_agent(config)
-    before = time.perf_counter()
-    quantized_modules, quantization_backend = accelerate_cpu(agent, precision)
-    optimization_seconds = time.perf_counter() - before
     state, input_metadata = prepare_state(issue, agent.tok, config)
     before = time.perf_counter()
     response = agent.predict(state, questions)
@@ -71,15 +72,15 @@ def classify(number: int, threads: int, precision: str, output: Path) -> None:
         "url": issue["url"],
         **input_metadata,
         "precision": precision,
-        "quantized_linear_modules": quantized_modules,
-        "quantization_backend": quantization_backend,
-        "quantization_scope": "encoder-linear-only; decision head remains FP32",
+        "quantized_linear_modules": runtime["quantized_linear_modules"],
+        "quantization_backend": runtime["quantization_backend"],
+        "quantization_scope": runtime["quantization_scope"],
         "config": config,
         "questions": questions,
         "runtime": runtime,
         "taxonomy_snapshot_sha256": digest(snapshot),
         "github_read_seconds": github_read_seconds,
-        "optimization_seconds": optimization_seconds,
+        "optimization_seconds": runtime["optimization_seconds"],
         "inference_seconds": inference_seconds,
         "invocation_seconds": time.perf_counter() - started,
         "predicted_labels": predicted_labels(response, config["binary_threshold"]),

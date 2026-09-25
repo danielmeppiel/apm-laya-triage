@@ -231,6 +231,11 @@ No custom model secret is required. The built-in GitHub token is used only by
 the snapshot read step. Performance pilots do not change the pinned baseline,
 its questions, its threshold, or its reference labels.
 
+The full workflow also accepts `precision` and `threads`, so a candidate runtime
+can be checked against **all 1,079 eligible controls**, not promoted based on
+the six-issue speed pilot. `cpu_runtime.py` owns the same precision policy for
+the pilot, one-issue dispatch, and corpus evaluation.
+
 ```bash
 # Replace 123 with an actual issue number; this never applies the predictions.
 gh workflow run triage-one.yml --repo danielmeppiel/apm-laya-triage \

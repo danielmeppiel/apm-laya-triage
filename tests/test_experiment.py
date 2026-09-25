@@ -24,6 +24,19 @@ class Tokenizer:
 
 
 class PipelineTests(unittest.TestCase):
+    def test_cli_routes_precision_to_the_canonical_loader_config(self) -> None:
+        with (
+            patch(
+                "sys.argv",
+                ["experiment.py", "run", "--device", "cpu", "--precision", "int8"],
+            ),
+            patch("experiment.run") as runner,
+        ):
+            experiment.main()
+        config = runner.call_args.args[0]
+        self.assertEqual(config["cpu_precision"], "int8")
+        self.assertEqual(config["device"], "cpu")
+
     def test_every_classification_is_an_independent_membership_question(self) -> None:
         questions = experiment.questions_for(
             {"type/bug": "A bug", "type/feature": "A feature", "area/cli": "CLI"}

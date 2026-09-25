@@ -62,6 +62,8 @@ def combine(parent_path: Path, shard_root: Path, output: Path) -> None:
         compatibility = {
             "config": manifest["config"],
             "questions": manifest["questions"],
+            "pipeline_sources": manifest.get("pipeline_sources"),
+            "quantization_backend": manifest["runtime"].get("quantization_backend"),
             "runtime": {
                 key: manifest["runtime"][key]
                 for key in (
@@ -106,6 +108,9 @@ def combine(parent_path: Path, shard_root: Path, output: Path) -> None:
         ),
         "download_and_hash_seconds": sum(
             item["runtime"]["download_and_hash_seconds"] for item in manifests
+        ),
+        "optimization_seconds": sum(
+            item["runtime"].get("optimization_seconds", 0.0) for item in manifests
         ),
     }
     manifest = {
@@ -163,6 +168,8 @@ def main() -> None:
     infer.add_argument("--index", type=int, required=True)
     infer.add_argument("--count", type=int, default=8)
     infer.add_argument("--output", type=Path, required=True)
+    infer.add_argument("--precision", choices=("fp32", "int8"), default="fp32")
+    infer.add_argument("--threads", type=int, choices=(1, 2, 4), default=2)
     aggregate = commands.add_parser("combine")
     aggregate.add_argument("--snapshot", type=Path, default=ROOT / "data/snapshot.json")
     aggregate.add_argument("--shards-root", type=Path, required=True)
@@ -176,7 +183,9 @@ def main() -> None:
             raise ValueError("Existing shard belongs to another snapshot or partition.")
         write_json(destination, selected)
         config = read_json(args.config)
-        config["device"] = "cpu"
+        config.update(
+            device="cpu", cpu_precision=args.precision, cpu_threads=args.threads
+        )
         run(config, destination, args.output, None)
         manifest = read_json(args.output / "manifest.json")
         manifest["execution"] = {

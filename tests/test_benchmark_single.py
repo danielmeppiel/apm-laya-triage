@@ -3,7 +3,7 @@
 import unittest
 from types import SimpleNamespace
 
-from benchmark_single import accelerate_cpu
+from cpu_runtime import accelerate_cpu
 
 
 class SingleIssueConfigurationTests(unittest.TestCase):

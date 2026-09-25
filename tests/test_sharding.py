@@ -105,6 +105,7 @@ class ShardingTests(unittest.TestCase):
             "changed-parent",
             "mixed-device",
             "wrong-index",
+            "mixed-code",
         ):
             with (
                 self.subTest(mutation=mutation),
@@ -125,6 +126,9 @@ class ShardingTests(unittest.TestCase):
                     write_json(parent_path, parent)
                 elif mutation == "mixed-device":
                     manifest["runtime"]["device"] = "mps"
+                    write_json(manifest_path, manifest)
+                elif mutation == "mixed-code":
+                    manifest["pipeline_sources"] = {"experiment.py": "another-version"}
                     write_json(manifest_path, manifest)
                 else:
                     snapshot_path = shards / "shard-1" / "snapshot.json"

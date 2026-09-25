@@ -5,7 +5,7 @@ from types import SimpleNamespace
 
 import torch
 
-from benchmark_single import accelerate_cpu
+from cpu_runtime import accelerate_cpu
 
 
 class QuantizationRuntimeTests(unittest.TestCase):

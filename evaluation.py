@@ -340,6 +340,11 @@ def report_text(
     shard_count = manifest["runtime"].get("shard_count", 1)
     hosted = manifest.get("execution", {}).get("kind") == "github-actions"
     execution_name = "GitHub Actions CPU" if hosted else "local"
+    precision_name = (
+        "INT8 encoder Linear layers with an FP32 decision head"
+        if manifest["runtime"].get("cpu_precision") == "int8"
+        else "FP32"
+    )
     lines = [
         "# APM issue labelling experiment: the plain-English report",
         "",
@@ -487,7 +492,7 @@ def report_text(
             "",
             "## Speed and what machine did the work",
             "",
-            f"- Actual inference device: **{manifest['runtime']['device']}**, full precision "
+            f"- Actual inference device: **{manifest['runtime']['device']}**, **{precision_name}** "
             f"(mixed precision: {manifest['runtime']['mixed_precision']}). "
             f"CPU thread limit: {manifest['runtime']['cpu_threads']}.",
             f"- Platform: `{manifest['runtime']['platform']}`.",
@@ -498,6 +503,7 @@ def report_text(
             f"- Inference shards: **{shard_count}**. Load/checksum figures below are summed across shards, not parallel wall time.",
             f"- Recorded model load: **{manifest['runtime']['model_load_seconds']:.2f}s**; "
             f"download/cache lookup plus checksum: **{manifest['runtime']['download_and_hash_seconds']:.2f}s**.",
+            f"- Runtime optimization: **{manifest['runtime'].get('optimization_seconds', 0.0):.2f}s**, summed across shards.",
             "",
             "GPU timings synchronize the device before and after each call. They are not merely "
             "the time taken to queue GPU work. All label questions run together; multiplying the "

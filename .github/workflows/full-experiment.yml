@@ -7,6 +7,16 @@ on:
         description: "Fetch current public APM issues instead of the frozen snapshot"
         type: boolean
         default: false
+      precision:
+        description: "FP32 baseline or experimental encoder INT8 quality comparison"
+        type: choice
+        options: [fp32, int8]
+        default: fp32
+      threads:
+        description: "CPU threads per runner"
+        type: choice
+        options: ["2", "4"]
+        default: "2"
 
 permissions:
   contents: read
@@ -68,7 +78,9 @@ jobs:
       - name: Run genuine inference on this partition
         env:
           SHARD: ${{ matrix.shard }}
-        run: python -u sharding.py run --index "$SHARD" --count 8 --output "runs/shard-$SHARD"
+          PRECISION: ${{ inputs.precision }}
+          THREADS: ${{ inputs.threads }}
+        run: python -u sharding.py run --index "$SHARD" --count 8 --precision "$PRECISION" --threads "$THREADS" --output "runs/shard-$SHARD"
       - name: Preserve raw shard evidence, including partial failures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

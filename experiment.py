@@ -269,6 +269,11 @@ def load_agent(config: dict[str, Any]) -> tuple[Any, dict[str, Any]]:
             if torch.cuda.is_available()
             else ("mps" if torch.backends.mps.is_available() else "cpu")
         )
+    precision = config.get("cpu_precision", "fp32")
+    if precision not in ("fp32", "int8") or (
+        precision == "int8" and (selected != "cpu" or config["mixed_precision"])
+    ):
+        raise ValueError("INT8 requires CPU with autocast disabled.")
     directory = Path(
         snapshot_download(
             config["model_repo"],
@@ -296,6 +301,12 @@ def load_agent(config: dict[str, Any]) -> tuple[Any, dict[str, Any]]:
         > agent.cfg["max_len"] - agent.cfg["head_max_len"] - 4
     ):
         raise ValueError("State token budget could cause hidden SDK truncation.")
+    loaded = time.perf_counter()
+    quantized_modules, quantization_backend = 0, None
+    if selected == "cpu":
+        from cpu_runtime import accelerate_cpu
+
+        quantized_modules, quantization_backend = accelerate_cpu(agent, precision)
     return agent, {
         "device": str(agent.device),
         "platform": platform.platform(),
@@ -303,7 +314,14 @@ def load_agent(config: dict[str, Any]) -> tuple[Any, dict[str, Any]]:
         "weights_sha256": checksum,
         "mixed_precision": agent.amp_enabled,
         "download_and_hash_seconds": downloaded - started,
-        "model_load_seconds": time.perf_counter() - downloaded,
+        "model_load_seconds": loaded - downloaded,
+        "optimization_seconds": time.perf_counter() - loaded,
+        "cpu_precision": precision,
+        "quantized_linear_modules": quantized_modules,
+        "quantization_backend": quantization_backend,
+        "quantization_scope": "encoder-linear-only; decision head remains FP32"
+        if precision == "int8"
+        else "none",
         "versions": {
             name: importlib.metadata.version(name)
             for name in (
@@ -332,15 +350,17 @@ def run(config: dict[str, Any], source: Path, output: Path, limit: int | None) -
     snapshot_data = read_json(source)
     labels = taxonomy(snapshot_data)
     questions = questions_for(labels)
+    pipeline_sources = {
+        name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
+        for name in ("experiment.py", "cpu_runtime.py")
+    }
     fingerprint = digest(
         {
             "config": config,
             "snapshot": snapshot_data,
             "questions": questions,
-            "pipeline_source_sha256": hashlib.sha256(
-                Path(__file__).read_bytes()
-            ).hexdigest(),
-            "pipeline_version": 1,
+            "pipeline_sources": pipeline_sources,
+            "pipeline_version": 2,
         }
     )
     output.mkdir(parents=True, exist_ok=True)
@@ -374,6 +394,7 @@ def run(config: dict[str, Any], source: Path, output: Path, limit: int | None) -
         "config": config,
         "questions": questions,
         "runtime": runtime,
+        "pipeline_sources": pipeline_sources,
         "target_count": len(wanted),
         "full_corpus_count": len(snapshot_data["issues"]),
         "real_inference": True,
@@ -406,6 +427,13 @@ def run(config: dict[str, Any], source: Path, output: Path, limit: int | None) -
             response = agent.predict(state, questions)
             synchronize(agent)
             inference_seconds = time.perf_counter() - inference_start
+            if (
+                str(agent.device) != runtime["device"]
+                or agent.amp_enabled != runtime["mixed_precision"]
+            ):
+                raise ValueError(
+                    "The SDK changed device or precision during inference."
+                )
             check_response(response, questions)
             row = {
                 "number": issue["number"],
@@ -456,6 +484,7 @@ def main() -> None:
     infer.add_argument("--output", type=Path, default=ROOT / "runs/baseline")
     infer.add_argument("--limit", type=int)
     infer.add_argument("--device", choices=["cpu", "mps", "cuda", "auto"])
+    infer.add_argument("--precision", choices=["fp32", "int8"])
     report = commands.add_parser("report")
     report.add_argument("--snapshot", type=Path, default=ROOT / "data/snapshot.json")
     report.add_argument("--run", type=Path, default=ROOT / "runs/baseline")
@@ -471,6 +500,8 @@ def main() -> None:
             parser.error("--limit must be positive.")
         if args.device:
             config["device"] = args.device
+        if args.precision:
+            config["cpu_precision"] = args.precision
         run(config, args.snapshot, args.output, args.limit)
     else:
         from evaluation import build_report
