@@ -1,0 +1,214 @@
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3067, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 28, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1228, "proposed": ["theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2330, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2976, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 745, "proposed": ["area/cli", "area/docs-site", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1463, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2514, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2003, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1780, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 515, "proposed": ["area/cli", "area/distribution", "area/package-authoring", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 324, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3050, "proposed": ["area/audit-policy", "area/mcp-config", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 312, "proposed": ["area/cli", "area/distribution", "area/enterprise", "area/lockfile", "area/mcp-config"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1004, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1211, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1187, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 920, "proposed": ["area/ci-cd", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2740, "proposed": ["area/ci-cd", "area/enterprise", "area/mcp-config", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2233, "proposed": ["area/audit-policy", "area/ci-cd", "area/lockfile", "area/multi-target", "theme/security", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 561, "proposed": ["area/ci-cd", "area/docs-site", "area/multi-target", "area/testing", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2183, "proposed": ["area/cli", "area/distribution", "area/docs-site", "area/lockfile", "area/multi-target", "area/package-authoring"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2168, "proposed": ["area/cli", "area/docs-site", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3040, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1317, "proposed": ["area/lockfile", "area/marketplace", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1435, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2332, "proposed": ["area/cli", "area/lockfile", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2984, "proposed": ["area/marketplace", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1829, "proposed": ["area/cli", "area/docs-site"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1208, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 720, "proposed": ["area/cli", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1156, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 342, "proposed": ["area/cli", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 487, "proposed": ["area/audit-policy", "area/ci-cd", "area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2728, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2990, "proposed": ["area/cli", "area/docs-site", "area/mcp-config", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1894, "proposed": ["area/cli", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1760, "proposed": ["area/cli", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2452, "proposed": ["area/audit-policy", "area/cli", "area/multi-target", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2372, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation", "type/performance"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3058, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2337, "proposed": ["area/ci-cd", "area/mcp-config", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 695, "proposed": ["area/cli", "area/docs-site", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 133, "proposed": ["area/cli", "area/distribution", "area/docs-site", "area/mcp-config", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2509, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1010, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 627, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2338, "proposed": ["area/enterprise", "area/mcp-config", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 640, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 467, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 692, "proposed": ["area/docs-site", "area/marketplace", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 922, "proposed": ["area/testing", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2147, "proposed": ["area/cli", "area/marketplace", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 541, "proposed": ["area/cli", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1800, "proposed": ["area/audit-policy", "area/ci-cd", "area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1807, "proposed": ["area/marketplace", "area/multi-target", "area/testing", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2034, "proposed": ["area/cli", "area/lockfile", "area/multi-target", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2222, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3017, "proposed": ["area/ci-cd", "area/docs-site", "area/marketplace", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 204, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1134, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2158, "proposed": ["area/docs-site", "area/lockfile", "area/mcp-config", "area/multi-target", "theme/governance", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1826, "proposed": ["area/cli", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 377, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1298, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1923, "proposed": ["area/audit-policy", "area/ci-cd", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1075, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1804, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 710, "proposed": ["area/cli", "area/mcp-config", "area/multi-target"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2615, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 626, "proposed": ["area/cli", "area/distribution", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1452, "proposed": ["area/docs-site", "area/marketplace", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1013, "proposed": ["area/cli", "area/distribution", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1131, "proposed": ["area/marketplace", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1015, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3000, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2203, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2652, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2834, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 876, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2073, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2116, "proposed": ["area/cli", "area/enterprise", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2849, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2369, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 185, "proposed": ["area/marketplace", "area/testing", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1690, "proposed": ["area/audit-policy", "area/cli", "area/distribution", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 187, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2927, "proposed": ["area/cli", "theme/governance", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2689, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2123, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 780, "proposed": ["area/cli", "area/distribution", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2250, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 305, "proposed": ["area/cli", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 814, "proposed": ["area/testing", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 801, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2245, "proposed": ["area/cli", "area/distribution", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1475, "proposed": ["area/cli", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1998, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2753, "proposed": ["area/audit-policy", "area/docs-site", "area/enterprise", "area/mcp-config", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2550, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 245, "proposed": ["area/ci-cd", "area/distribution", "area/multi-target", "area/package-authoring", "area/testing", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 925, "proposed": ["area/audit-policy", "area/enterprise"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2465, "proposed": ["area/cli", "area/mcp-config", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1490, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1222, "proposed": ["area/cli", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2108, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 840, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 244, "proposed": ["area/cli", "area/distribution", "area/multi-target", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 894, "proposed": ["area/cli", "area/distribution", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 203, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2537, "proposed": ["area/cli", "area/lockfile", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1489, "proposed": ["area/cli", "area/distribution", "area/package-authoring", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1080, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 51, "proposed": ["area/cli", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2491, "proposed": ["area/cli", "area/distribution", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 74, "proposed": ["area/cli", "area/docs-site", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1347, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1594, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3005, "proposed": ["area/cli", "area/testing", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 614, "proposed": ["area/lockfile", "area/marketplace", "area/mcp-config", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2622, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 751, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 158, "proposed": ["area/audit-policy", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1375, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2119, "proposed": ["area/audit-policy", "area/lockfile", "theme/security", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2970, "proposed": ["area/cli", "area/lockfile", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3069, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1482, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2524, "proposed": ["area/audit-policy", "area/cli", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2612, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2443, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2418, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation", "type/performance"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1543, "proposed": ["area/cli", "area/distribution", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1697, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1198, "proposed": ["area/audit-policy", "area/cli", "theme/governance", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2633, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1693, "proposed": ["area/cli", "area/mcp-config", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1861, "proposed": ["area/cli", "area/distribution", "area/lockfile", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 134, "proposed": ["area/mcp-config", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1744, "proposed": ["area/cli", "area/distribution", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1535, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2463, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 957, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1597, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 37, "proposed": ["area/cli", "area/distribution", "area/docs-site", "area/multi-target", "area/package-authoring", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 847, "proposed": ["area/cli", "area/marketplace", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 90, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1670, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2585, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation", "type/performance"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1071, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2075, "proposed": ["area/audit-policy", "area/distribution", "area/marketplace", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2319, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 413, "proposed": ["area/cli", "area/distribution", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 765, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2985, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1823, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2565, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2788, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 565, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 582, "proposed": ["area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 652, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 708, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 387, "proposed": ["area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 602, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 175, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1750, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1743, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 369, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1952, "proposed": ["area/cli", "area/distribution", "area/lockfile", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2342, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 711, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2308, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3038, "proposed": ["area/ci-cd", "area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 887, "proposed": ["area/cli"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 739, "proposed": ["area/cli", "area/docs-site", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2408, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2127, "proposed": ["area/audit-policy", "area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1724, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 65, "proposed": ["area/cli", "area/package-authoring", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2062, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2567, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation", "type/performance"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3066, "proposed": ["area/cli", "area/lockfile", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2161, "proposed": ["area/distribution", "area/lockfile", "area/multi-target", "area/package-authoring", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2355, "proposed": ["area/audit-policy", "area/ci-cd", "area/mcp-config", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2877, "proposed": ["area/cli", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2395, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2077, "proposed": ["area/audit-policy", "area/cli", "area/lockfile", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2389, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2562, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/automation", "type/performance"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3006, "proposed": ["area/docs-site", "area/marketplace", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1528, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1887, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2107, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 898, "proposed": ["area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2078, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1267, "proposed": ["area/cli", "area/multi-target"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2763, "proposed": ["area/cli", "area/distribution", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2832, "proposed": ["area/audit-policy", "area/cli", "area/lockfile"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 662, "proposed": ["area/cli", "area/lockfile", "area/multi-target"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2415, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1295, "proposed": ["area/cli", "area/distribution", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2336, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2089, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 174, "proposed": ["area/cli", "theme/portability", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1883, "proposed": ["area/cli", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2368, "proposed": ["area/cli", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 3018, "proposed": ["area/cli", "theme/portability", "type/automation"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2000, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 1058, "proposed": ["area/cli", "area/marketplace", "area/multi-target", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 664, "proposed": ["area/cli", "theme/portability"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2340, "proposed": ["area/cli", "area/mcp-config", "theme/portability", "type/bug"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 843, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2606, "proposed": ["area/distribution", "area/docs-site", "area/multi-target", "theme/portability", "type/feature"]}
+{"artifact_sha256": "811b8dbdf6e03b2d827387984806f50360d7722592253dd6ac1581e9d616e488", "number": 2321, "proposed": ["area/distribution", "area/docs-site", "area/lockfile", "area/mcp-config", "area/multi-target", "theme/portability", "type/bug"]}

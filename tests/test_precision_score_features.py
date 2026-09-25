@@ -5,6 +5,7 @@ import unittest
 
 from experiments.precision_score_features import (
     CONFIGURATIONS,
+    apply_policy,
     exported_scores,
     feature_labels,
     predict,
@@ -43,9 +44,17 @@ class PortableScoreFeaturesTests(unittest.TestCase):
             "estimators": [{"coefficients": [4.0], "intercept": 0.0}],
         }
         self.assertEqual(predict_probabilities({"type/bug": 0.5}, model), {"type/bug": 0.5})
-        self.assertEqual(predict({"type/bug": 0.5}, {"model": model, "policy": {"threshold": 0.5}}), ["type/bug"])
+        self.assertEqual(predict({"type/bug": 0.5}, {"model": model, "policy": {"kind": "threshold", "threshold": 0.5}}), ["type/bug"])
         with self.assertRaises(ValueError):
             predict_probabilities({"type/bug": 0.5, "expected": 1.0}, model)
+
+    def test_broad_precision_uses_only_frozen_dimension_thresholds(self):
+        probabilities = {"type/bug": 0.8, "area/cli": 0.3, "theme/security": 0.4}
+        policy = {"kind": "dimension_thresholds", "thresholds": {"type": 0.7, "area": 0.25, "theme": 0.5}}
+        self.assertEqual(apply_policy(probabilities, policy), ["area/cli", "type/bug"])
+        policy["thresholds"].pop("theme")
+        with self.assertRaises(ValueError):
+            apply_policy(probabilities, policy)
 
     def test_tree_float32_branching_matches_sklearn_contract(self):
         model = {

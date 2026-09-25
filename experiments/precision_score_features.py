@@ -21,6 +21,7 @@ import time
 from pathlib import Path
 from typing import Any, Callable
 
+from evaluation import DIMENSIONS
 from experiment import digest, read_json, write_json
 from experiments.precision_calibration import load_scores, load_training_data, metrics, validate_scores
 from experiments.precision_protocol import file_sha256, load_protocol, select_ids, verify_sources
@@ -76,7 +77,22 @@ def predict_probabilities(scores: dict[str, float], model: dict[str, Any]) -> di
 
 def predict(scores: dict[str, float], frozen: dict[str, Any]) -> list[str]:
     probabilities = predict_probabilities(scores, frozen["model"])
-    return sorted(label for label, value in probabilities.items() if value >= frozen["policy"]["threshold"])
+    return apply_policy(probabilities, frozen["policy"])
+
+
+def apply_policy(probabilities: dict[str, float], policy: dict[str, Any]) -> list[str]:
+    if policy["kind"] == "threshold":
+        thresholds = {dimension: policy["threshold"] for dimension in DIMENSIONS}
+    elif policy["kind"] == "dimension_thresholds":
+        thresholds = policy["thresholds"]
+        if set(thresholds) != set(DIMENSIONS):
+            raise ValueError("Broad precision requires exactly three dimension thresholds.")
+    else:
+        raise ValueError("Unknown score-feature policy kind.")
+    if any(type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 1
+           for value in thresholds.values()):
+        raise ValueError("Frozen thresholds must be finite and in [0,1].")
+    return sorted(label for label, value in probabilities.items() if value >= thresholds[label.split("/")[0]])
 
 
 def train_model(
@@ -171,9 +187,15 @@ def exported_scores(records: list[dict[str, Any]], model: dict[str, Any]) -> lis
 def score_metrics(
     records: list[dict[str, Any]], scores: list[dict[str, float]], threshold: float, labels: list[str]
 ) -> dict[str, Any]:
+    return policy_metrics(records, scores, {"kind": "threshold", "threshold": threshold}, labels)
+
+
+def policy_metrics(
+    records: list[dict[str, Any]], scores: list[dict[str, float]], policy: dict[str, Any], labels: list[str]
+) -> dict[str, Any]:
     return metrics([
         {"number": record["number"], "expected": record["expected"],
-         "proposed": sorted(label for label, value in probabilities.items() if value >= threshold)}
+         "proposed": apply_policy(probabilities, policy)}
         for record, probabilities in zip(records, scores)
     ], labels)
 
@@ -288,7 +310,7 @@ def run(args: argparse.Namespace) -> None:
     print("Finalists:", json.dumps(finalists))
 
 
-def load_frozen(path: Path, protocol: dict[str, Any]) -> dict[str, Any]:
+def load_frozen(path: Path, protocol: dict[str, Any], *, policy_migration: bool = False) -> dict[str, Any]:
     frozen = read_json(path)
     if digest({key: value for key, value in frozen.items() if key != "artifact_sha256"}) != frozen["artifact_sha256"]:
         raise ValueError("Frozen score-feature artifact hash mismatch.")
@@ -297,9 +319,77 @@ def load_frozen(path: Path, protocol: dict[str, Any]) -> dict[str, Any]:
     for key in ("protocol_sha256", "snapshot_sha256", "baseline_sha256"):
         if frozen[key] != protocol[key]:
             raise ValueError(f"Frozen model {key} mismatch.")
-    if frozen["module_sha256"] != file_sha256(Path(__file__)):
+    if not policy_migration and frozen["module_sha256"] != file_sha256(Path(__file__)):
         raise ValueError("Score-feature replay code differs from frozen implementation.")
     return frozen
+
+
+def broaden(args: argparse.Namespace) -> None:
+    """Change only decision thresholds; reproduce the old policy before migrating."""
+    import numpy as np
+    from experiments.precision_text import choose_dimension_policy
+
+    if args.output.exists():
+        raise ValueError("Use a new directory for immutable broad-precision evidence.")
+    protocol = load_protocol(args.protocol)
+    verify_sources(protocol, args.snapshot, args.baseline)
+    source_path = args.broaden / "frozen_balanced.json"
+    source = load_frozen(source_path, protocol, policy_migration=True)
+    if source["candidate"] != "scores25_logistic":
+        raise ValueError("This bounded follow-up is restricted to the selected all-score logistic model.")
+    records = load_training_data(read_json(args.snapshot), args.baseline, protocol, "development")
+    model, labels = source["model"], source["model"]["labels"]
+    scores = exported_scores(records, model)
+    balanced_metrics = policy_metrics(records, scores, source["policy"], labels)
+    if balanced_metrics != source["development_metrics"]:
+        raise ValueError("Policy migration must exactly reproduce the archived balanced policy first.")
+    array = np.asarray([[row[label] for label in labels] for row in scores])
+    broad_policy, evidence = choose_dimension_policy(
+        [record["number"] for record in records], [record["expected"] for record in records], array, labels,
+    )
+    if broad_policy is None:
+        raise ValueError("No broad-precision policy meets recall >=.50 in every observed dimension.")
+    broad_metrics = policy_metrics(records, scores, broad_policy, labels)
+    if any((broad_metrics["by_dimension"][dimension]["recall"] or 0) < 0.5 for dimension in DIMENSIONS):
+        raise ValueError("Broad-precision policy failed its per-dimension recall constraint.")
+    metadata = {
+        key: source[key]
+        for key in ("schema_version", "protocol_sha256", "snapshot_sha256", "baseline_sha256",
+                    "text_module_sha256", "dependencies", "fit_ids", "development_ids", "candidate",
+                    "confirmation_evaluated", "score_feature_contract", "rare_class_rule")
+    }
+    metadata.update({
+        "module_sha256": file_sha256(Path(__file__)),
+        "parent_artifact_sha256": source["artifact_sha256"],
+        "parent_module_sha256": source["module_sha256"],
+        "parent_file_sha256": file_sha256(source_path),
+        "selection": "No model refit; same fixed 37 thresholds per dimension, maximize precision with each dimension recall>=.50 on development",
+        "models_refit": False,
+    })
+    variants = {
+        "balanced": {"policy": source["policy"], "development": balanced_metrics},
+        "broad_precision": {"policy": broad_policy, "development": broad_metrics},
+    }
+    summary = {**metadata, "model_sha256": digest(model), "dimension_selection": evidence, "variants": variants}
+    summary_path = args.output / "summary.json"
+    write_json(summary_path, summary)
+    for objective, result in variants.items():
+        frozen = {**metadata, "objective": objective, "model": model, "model_sha256": digest(model),
+                  "policy": result["policy"], "development_metrics": result["development"],
+                  "source_report_sha256": file_sha256(summary_path)}
+        frozen["artifact_sha256"] = digest(frozen)
+        immutable_json(args.output / f"frozen_{objective}.json", frozen)
+        with (args.output / f"development_{objective}.jsonl").open("w", encoding="utf8") as stream:
+            for record in records:
+                features = {label: record["scores"][label] for label in model["feature_labels"]}
+                stream.write(json.dumps({"number": record["number"], "proposed": predict(features, frozen),
+                                         "artifact_sha256": frozen["artifact_sha256"]}, sort_keys=True) + "\n")
+        overall = result["development"]["overall"]
+        print(json.dumps({"objective": objective, "policy": result["policy"],
+                          "precision": overall["precision"], "recall": overall["recall"],
+                          "f1": overall["micro_f1"],
+                          "dimension_recall": {dimension: values["recall"]
+                                               for dimension, values in result["development"]["by_dimension"].items()}}))
 
 
 def replay(args: argparse.Namespace) -> None:
@@ -330,10 +420,18 @@ def main() -> None:
     parser.add_argument("--protocol", type=Path, default=Path("runs/precision/protocol.json"))
     parser.add_argument("--output", type=Path, default=Path("runs/precision/score_features"))
     parser.add_argument("--replay", type=Path)
+    parser.add_argument("--broaden", type=Path, help="Derive broad precision from an archived score-feature run, without refitting")
     parser.add_argument("--split", default="development")
     parser.add_argument("--allow-confirmation", action="store_true")
     args = parser.parse_args()
-    replay(args) if args.replay else run(args)
+    if args.replay and args.broaden:
+        parser.error("--replay and --broaden are mutually exclusive")
+    if args.replay:
+        replay(args)
+    elif args.broaden:
+        broaden(args)
+    else:
+        run(args)
 
 
 if __name__ == "__main__":
