@@ -1,0 +1,820 @@
+{
+  "issue_count": 1328,
+  "control_issues": 1079,
+  "unscored_issues": 249,
+  "states": {
+    "closed": 1160,
+    "open": 168
+  },
+  "shortened_issues": 1235,
+  "label_names_in_original_text": 8,
+  "multi_label_controls": {
+    "type": 212,
+    "area": 297,
+    "theme": 22
+  },
+  "empty_proposals": 2,
+  "proposal_cardinality": {
+    "mean": 22.78237951807229,
+    "median": 25.0,
+    "all_allowed_labels_issues": 846,
+    "allowed_labels": 25
+  },
+  "overall_observed_dimensions": {
+    "control_issues": 1079,
+    "exact_matches": 1,
+    "exact_agreement": 0.0009267840593141798,
+    "exact_agreement_95ci": {
+      "lower": 0.0001636188813697267,
+      "upper": 0.0052309462907617205
+    },
+    "true_positives": 2759,
+    "false_positives": 16192,
+    "false_negatives": 85,
+    "precision": 0.1455859849084481,
+    "recall": 0.970112517580872,
+    "micro_f1": 0.253177334250975,
+    "mean_jaccard": 0.15237458177698726
+  },
+  "by_dimension": {
+    "type": {
+      "control_issues": 1067,
+      "exact_matches": 1,
+      "exact_agreement": 0.0009372071227741331,
+      "exact_agreement_95ci": {
+        "lower": 0.0001654592318965412,
+        "upper": 0.005289558196292371
+      },
+      "true_positives": 1265,
+      "false_positives": 6614,
+      "false_negatives": 19,
+      "precision": 0.16055336971696915,
+      "recall": 0.985202492211838,
+      "micro_f1": 0.27611044417767105,
+      "mean_jaccard": 0.16695229169455975
+    },
+    "area": {
+      "control_issues": 741,
+      "exact_matches": 1,
+      "exact_agreement": 0.001349527665317139,
+      "exact_agreement_95ci": {
+        "lower": 0.00023826450526124796,
+        "upper": 0.00760428876767672
+      },
+      "true_positives": 1042,
+      "false_positives": 8826,
+      "false_negatives": 43,
+      "precision": 0.10559383867044994,
+      "recall": 0.96036866359447,
+      "micro_f1": 0.1902675066191911,
+      "mean_jaccard": 0.10715780321043479
+    },
+    "theme": {
+      "control_issues": 453,
+      "exact_matches": 13,
+      "exact_agreement": 0.02869757174392936,
+      "exact_agreement_95ci": {
+        "lower": 0.016846360676119727,
+        "upper": 0.04847489737635185
+      },
+      "true_positives": 452,
+      "false_positives": 752,
+      "false_negatives": 23,
+      "precision": 0.3754152823920266,
+      "recall": 0.9515789473684211,
+      "micro_f1": 0.5384157236450268,
+      "mean_jaccard": 0.3844738778513613
+    }
+  },
+  "by_cohort": {
+    "open": {
+      "control_issues": 167,
+      "exact_matches": 0,
+      "exact_agreement": 0.0,
+      "exact_agreement_95ci": {
+        "lower": 0.0,
+        "upper": 0.02248551872134217
+      },
+      "true_positives": 518,
+      "false_positives": 3052,
+      "false_negatives": 17,
+      "precision": 0.1450980392156863,
+      "recall": 0.9682242990654205,
+      "micro_f1": 0.25237515225334956,
+      "mean_jaccard": 0.14933928640473554
+    },
+    "closed": {
+      "control_issues": 912,
+      "exact_matches": 1,
+      "exact_agreement": 0.0010964912280701754,
+      "exact_agreement_95ci": {
+        "lower": 0.00019358385551387523,
+        "upper": 0.00618465854051832
+      },
+      "true_positives": 2241,
+      "false_positives": 13140,
+      "false_negatives": 68,
+      "precision": 0.1456992393212405,
+      "recall": 0.9705500216543959,
+      "micro_f1": 0.25336348219332955,
+      "mean_jaccard": 0.15293038696028335
+    },
+    "full_context": {
+      "control_issues": 78,
+      "exact_matches": 1,
+      "exact_agreement": 0.01282051282051282,
+      "exact_agreement_95ci": {
+        "lower": 0.0022667317538337325,
+        "upper": 0.06910857001702223
+      },
+      "true_positives": 144,
+      "false_positives": 856,
+      "false_negatives": 19,
+      "precision": 0.144,
+      "recall": 0.8834355828220859,
+      "micro_f1": 0.24763542562338778,
+      "mean_jaccard": 0.16409697016911984
+    },
+    "shortened_context": {
+      "control_issues": 1001,
+      "exact_matches": 0,
+      "exact_agreement": 0.0,
+      "exact_agreement_95ci": {
+        "lower": 0.0,
+        "upper": 0.00382295016489721
+      },
+      "true_positives": 2615,
+      "false_positives": 15336,
+      "false_negatives": 66,
+      "precision": 0.14567433569160493,
+      "recall": 0.9753823200298396,
+      "micro_f1": 0.25348972469949593,
+      "mean_jaccard": 0.15146114891526263
+    },
+    "without_label_names_in_text": {
+      "control_issues": 1072,
+      "exact_matches": 1,
+      "exact_agreement": 0.0009328358208955224,
+      "exact_agreement_95ci": {
+        "lower": 0.00016468741142705188,
+        "upper": 0.005264977687273794
+      },
+      "true_positives": 2734,
+      "false_positives": 16055,
+      "false_negatives": 84,
+      "precision": 0.1455106711373676,
+      "recall": 0.9701916252661462,
+      "micro_f1": 0.2530661359744527,
+      "mean_jaccard": 0.15236358642393671
+    }
+  },
+  "per_label": {
+    "area/audit-policy": {
+      "control_issues_in_dimension": 741,
+      "support": 46,
+      "proposed_count": 711,
+      "true_positives": 44,
+      "false_positives": 667,
+      "false_negatives": 2,
+      "precision": 0.06188466947960619,
+      "recall": 0.9565217391304348,
+      "f1": 0.11624834874504623,
+      "precision_95ci": {
+        "lower": 0.04641988371303876,
+        "upper": 0.08205819724803065
+      },
+      "recall_95ci": {
+        "lower": 0.8546774097378094,
+        "upper": 0.9879945544014435
+      }
+    },
+    "area/ci-cd": {
+      "control_issues_in_dimension": 741,
+      "support": 44,
+      "proposed_count": 722,
+      "true_positives": 43,
+      "false_positives": 679,
+      "false_negatives": 1,
+      "precision": 0.05955678670360111,
+      "recall": 0.9772727272727273,
+      "f1": 0.1122715404699739,
+      "precision_95ci": {
+        "lower": 0.04451365187883774,
+        "upper": 0.07926194364399643
+      },
+      "recall_95ci": {
+        "lower": 0.8819229030178671,
+        "upper": 0.9959767479399467
+      }
+    },
+    "area/cli": {
+      "control_issues_in_dimension": 741,
+      "support": 352,
+      "proposed_count": 691,
+      "true_positives": 339,
+      "false_positives": 352,
+      "false_negatives": 13,
+      "precision": 0.4905933429811867,
+      "recall": 0.9630681818181818,
+      "f1": 0.6500479386385427,
+      "precision_95ci": {
+        "lower": 0.45347481512873494,
+        "upper": 0.5278158809934222
+      },
+      "recall_95ci": {
+        "lower": 0.937846400224224,
+        "upper": 0.9782919302570169
+      }
+    },
+    "area/content-security": {
+      "control_issues_in_dimension": 741,
+      "support": 22,
+      "proposed_count": 718,
+      "true_positives": 22,
+      "false_positives": 696,
+      "false_negatives": 0,
+      "precision": 0.03064066852367688,
+      "recall": 1.0,
+      "f1": 0.05945945945945946,
+      "precision_95ci": {
+        "lower": 0.020320342332027647,
+        "upper": 0.045956619507840815
+      },
+      "recall_95ci": {
+        "lower": 0.8513451253913791,
+        "upper": 1.0
+      }
+    },
+    "area/distribution": {
+      "control_issues_in_dimension": 741,
+      "support": 68,
+      "proposed_count": 710,
+      "true_positives": 66,
+      "false_positives": 644,
+      "false_negatives": 2,
+      "precision": 0.09295774647887324,
+      "recall": 0.9705882352941176,
+      "f1": 0.16966580976863754,
+      "precision_95ci": {
+        "lower": 0.07373468589896032,
+        "upper": 0.11656171275111499
+      },
+      "recall_95ci": {
+        "lower": 0.8989536863477694,
+        "upper": 0.9918968204568701
+      }
+    },
+    "area/docs-site": {
+      "control_issues_in_dimension": 741,
+      "support": 102,
+      "proposed_count": 657,
+      "true_positives": 90,
+      "false_positives": 567,
+      "false_negatives": 12,
+      "precision": 0.136986301369863,
+      "recall": 0.8823529411764706,
+      "f1": 0.23715415019762845,
+      "precision_95ci": {
+        "lower": 0.11279687999135747,
+        "upper": 0.16539610618836675
+      },
+      "recall_95ci": {
+        "lower": 0.8055457610425986,
+        "upper": 0.931405532610106
+      }
+    },
+    "area/enterprise": {
+      "control_issues_in_dimension": 741,
+      "support": 34,
+      "proposed_count": 728,
+      "true_positives": 31,
+      "false_positives": 697,
+      "false_negatives": 3,
+      "precision": 0.042582417582417584,
+      "recall": 0.9117647058823529,
+      "f1": 0.08136482939632546,
+      "precision_95ci": {
+        "lower": 0.03015899864603463,
+        "upper": 0.059807835054248665
+      },
+      "recall_95ci": {
+        "lower": 0.7703951343719113,
+        "upper": 0.9695340563253514
+      }
+    },
+    "area/lockfile": {
+      "control_issues_in_dimension": 741,
+      "support": 81,
+      "proposed_count": 683,
+      "true_positives": 77,
+      "false_positives": 606,
+      "false_negatives": 4,
+      "precision": 0.11273792093704246,
+      "recall": 0.9506172839506173,
+      "f1": 0.20157068062827224,
+      "precision_95ci": {
+        "lower": 0.0911521847872305,
+        "upper": 0.13865551944149748
+      },
+      "recall_95ci": {
+        "lower": 0.8797976976951905,
+        "upper": 0.9806306944459662
+      }
+    },
+    "area/marketplace": {
+      "control_issues_in_dimension": 741,
+      "support": 67,
+      "proposed_count": 722,
+      "true_positives": 66,
+      "false_positives": 656,
+      "false_negatives": 1,
+      "precision": 0.09141274238227147,
+      "recall": 0.9850746268656716,
+      "f1": 0.16730038022813687,
+      "precision_95ci": {
+        "lower": 0.07249801936292113,
+        "upper": 0.11465229723845019
+      },
+      "recall_95ci": {
+        "lower": 0.9201813768022187,
+        "upper": 0.997360428265921
+      }
+    },
+    "area/mcp-config": {
+      "control_issues_in_dimension": 741,
+      "support": 61,
+      "proposed_count": 737,
+      "true_positives": 61,
+      "false_positives": 676,
+      "false_negatives": 0,
+      "precision": 0.08276797829036635,
+      "recall": 1.0,
+      "f1": 0.15288220551378445,
+      "precision_95ci": {
+        "lower": 0.06497316643561096,
+        "upper": 0.10488970681801932
+      },
+      "recall_95ci": {
+        "lower": 0.9407561321018871,
+        "upper": 1.0
+      }
+    },
+    "area/mcp-trust": {
+      "control_issues_in_dimension": 741,
+      "support": 11,
+      "proposed_count": 672,
+      "true_positives": 9,
+      "false_positives": 663,
+      "false_negatives": 2,
+      "precision": 0.013392857142857142,
+      "recall": 0.8181818181818182,
+      "f1": 0.02635431918008785,
+      "precision_95ci": {
+        "lower": 0.007061739094840326,
+        "upper": 0.025255690585792558
+      },
+      "recall_95ci": {
+        "lower": 0.523019438039156,
+        "upper": 0.9486323102539149
+      }
+    },
+    "area/multi-target": {
+      "control_issues_in_dimension": 741,
+      "support": 93,
+      "proposed_count": 706,
+      "true_positives": 90,
+      "false_positives": 616,
+      "false_negatives": 3,
+      "precision": 0.1274787535410765,
+      "recall": 0.967741935483871,
+      "f1": 0.22528160200250313,
+      "precision_95ci": {
+        "lower": 0.10487770845686235,
+        "upper": 0.15411175536809077
+      },
+      "recall_95ci": {
+        "lower": 0.9094061748887851,
+        "upper": 0.988969387184108
+      }
+    },
+    "area/package-authoring": {
+      "control_issues_in_dimension": 741,
+      "support": 50,
+      "proposed_count": 738,
+      "true_positives": 50,
+      "false_positives": 688,
+      "false_negatives": 0,
+      "precision": 0.06775067750677506,
+      "recall": 1.0,
+      "f1": 0.12690355329949238,
+      "precision_95ci": {
+        "lower": 0.05176612535423364,
+        "upper": 0.08821184107780017
+      },
+      "recall_95ci": {
+        "lower": 0.9286524008666414,
+        "upper": 1.0
+      }
+    },
+    "area/testing": {
+      "control_issues_in_dimension": 741,
+      "support": 54,
+      "proposed_count": 673,
+      "true_positives": 54,
+      "false_positives": 619,
+      "false_negatives": 0,
+      "precision": 0.08023774145616643,
+      "recall": 1.0,
+      "f1": 0.1485557083906465,
+      "precision_95ci": {
+        "lower": 0.06201599006295614,
+        "upper": 0.10322427021241609
+      },
+      "recall_95ci": {
+        "lower": 0.9335864119091037,
+        "upper": 1.0
+      }
+    },
+    "theme/governance": {
+      "control_issues_in_dimension": 453,
+      "support": 86,
+      "proposed_count": 330,
+      "true_positives": 71,
+      "false_positives": 259,
+      "false_negatives": 15,
+      "precision": 0.21515151515151515,
+      "recall": 0.8255813953488372,
+      "f1": 0.34134615384615385,
+      "precision_95ci": {
+        "lower": 0.1742273754101316,
+        "upper": 0.2626310643291501
+      },
+      "recall_95ci": {
+        "lower": 0.7319679420486398,
+        "upper": 0.891352301579249
+      }
+    },
+    "theme/portability": {
+      "control_issues_in_dimension": 453,
+      "support": 285,
+      "proposed_count": 443,
+      "true_positives": 279,
+      "false_positives": 164,
+      "false_negatives": 6,
+      "precision": 0.6297968397291196,
+      "recall": 0.9789473684210527,
+      "f1": 0.7664835164835165,
+      "precision_95ci": {
+        "lower": 0.5838966129368613,
+        "upper": 0.6734653612709672
+      },
+      "recall_95ci": {
+        "lower": 0.9548386507967977,
+        "upper": 0.9903165257302392
+      }
+    },
+    "theme/security": {
+      "control_issues_in_dimension": 453,
+      "support": 104,
+      "proposed_count": 431,
+      "true_positives": 102,
+      "false_positives": 329,
+      "false_negatives": 2,
+      "precision": 0.23665893271461716,
+      "recall": 0.9807692307692307,
+      "f1": 0.3813084112149533,
+      "precision_95ci": {
+        "lower": 0.1989688813708197,
+        "upper": 0.2790017780607067
+      },
+      "recall_95ci": {
+        "lower": 0.9325768708423217,
+        "upper": 0.9947102884149359
+      }
+    },
+    "type/architecture": {
+      "control_issues_in_dimension": 1067,
+      "support": 27,
+      "proposed_count": 1056,
+      "true_positives": 27,
+      "false_positives": 1029,
+      "false_negatives": 0,
+      "precision": 0.02556818181818182,
+      "recall": 1.0,
+      "f1": 0.04986149584487535,
+      "precision_95ci": {
+        "lower": 0.01763061682040403,
+        "upper": 0.036944959874864555
+      },
+      "recall_95ci": {
+        "lower": 0.8754449702581328,
+        "upper": 0.9999999999999998
+      }
+    },
+    "type/automation": {
+      "control_issues_in_dimension": 1067,
+      "support": 227,
+      "proposed_count": 994,
+      "true_positives": 227,
+      "false_positives": 767,
+      "false_negatives": 0,
+      "precision": 0.2283702213279678,
+      "recall": 1.0,
+      "f1": 0.37182637182637185,
+      "precision_95ci": {
+        "lower": 0.2033489191489682,
+        "upper": 0.2554829471495089
+      },
+      "recall_95ci": {
+        "lower": 0.9833588869160719,
+        "upper": 1.0
+      }
+    },
+    "type/bug": {
+      "control_issues_in_dimension": 1067,
+      "support": 466,
+      "proposed_count": 1025,
+      "true_positives": 458,
+      "false_positives": 567,
+      "false_negatives": 8,
+      "precision": 0.44682926829268294,
+      "recall": 0.9828326180257511,
+      "f1": 0.6143527833668678,
+      "precision_95ci": {
+        "lower": 0.41664809157273475,
+        "upper": 0.4774074997280465
+      },
+      "recall_95ci": {
+        "lower": 0.9664939662380329,
+        "upper": 0.9912759187983017
+      }
+    },
+    "type/docs": {
+      "control_issues_in_dimension": 1067,
+      "support": 153,
+      "proposed_count": 1000,
+      "true_positives": 150,
+      "false_positives": 850,
+      "false_negatives": 3,
+      "precision": 0.15,
+      "recall": 0.9803921568627451,
+      "f1": 0.26019080659150046,
+      "precision_95ci": {
+        "lower": 0.1292100725130883,
+        "upper": 0.17346865842680032
+      },
+      "recall_95ci": {
+        "lower": 0.9439426735787184,
+        "upper": 0.9933095115597457
+      }
+    },
+    "type/feature": {
+      "control_issues_in_dimension": 1067,
+      "support": 319,
+      "proposed_count": 856,
+      "true_positives": 312,
+      "false_positives": 544,
+      "false_negatives": 7,
+      "precision": 0.3644859813084112,
+      "recall": 0.9780564263322884,
+      "f1": 0.531063829787234,
+      "precision_95ci": {
+        "lower": 0.3329163919511123,
+        "upper": 0.39726642533453366
+      },
+      "recall_95ci": {
+        "lower": 0.9554054105470442,
+        "upper": 0.9893307491585057
+      }
+    },
+    "type/performance": {
+      "control_issues_in_dimension": 1067,
+      "support": 65,
+      "proposed_count": 947,
+      "true_positives": 64,
+      "false_positives": 883,
+      "false_negatives": 1,
+      "precision": 0.0675818373812038,
+      "recall": 0.9846153846153847,
+      "f1": 0.12648221343873517,
+      "precision_95ci": {
+        "lower": 0.05327783252766112,
+        "upper": 0.08537983494953734
+      },
+      "recall_95ci": {
+        "lower": 0.9178671527044854,
+        "upper": 0.9972790553979766
+      }
+    },
+    "type/refactor": {
+      "control_issues_in_dimension": 1067,
+      "support": 26,
+      "proposed_count": 994,
+      "true_positives": 26,
+      "false_positives": 968,
+      "false_negatives": 0,
+      "precision": 0.026156941649899398,
+      "recall": 1.0,
+      "f1": 0.050980392156862744,
+      "precision_95ci": {
+        "lower": 0.01791177460583617,
+        "upper": 0.03805048104817398
+      },
+      "recall_95ci": {
+        "lower": 0.8712710781407846,
+        "upper": 1.0
+      }
+    },
+    "type/release": {
+      "control_issues_in_dimension": 1067,
+      "support": 1,
+      "proposed_count": 1007,
+      "true_positives": 1,
+      "false_positives": 1006,
+      "false_negatives": 0,
+      "precision": 0.0009930486593843098,
+      "recall": 1.0,
+      "f1": 0.001984126984126984,
+      "precision_95ci": {
+        "lower": 0.00017531898603769056,
+        "upper": 0.005603489124493419
+      },
+      "recall_95ci": {
+        "lower": 0.20654931437723745,
+        "upper": 1.0
+      }
+    }
+  },
+  "low_support_labels": [
+    "area/mcp-trust",
+    "type/release"
+  ],
+  "macro_f1_supported_labels": 0.2388376250983894,
+  "reference_label_distribution": {
+    "type/bug": 466,
+    "area/cli": 352,
+    "type/feature": 319,
+    "theme/portability": 285,
+    "type/automation": 227,
+    "type/docs": 153,
+    "theme/security": 104,
+    "area/docs-site": 102,
+    "area/multi-target": 93,
+    "theme/governance": 86,
+    "area/lockfile": 81,
+    "area/distribution": 68,
+    "area/marketplace": 67,
+    "type/performance": 65,
+    "area/mcp-config": 61,
+    "area/testing": 54,
+    "area/package-authoring": 50,
+    "area/audit-policy": 46,
+    "area/ci-cd": 44,
+    "area/enterprise": 34,
+    "type/architecture": 27,
+    "type/refactor": 26,
+    "area/content-security": 22,
+    "area/mcp-trust": 11,
+    "type/release": 1
+  },
+  "excluded_label_distribution": {
+    "status/triaged": 375,
+    "status/accepted": 315,
+    "priority/high": 288,
+    "triage/recommended": 195,
+    "agentic-workflows": 117,
+    "priority/low": 91,
+    "status/needs-design": 90,
+    "accepted": 73,
+    "needs-triage": 55,
+    "status/deferred": 54,
+    "good first issue": 42,
+    "status/needs-triage": 36,
+    "status/shepherding": 24,
+    "[bug": 18,
+    "help wanted": 14,
+    "needs-design": 10,
+    "documentation]": 10,
+    "enhancement]": 8,
+    "breaking-change": 7,
+    "quality": 7,
+    "tech-debt": 7,
+    "dx": 5,
+    "automation testing": 5,
+    "experimental": 5,
+    "code-quality": 5,
+    "area/dependencies": 5,
+    "ci/daily-smoke": 5,
+    "status/in-flight": 4,
+    "[type/performance": 4,
+    "type/automation]": 4,
+    "duplicate": 3,
+    "status/blocked": 3,
+    "tracking": 3,
+    "area/security": 3,
+    "maintenance": 2,
+    "panel-review": 2,
+    "test/triage-validation": 2,
+    "status/declined": 2,
+    "question": 1,
+    "type/chore": 1,
+    "tests": 1,
+    "ops-process": 1,
+    "type/test": 1,
+    "[automation": 1,
+    "needs-triage]": 1,
+    "spec": 1,
+    "area:security": 1,
+    "help-wanted]": 1,
+    "[cli": 1,
+    "spec/openapm-v0.1": 1
+  },
+  "naive_baseline": {
+    "proposed_labels": [
+      "area/cli",
+      "theme/portability",
+      "type/bug"
+    ],
+    "overall_observed_dimensions": {
+      "control_issues": 1079,
+      "exact_matches": 216,
+      "exact_agreement": 0.20018535681186284,
+      "exact_agreement_95ci": {
+        "lower": 0.1773923717891184,
+        "upper": 0.22510557033378695
+      },
+      "true_positives": 1103,
+      "false_positives": 1158,
+      "false_negatives": 1741,
+      "precision": 0.4878372401592216,
+      "recall": 0.3878340365682138,
+      "micro_f1": 0.43212536728697354,
+      "mean_jaccard": 0.3747484443267576
+    },
+    "by_dimension": {
+      "type": {
+        "control_issues": 1067,
+        "exact_matches": 449,
+        "exact_agreement": 0.4208059981255858,
+        "exact_agreement_95ci": {
+          "lower": 0.39151960197847724,
+          "upper": 0.45066058388571417
+        },
+        "true_positives": 466,
+        "false_positives": 601,
+        "false_negatives": 818,
+        "precision": 0.43673851921274603,
+        "recall": 0.3629283489096573,
+        "micro_f1": 0.3964270523181625,
+        "mean_jaccard": 0.4281474539206498
+      },
+      "area": {
+        "control_issues": 741,
+        "exact_matches": 228,
+        "exact_agreement": 0.3076923076923077,
+        "exact_agreement_95ci": {
+          "lower": 0.27552382187747537,
+          "upper": 0.3418444158529541
+        },
+        "true_positives": 352,
+        "false_positives": 389,
+        "false_negatives": 733,
+        "precision": 0.4750337381916329,
+        "recall": 0.3244239631336406,
+        "micro_f1": 0.3855421686746988,
+        "mean_jaccard": 0.38641475483580745
+      },
+      "theme": {
+        "control_issues": 453,
+        "exact_matches": 277,
+        "exact_agreement": 0.6114790286975718,
+        "exact_agreement_95ci": {
+          "lower": 0.5658363481802599,
+          "upper": 0.6552469139665794
+        },
+        "true_positives": 285,
+        "false_positives": 168,
+        "false_negatives": 190,
+        "precision": 0.6291390728476821,
+        "recall": 0.6,
+        "micro_f1": 0.6142241379310345,
+        "mean_jaccard": 0.6203090507726269
+      }
+    },
+    "caveat": "Descriptive most-common-label reference calculated on this snapshot, not a held-out trained baseline."
+  },
+  "latency": {
+    "unit": "seconds per issue, all label questions together, synchronized device",
+    "mean": 38.63116970699699,
+    "median": 43.49468358399963,
+    "p90": 53.865291589800265,
+    "p95": 54.237779734250026,
+    "p99": 54.90179658335994,
+    "max": 55.512594802999956,
+    "min": 8.174745824999718,
+    "first_issue": 18.458560531999993,
+    "sum_inference_seconds": 51302.193370892004,
+    "sum_processing_seconds": 51307.354173174,
+    "amortized_issues_per_minute": 1.553149968149492
+  }
+}

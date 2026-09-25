@@ -1,6 +1,7 @@
 """Guard real-evidence requirements with explicit fabricated unit-test records."""
 
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -8,10 +9,12 @@ from pathlib import Path
 from experiment import write_json
 from performance_report import (
     CONFIGURATIONS,
+    compare_gpu,
     profile_summary,
     single_summary,
     validate_profile,
 )
+from test_evaluation import corpus
 
 
 def profile() -> dict:
@@ -43,6 +46,38 @@ def profile() -> dict:
 
 
 class PerformanceReportTests(unittest.TestCase):
+    def test_gpu_parity_requires_matching_prepared_inputs_and_full_evidence(
+        self,
+    ) -> None:
+        snapshot, rows, manifest = corpus()
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name, device in (("cpu", "cpu"), ("gpu", "mps")):
+                folder = root / name
+                current = copy.deepcopy(manifest)
+                current["runtime"] = {
+                    "device": device,
+                    "mixed_precision": False,
+                    "weights_sha256": "test",
+                }
+                write_json(folder / "manifest.json", current)
+                augmented = [
+                    {**row, "state_sha256": f"state-{row['number']}"} for row in rows
+                ]
+                (folder / "predictions.jsonl").write_text(
+                    "".join(json.dumps(row) + "\n" for row in augmented),
+                    encoding="utf8",
+                )
+            result = compare_gpu(snapshot, root / "cpu", root / "gpu")
+            self.assertEqual(result["identical_label_sets"], 4)
+            self.assertEqual(result["maximum_probability_difference"], 0)
+            augmented[0]["state_sha256"] = "different"
+            (root / "gpu" / "predictions.jsonl").write_text(
+                "".join(json.dumps(row) + "\n" for row in augmented), encoding="utf8"
+            )
+            with self.assertRaises(ValueError):
+                compare_gpu(snapshot, root / "cpu", root / "gpu")
+
     def test_incomplete_duplicate_and_invalid_timings_fail(self) -> None:
         for mutation in ("incomplete", "duplicate", "nan", "fixture", "labels"):
             candidate = profile()

@@ -120,6 +120,63 @@ def corpus_metrics(snapshot: dict[str, Any], folder: Path) -> tuple[dict, list[d
     return evaluate(snapshot, rows, read_json(folder / "manifest.json"))
 
 
+def compare_gpu(snapshot: dict[str, Any], reference: Path, gpu: Path) -> dict[str, Any]:
+    """Verify complete, identical input coverage before asserting cross-device parity."""
+    cpu_metrics, _ = corpus_metrics(snapshot, reference)
+    gpu_metrics, _ = corpus_metrics(snapshot, gpu)
+    cpu_manifest = read_json(reference / "manifest.json")
+    gpu_manifest = read_json(gpu / "manifest.json")
+    if (
+        cpu_manifest["runtime"]["device"] != "cpu"
+        or gpu_manifest["runtime"]["device"] not in ("mps", "cuda")
+        or cpu_manifest["runtime"].get("cpu_precision", "fp32") != "fp32"
+        or cpu_manifest["runtime"]["mixed_precision"]
+        or gpu_manifest["runtime"]["mixed_precision"]
+        or cpu_manifest["questions"] != gpu_manifest["questions"]
+        or cpu_manifest["config"]["binary_threshold"]
+        != gpu_manifest["config"]["binary_threshold"]
+        or cpu_manifest["runtime"]["weights_sha256"]
+        != gpu_manifest["runtime"]["weights_sha256"]
+    ):
+        raise ValueError(
+            "GPU comparison requires the same checkpoint, questions and threshold."
+        )
+    cpu = {
+        row["number"]: row
+        for row in map(
+            json.loads, (reference / "predictions.jsonl").read_text().splitlines()
+        )
+    }
+    rows = list(map(json.loads, (gpu / "predictions.jsonl").read_text().splitlines()))
+    matches = 0
+    maximum_difference = 0.0
+    for row in rows:
+        other = cpu[row["number"]]
+        if row["state_sha256"] != other["state_sha256"]:
+            raise ValueError("GPU and CPU prepared different model input.")
+        matches += row["predicted_labels"] == other["predicted_labels"]
+        maximum_difference = max(
+            maximum_difference,
+            max(
+                abs(
+                    row["response"]["answers"][label]["noul"]
+                    - other["response"]["answers"][label]["noul"]
+                )
+                for label in cpu_manifest["questions"]
+            ),
+        )
+    return {
+        "issue_count": len(rows),
+        "identical_label_sets": matches,
+        "maximum_probability_difference": maximum_difference,
+        "gpu_device": gpu_manifest["runtime"]["device"],
+        "gpu_median_seconds": gpu_metrics["latency"]["median"],
+        "gpu_p95_seconds": gpu_metrics["latency"]["p95"],
+        "cpu_median_seconds": cpu_metrics["latency"]["median"],
+        "cpu_p95_seconds": cpu_metrics["latency"]["p95"],
+    }
+
+
 def single_summary(folder: Path) -> dict[str, Any]:
     """Separate invocation time, job time and dispatch-to-completion time."""
     result = read_json(folder / "result.json")
@@ -194,6 +251,7 @@ def generate(
     reference: Path | None,
     candidate: Path | None,
     output: Path,
+    gpu_baseline: Path | None = None,
 ) -> None:
     """Render measured speed, actual workflow overhead and optional full-control accuracy."""
     profiles_result = profile_summary(profiles)
@@ -343,6 +401,9 @@ def generate(
                 "No decision threshold was fitted to these results. Rare labels remain "
                 "under-supported, and choosing a runtime from this experiment does not turn "
                 "the same corpus into an untouched future test set.",
+                "The full-corpus CPU runs used different pools of hosted machines. Their "
+                "median-time ratio is not a controlled optimization speedup; use the "
+                "matched-hardware pilot above for that comparison.",
             ]
         )
         difference = (
@@ -365,11 +426,38 @@ def generate(
                 "**Full-corpus candidate accuracy is not included yet. Do not promote an approximate numerical mode based on the pilot alone.**",
             ]
         )
+    gpu_comparison = None
+    if gpu_baseline and reference:
+        gpu_comparison = compare_gpu(read_json(snapshot_path), reference, gpu_baseline)
+        lines.extend(
+            [
+                "",
+                "## Complete GPU-versus-CPU replication",
+                "",
+                f"The GPU and hosted FP32 runs independently classified all **{gpu_comparison['issue_count']} issues**. "
+                f"Prepared input hashes matched, and **{gpu_comparison['identical_label_sets']}/{gpu_comparison['issue_count']} "
+                "full proposed label sets were identical**. This confirms cross-device reproducibility "
+                "of this classifier, not its correctness.",
+                "",
+                "| Device | Full-corpus median inference | p95 |",
+                "|---|---:|---:|",
+                f"| Local {gpu_comparison['gpu_device']} GPU | {gpu_comparison['gpu_median_seconds']:.3f}s | {gpu_comparison['gpu_p95_seconds']:.3f}s |",
+                f"| Hosted FP32 CPU pool | {gpu_comparison['cpu_median_seconds']:.3f}s | {gpu_comparison['cpu_p95_seconds']:.3f}s |",
+                "",
+                f"Maximum reported probability difference: **{gpu_comparison['maximum_probability_difference']:.4f}**. "
+                "The laptop is a shared workstation, not an isolated benchmark appliance.",
+            ]
+        )
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text("\n".join(lines) + "\n", encoding="utf8")
     write_json(
         profiles / "summary.json",
-        {"profiles": profiles_result, "single_runs": singles, "quality": quality},
+        {
+            "profiles": profiles_result,
+            "single_runs": singles,
+            "quality": quality,
+            "gpu_comparison": gpu_comparison,
+        },
     )
     print(f"[+] Wrote {output} from verified real-inference artifacts.")
 
@@ -382,10 +470,13 @@ def main() -> None:
     parser.add_argument("--snapshot", type=Path, default=ROOT / "data/snapshot.json")
     parser.add_argument("--reference", type=Path)
     parser.add_argument("--candidate", type=Path)
+    parser.add_argument("--gpu-baseline", type=Path)
     parser.add_argument("--output", type=Path, default=ROOT / "PERFORMANCE.md")
     args = parser.parse_args()
     if bool(args.reference) != bool(args.candidate):
         parser.error("--reference and --candidate must be supplied together.")
+    if args.gpu_baseline and not args.reference:
+        parser.error("--gpu-baseline requires the full-corpus reference.")
     generate(
         args.profiles,
         args.single_runs,
@@ -393,6 +484,7 @@ def main() -> None:
         args.reference,
         args.candidate,
         args.output,
+        args.gpu_baseline,
     )
 
 

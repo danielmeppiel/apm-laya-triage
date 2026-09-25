@@ -22,6 +22,14 @@ inference has **7.548s median / 8.370s p95** per issue. Read
 [PERFORMANCE.md](PERFORMANCE.md) for single-issue and hosted CPU measurements.
 The model is never given the issue's existing API label list.
 
+The independent [hosted FP32 run](reports/HOSTED-FP32.md) reproduced the GPU
+label sets on **all 1,328 issues**, with **43.495s median / 54.238s p95** CPU
+inference. [Hosted encoder INT8](reports/HOSTED-INT8.md) was faster
+(**16.034s median / 29.479s p95** across its runner pool), but changed label
+sets on **569 issues** and lowered F1 to **24.6%**. Both full-corpus Actions
+workflows actually completed; no hosted execution is being inferred from
+local tests.
+
 ## Quick start
 
 Requirements: Python **3.12**, Git, the GitHub CLI (`gh`), and enough memory for
@@ -230,7 +238,7 @@ batching is an evaluation convenience, not a requirement for issue triage.
 
 - **Triage one issue** reads one live `microsoft/apm` issue and uploads predictions.
   It caches the pinned CPU virtualenv, not credentials or issue text. FP32 is
-  the conservative default while the speed/accuracy comparison is running.
+  the conservative default; INT8 remains an explicit numerical tradeoff.
 - **Laya smoke experiment** runs a small prefix of the snapshot; default 25.
 - **Single issue performance** compares FP32/INT8 and two/four CPU threads on
   matched hardware. Two runners execute every configuration in opposite orders.
@@ -278,14 +286,26 @@ all actual dispatch timings. On both paired CPU runners, INT8/four threads
 was approximately **1.55-1.58x faster** than FP32/two threads, but it changed
 labels on one of the six pilot issues. Four threads did not improve FP32
 latency on those matched machines. The full-corpus quality comparison, not
-the small speed pilot, determines how to interpret that numerical tradeoff.
+the small speed pilot, establishes the observed F1 reduction and output drift.
+INT8 is faster on the paired CPU runners, but neither configuration is suitable
+for automatic labelling with this rubric.
 
 To rebuild the speed report from saved evidence:
 
 ```bash
 python performance_report.py --profiles runs/performance \
   --single-runs runs/single-cold runs/single-warm runs/single-fp32-four \
-    runs/single-int8 runs/single-mps
+    runs/single-int8 runs/single-mps \
+  --reference runs/hosted-fp32 --candidate runs/hosted-int8 \
+  --gpu-baseline runs/baseline
+```
+
+All three full-corpus reports can be rebuilt without inference:
+
+```bash
+python experiment.py report
+python experiment.py report --run runs/hosted-fp32 --output reports/HOSTED-FP32.md
+python experiment.py report --run runs/hosted-int8 --output reports/HOSTED-INT8.md
 ```
 
 Single-issue output separates GitHub reading, model loading, optional

@@ -37,4 +37,28 @@ These are individual observed runs, not latency guarantees. Dispatch time includ
 
 Local measurements use already-downloaded model weights and no competing bulk GPU worker. GPU calls synchronize before/after inference. A fresh process still imports dependencies, verifies weights and loads the model. This is an Apple GPU result, not a measurement of an NVIDIA CUDA fast path.
 
-**Full-corpus candidate accuracy is not included yet. Do not promote an approximate numerical mode based on the pilot alone.**
+## Accuracy check on the full frozen control group
+
+Both configurations classified all **1328 issues** against the same **1079 eligible reference issues**. Unlabelled dimensions are unscored; current labels are a silver reference, not guaranteed truth.
+
+| Runtime | Exact agreement | Precision | Recall | F1 | Corpus median inference |
+|---|---:|---:|---:|---:|---:|
+| FP32 reference | 0.1% | 14.6% | 97.0% | 25.3% | 43.495s |
+| Candidate | 0.0% | 14.1% | 99.1% | 24.6% | 16.034s |
+
+The candidate changed the full proposed label set on **569/1328 issues** relative to FP32. This is output drift, not automatically an error: use the control metrics to distinguish improvement from disagreement.
+No decision threshold was fitted to these results. Rare labels remain under-supported, and choosing a runtime from this experiment does not turn the same corpus into an untouched future test set.
+The full-corpus CPU runs used different pools of hosted machines. Their median-time ratio is not a controlled optimization speedup; use the matched-hardware pilot above for that comparison.
+
+Candidate F1 differs from FP32 by **-0.68 percentage points**. This is measured reference agreement, not proof of true accuracy or calibrated probabilities. Faster INT8 is explicitly selectable, not silently substituted for the FP32 default.
+
+## Complete GPU-versus-CPU replication
+
+The GPU and hosted FP32 runs independently classified all **1328 issues**. Prepared input hashes matched, and **1328/1328 full proposed label sets were identical**. This confirms cross-device reproducibility of this classifier, not its correctness.
+
+| Device | Full-corpus median inference | p95 |
+|---|---:|---:|
+| Local mps GPU | 7.548s | 8.370s |
+| Hosted FP32 CPU pool | 43.495s | 54.238s |
+
+Maximum reported probability difference: **0.0001**. The laptop is a shared workstation, not an isolated benchmark appliance.
