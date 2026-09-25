@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-09-25T12:48:15.068679+00:00",
+  "code_commit": "2d6faf904862c936eaab9500792a3eee29a1a2b7",
+  "status": "frozen_before_confirmation",
+  "development_selection_closed": true,
+  "confirmation_previously_evaluated_for_new_methods": false,
+  "historical_baseline_outcomes_previously_seen": true,
+  "files": [
+    {
+      "path": "data/snapshot.json",
+      "sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2"
+    },
+    {
+      "path": "runs/baseline/predictions.jsonl",
+      "sha256": "b10dfa16d7142bc32b765b68f2a8447c92fc86f362ce3ba00a681b50b855f42e"
+    },
+    {
+      "path": "runs/precision/protocol.json",
+      "sha256": "2a5b8baf3fc15b4a1f1ec5408b043bba09581c96484af3d807458037af088451"
+    },
+    {
+      "path": "experiment.py",
+      "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+    },
+    {
+      "path": "evaluation.py",
+      "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+    },
+    {
+      "path": "cpu_runtime.py",
+      "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+    },
+    {
+      "path": "experiments/requirements-text.txt",
+      "sha256": "1160f4e8c30a26e9a52a0a843974613bfdb84a764419c02a44d25dae7d934813"
+    },
+    {
+      "path": "experiments/precision_calibration.py",
+      "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+    },
+    {
+      "path": "experiments/precision_confirmation.py",
+      "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+    },
+    {
+      "path": "experiments/precision_prompts.py",
+      "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+    },
+    {
+      "path": "experiments/precision_protocol.py",
+      "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+    },
+    {
+      "path": "experiments/precision_score_features.py",
+      "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+    },
+    {
+      "path": "experiments/precision_text.py",
+      "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+    },
+    {
+      "path": "experiments/precision_typed_checkpoint.py",
+      "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "original",
+      "kind": "reference",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/calibration/reference_original_050.json",
+        "sha256": "a5648585d8aac6a16885a1f6755c6e4bbe9105546f4e9669a733166e4ac862cd"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/original.jsonl"
+    },
+    {
+      "name": "prior",
+      "kind": "reference",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/calibration/reference_most_common.json",
+        "sha256": "933570be96189e48c6471c74bf12ba265d2984b9a4b0ee23b3bcc1db428c1a9d"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/prior.jsonl"
+    },
+    {
+      "name": "score_balanced",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/score_features_final/frozen_balanced.json",
+        "sha256": "ec2e9679182f5ecfff4b23657bcf61eb38436bc8e53f24ddda31075d8e1e3fce"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/score_balanced.jsonl"
+    },
+    {
+      "name": "score_broad_precision",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/score_features_final/frozen_broad_precision.json",
+        "sha256": "a58d4ea577f0174a42e90651532c2a9553c3fa8c9406a04bfc6be9835f56714e"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/score_broad_precision.jsonl"
+    },
+    {
+      "name": "hybrid_balanced",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/text/frozen/manifest.json",
+        "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+      },
+      "selector": "balanced",
+      "predictions": "runs/precision/confirmation/hybrid_balanced.jsonl"
+    },
+    {
+      "name": "hybrid_broad_precision",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/text/frozen/manifest.json",
+        "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+      },
+      "selector": "broad_precision",
+      "predictions": "runs/precision/confirmation/hybrid_broad_precision.jsonl"
+    },
+    {
+      "name": "text_balanced",
+      "kind": "matched_comparator",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/text/frozen/manifest.json",
+        "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+      },
+      "selector": "text_balanced",
+      "predictions": "runs/precision/confirmation/text_balanced.jsonl"
+    },
+    {
+      "name": "text_broad_precision",
+      "kind": "matched_comparator",
+      "dimensions": [
+        "type",
+        "area",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/text/frozen/manifest.json",
+        "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+      },
+      "selector": "text_broad_precision",
+      "predictions": "runs/precision/confirmation/text_broad_precision.jsonl"
+    },
+    {
+      "name": "base_choice",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/prompts/frozen-choice-type-theme.json",
+        "sha256": "93debab5431f7a0580ac09e39f148bd0a1d09011d7cab3bc91ac82866df639fb"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/base_choice.jsonl"
+    },
+    {
+      "name": "typed_choice",
+      "kind": "primary",
+      "dimensions": [
+        "type",
+        "theme"
+      ],
+      "artifact": {
+        "path": "runs/precision/prompts/frozen-typed-choice-type-theme.json",
+        "sha256": "3be7eba60e65f1f05235d52860117b2e5f62c78f9079527a3cdd6fcce68bfbe1"
+      },
+      "selector": null,
+      "predictions": "runs/precision/confirmation/typed_choice.jsonl"
+    }
+  ],
+  "confirmation_ids": [
+    1935,
+    1225,
+    2331,
+    382,
+    1363,
+    2064,
+    2353,
+    808,
+    913,
+    2324,
+    661,
+    352,
+    2736,
+    1166,
+    189,
+    2006,
+    2816,
+    248,
+    438,
+    1671,
+    1571,
+    2512,
+    641,
+    2629,
+    3063,
+    511,
+    841,
+    924,
+    2391,
+    375,
+    1849,
+    2977,
+    2648,
+    2607,
+    2137,
+    1999,
+    2191,
+    1595,
+    2729,
+    1540,
+    2434,
+    1323,
+    1105,
+    153,
+    488,
+    1433,
+    247,
+    168,
+    757,
+    1557,
+    2150,
+    146,
+    2433,
+    2080,
+    1279,
+    2971,
+    1297,
+    2399,
+    548,
+    2345,
+    249,
+    2076,
+    2430,
+    89,
+    2978,
+    1343,
+    501,
+    792,
+    2290,
+    194,
+    1983,
+    3073,
+    1879,
+    722,
+    2821,
+    685,
+    2402,
+    992,
+    319,
+    2574,
+    2775,
+    923,
+    1964,
+    1203,
+    222,
+    241,
+    2530,
+    2517,
+    669,
+    1502,
+    2511,
+    1050,
+    99,
+    2425,
+    2047,
+    611,
+    650,
+    2055,
+    1762,
+    3045,
+    998,
+    2378,
+    2619,
+    528,
+    3056,
+    2516,
+    2815,
+    714,
+    2163,
+    1808,
+    17,
+    1625,
+    2315,
+    1007,
+    2948,
+    1548,
+    1342,
+    1711,
+    2375,
+    13,
+    3015,
+    334,
+    817,
+    2911,
+    1341,
+    1503,
+    2138,
+    2986,
+    846,
+    1593,
+    1128,
+    138,
+    63,
+    844,
+    863,
+    2561,
+    1147,
+    325,
+    3054,
+    1077,
+    2270,
+    1364,
+    2539,
+    2157,
+    113,
+    2197,
+    975,
+    2110,
+    1400,
+    1415,
+    172,
+    1397,
+    1525,
+    1326,
+    2327,
+    621,
+    198,
+    2130,
+    2884,
+    1258,
+    1429,
+    2613,
+    2371,
+    1691,
+    1345,
+    783,
+    2903,
+    831,
+    935,
+    1207,
+    2510,
+    1954,
+    2071,
+    2955,
+    309,
+    2341,
+    2553,
+    886,
+    2383,
+    2850,
+    2551,
+    1988,
+    768,
+    1200,
+    2835,
+    236,
+    612,
+    2388
+  ],
+  "confirmation96_ids": [
+    1935,
+    1225,
+    2331,
+    382,
+    1363,
+    2064,
+    2353,
+    808,
+    913,
+    2324,
+    661,
+    352,
+    2736,
+    1166,
+    189,
+    2006,
+    2816,
+    248,
+    438,
+    1671,
+    1571,
+    2512,
+    641,
+    2629,
+    3063,
+    511,
+    841,
+    924,
+    2391,
+    375,
+    1849,
+    2977,
+    2648,
+    2607,
+    2137,
+    1999,
+    2191,
+    1595,
+    2729,
+    1540,
+    2434,
+    1323,
+    1105,
+    153,
+    488,
+    1433,
+    247,
+    168,
+    757,
+    1557,
+    2150,
+    146,
+    2433,
+    2080,
+    1279,
+    2971,
+    1297,
+    2399,
+    548,
+    2345,
+    249,
+    2076,
+    2430,
+    89,
+    2978,
+    1343,
+    501,
+    792,
+    2290,
+    194,
+    1983,
+    3073,
+    1879,
+    722,
+    2821,
+    685,
+    2402,
+    992,
+    319,
+    2574,
+    2775,
+    923,
+    1964,
+    1203,
+    222,
+    241,
+    2530,
+    2517,
+    669,
+    1502,
+    2511,
+    1050,
+    99,
+    2425,
+    2047,
+    611
+  ],
+  "evaluation_rules": {
+    "silver_labels_not_gold": true,
+    "missing_dimensions_unscored": true,
+    "paired_bootstrap_unit": "frozen text-duplicate groups",
+    "bootstrap_samples": 4000,
+    "multiplicity": "Bonferroni across candidates versus declared reference within each comparison table",
+    "clear_precision_win": "familywise precision difference lower>0; recall>=0.50; familywise F1 difference lower>=-0.02; no undefined resamples",
+    "broad_precision_win": "clear_precision_win plus recall>=0.50 separately in every observed dimension",
+    "no_retuning_after_confirmation": true
+  },
+  "planned_comparisons": [
+    "All-taxonomy cheap candidates on188 versus fit-mostcommon prior",
+    "Matched hybrid versus puretext balanced and broad policies on188",
+    "Base and typed categorical type+theme on96 versus fit-mostcommon prior",
+    "Typed versus base categorical on same96; type-only is a descriptive subset"
+  ]
+}
