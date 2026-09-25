@@ -170,6 +170,15 @@ def compare(
             and points[name]["recall"] >= 0.5
             and f1["familywise_95ci"]["lower"] >= -0.02
         )
+        observed = [
+            metrics
+            for metrics in points[name]["by_dimension"].values()
+            if metrics["control_issues"]
+        ]
+        intervals[name]["broad_precision_win"] = bool(
+            intervals[name]["clear_precision_win"]
+            and all(metrics["recall"] >= 0.5 for metrics in observed)
+        )
     return {
         "reference": reference,
         "issue_count": len(numbers),

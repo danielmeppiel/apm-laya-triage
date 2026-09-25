@@ -58,6 +58,31 @@ class ConfirmationTests(unittest.TestCase):
         )
         self.assertEqual(result["duplicate_group_count"], 3)
 
+    def test_global_recall_cannot_hide_abandoning_an_observed_dimension(self):
+        expected = ["type/bug", "type/feature", "area/cli"]
+        baseline = [
+            {
+                "number": 1,
+                "expected": expected,
+                "proposed": [*expected, "type/docs", "area/testing"],
+            }
+        ]
+        narrow = [
+            {
+                "number": 1,
+                "expected": expected,
+                "proposed": ["type/bug", "type/feature"],
+            }
+        ]
+        result = compare(
+            {"baseline": baseline, "narrow": narrow},
+            {1: "one"},
+            "baseline",
+            samples=100,
+        )
+        self.assertTrue(result["differences"]["narrow"]["clear_precision_win"])
+        self.assertFalse(result["differences"]["narrow"]["broad_precision_win"])
+
     def test_mismatched_ids_or_reference_labels_fail(self):
         records = self.records([["type/bug"]])
         with self.assertRaisesRegex(ValueError, "identical paired"):
