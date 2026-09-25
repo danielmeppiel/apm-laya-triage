@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-25T12:52:28.465363+00:00",
+  "source_url": "https://github.com/microsoft/apm/issues/3071",
+  "policy": "text_balanced",
+  "fresh_process_seconds_excluding_github_fetch": 3.837605500004429,
+  "github_writes": false,
+  "input_fields": [
+    "number",
+    "title",
+    "body"
+  ],
+  "not_accuracy_evidence": "Live CLI demonstration only; issue may overlap fit/development data.",
+  "neural_inference_required": false
+}

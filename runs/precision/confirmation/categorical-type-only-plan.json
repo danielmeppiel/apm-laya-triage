@@ -1,0 +1,192 @@
+{
+  "snapshot": {
+    "path": "../../../data/snapshot.json",
+    "sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2"
+  },
+  "protocol": {
+    "path": "../protocol.json",
+    "sha256": "2a5b8baf3fc15b4a1f1ec5408b043bba09581c96484af3d807458037af088451"
+  },
+  "partition": "confirmation96",
+  "dimensions": [
+    "type"
+  ],
+  "reference": "prior",
+  "bootstrap_samples": 4000,
+  "candidates": [
+    {
+      "name": "prior",
+      "selected_on": "development",
+      "frozen_artifacts": [
+        {
+          "path": "registry.json",
+          "sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b"
+        },
+        {
+          "path": "../calibration/reference_most_common.json",
+          "sha256": "933570be96189e48c6471c74bf12ba265d2984b9a4b0ee23b3bcc1db428c1a9d"
+        },
+        {
+          "path": "../../../experiment.py",
+          "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+        },
+        {
+          "path": "../../../evaluation.py",
+          "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+        },
+        {
+          "path": "../../../cpu_runtime.py",
+          "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+        },
+        {
+          "path": "../../../experiments/precision_calibration.py",
+          "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+        },
+        {
+          "path": "../../../experiments/precision_confirmation.py",
+          "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+        },
+        {
+          "path": "../../../experiments/precision_prompts.py",
+          "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+        },
+        {
+          "path": "../../../experiments/precision_protocol.py",
+          "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+        },
+        {
+          "path": "../../../experiments/precision_score_features.py",
+          "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+        },
+        {
+          "path": "../../../experiments/precision_text.py",
+          "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+        },
+        {
+          "path": "../../../experiments/precision_typed_checkpoint.py",
+          "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+        }
+      ],
+      "predictions": {
+        "path": "prior_confirmation96.jsonl",
+        "sha256": "7a1cbdf6545f2404b1bd01c3bdf7fec9755c44f0b87b1bd0c4bcd8b20ff72c8b"
+      }
+    },
+    {
+      "name": "base_choice",
+      "selected_on": "development",
+      "frozen_artifacts": [
+        {
+          "path": "registry.json",
+          "sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b"
+        },
+        {
+          "path": "../prompts/frozen-choice-type-theme.json",
+          "sha256": "93debab5431f7a0580ac09e39f148bd0a1d09011d7cab3bc91ac82866df639fb"
+        },
+        {
+          "path": "../../../experiment.py",
+          "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+        },
+        {
+          "path": "../../../evaluation.py",
+          "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+        },
+        {
+          "path": "../../../cpu_runtime.py",
+          "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+        },
+        {
+          "path": "../../../experiments/precision_calibration.py",
+          "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+        },
+        {
+          "path": "../../../experiments/precision_confirmation.py",
+          "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+        },
+        {
+          "path": "../../../experiments/precision_prompts.py",
+          "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+        },
+        {
+          "path": "../../../experiments/precision_protocol.py",
+          "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+        },
+        {
+          "path": "../../../experiments/precision_score_features.py",
+          "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+        },
+        {
+          "path": "../../../experiments/precision_text.py",
+          "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+        },
+        {
+          "path": "../../../experiments/precision_typed_checkpoint.py",
+          "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+        }
+      ],
+      "predictions": {
+        "path": "base_choice.jsonl",
+        "sha256": "4e1ec86050717518e5735109b1449dbb91c4ba3a3790fd2b0f7e91676fcd75bb"
+      }
+    },
+    {
+      "name": "typed_choice",
+      "selected_on": "development",
+      "frozen_artifacts": [
+        {
+          "path": "registry.json",
+          "sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b"
+        },
+        {
+          "path": "../prompts/frozen-typed-choice-type-theme.json",
+          "sha256": "3be7eba60e65f1f05235d52860117b2e5f62c78f9079527a3cdd6fcce68bfbe1"
+        },
+        {
+          "path": "../../../experiment.py",
+          "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+        },
+        {
+          "path": "../../../evaluation.py",
+          "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+        },
+        {
+          "path": "../../../cpu_runtime.py",
+          "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+        },
+        {
+          "path": "../../../experiments/precision_calibration.py",
+          "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+        },
+        {
+          "path": "../../../experiments/precision_confirmation.py",
+          "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+        },
+        {
+          "path": "../../../experiments/precision_prompts.py",
+          "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+        },
+        {
+          "path": "../../../experiments/precision_protocol.py",
+          "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+        },
+        {
+          "path": "../../../experiments/precision_score_features.py",
+          "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+        },
+        {
+          "path": "../../../experiments/precision_text.py",
+          "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+        },
+        {
+          "path": "../../../experiments/precision_typed_checkpoint.py",
+          "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+        }
+      ],
+      "predictions": {
+        "path": "typed_choice.jsonl",
+        "sha256": "84c99c986e59b61d6a293ed56153357ecc0082468ea6bc36041892be80759575"
+      }
+    }
+  ]
+}
