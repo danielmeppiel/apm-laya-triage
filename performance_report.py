@@ -236,6 +236,15 @@ def generate(
     lines.extend(
         [
             "",
+            "The two speed-pilot machines were standard hosted runners; their exact CPU "
+            "topology is saved in each replicate's cpu.txt. Compare modes within a runner: "
+            "a four-thread result on another VM is not evidence that adding threads caused "
+            "the difference. The separate one-issue dispatches below illustrate that variability.",
+        ]
+    )
+    lines.extend(
+        [
+            "",
             "Model loading and INT8 conversion are separate costs, recorded in summary.json. "
             "The pilot reuses downloaded weights on each runner after its first configuration. "
             "Do not present warm-loop timings as cold workflow latency.",
@@ -334,6 +343,19 @@ def generate(
                 "No decision threshold was fitted to these results. Rare labels remain "
                 "under-supported, and choosing a runtime from this experiment does not turn "
                 "the same corpus into an untouched future test set.",
+            ]
+        )
+        difference = (
+            b["overall_observed_dimensions"]["micro_f1"]
+            - a["overall_observed_dimensions"]["micro_f1"]
+        )
+        lines.extend(
+            [
+                "",
+                f"Candidate F1 differs from FP32 by **{difference * 100:+.2f} percentage points**. "
+                "This is measured reference agreement, not proof of true accuracy or calibrated "
+                "probabilities. Faster INT8 is explicitly selectable, not silently substituted "
+                "for the FP32 default.",
             ]
         )
     else:

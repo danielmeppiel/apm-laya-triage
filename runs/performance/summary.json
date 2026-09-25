@@ -1,0 +1,178 @@
+{
+  "profiles": {
+    "unique_issues": 6,
+    "repeats_per_issue_per_machine": 3,
+    "configurations": {
+      "fp32-2": [
+        {
+          "replicate": 0,
+          "median_seconds": 44.441548544499994,
+          "speedup_vs_fp32_2": 1.0,
+          "first_issue_process_seconds": 30.225219605000007,
+          "optimization_seconds": 5.8600000159003685e-06,
+          "changed_distinct_issues": [],
+          "max_probability_difference": 0.0
+        },
+        {
+          "replicate": 1,
+          "median_seconds": 44.35520173949999,
+          "speedup_vs_fp32_2": 1.0,
+          "first_issue_process_seconds": 24.479954835999933,
+          "optimization_seconds": 5.0490000376157695e-06,
+          "changed_distinct_issues": [],
+          "max_probability_difference": 0.0
+        }
+      ],
+      "fp32-4": [
+        {
+          "replicate": 0,
+          "median_seconds": 45.90479433600001,
+          "speedup_vs_fp32_2": 0.9681243361904687,
+          "first_issue_process_seconds": 25.336368347999837,
+          "optimization_seconds": 5.6209999002021505e-06,
+          "changed_distinct_issues": [],
+          "max_probability_difference": 0.0
+        },
+        {
+          "replicate": 1,
+          "median_seconds": 45.217391504000034,
+          "speedup_vs_fp32_2": 0.9809323418308247,
+          "first_issue_process_seconds": 25.39372958300021,
+          "optimization_seconds": 5.280000095808646e-06,
+          "changed_distinct_issues": [],
+          "max_probability_difference": 0.0
+        }
+      ],
+      "int8-2": [
+        {
+          "replicate": 0,
+          "median_seconds": 29.36882196149986,
+          "speedup_vs_fp32_2": 1.5132220353529757,
+          "first_issue_process_seconds": 19.917014741000003,
+          "optimization_seconds": 2.2256642519998877,
+          "changed_distinct_issues": [
+            1
+          ],
+          "max_probability_difference": 0.395
+        },
+        {
+          "replicate": 1,
+          "median_seconds": 29.04630973349998,
+          "speedup_vs_fp32_2": 1.5270511864143554,
+          "first_issue_process_seconds": 19.57769365299987,
+          "optimization_seconds": 2.1561291289999645,
+          "changed_distinct_issues": [
+            1
+          ],
+          "max_probability_difference": 0.395
+        }
+      ],
+      "int8-4": [
+        {
+          "replicate": 0,
+          "median_seconds": 28.6286502439998,
+          "speedup_vs_fp32_2": 1.5523452263983133,
+          "first_issue_process_seconds": 20.050816832000237,
+          "optimization_seconds": 2.4546830050003337,
+          "changed_distinct_issues": [
+            1
+          ],
+          "max_probability_difference": 0.395
+        },
+        {
+          "replicate": 1,
+          "median_seconds": 28.10227275199999,
+          "speedup_vs_fp32_2": 1.5783492719941417,
+          "first_issue_process_seconds": 24.058953801999976,
+          "optimization_seconds": 2.3829017730000004,
+          "changed_distinct_issues": [
+            1
+          ],
+          "max_probability_difference": 0.395
+        }
+      ]
+    }
+  },
+  "single_runs": [
+    {
+      "name": "single-cold",
+      "number": 3071,
+      "input_sha256": "b865a863b250fc3ae88fe31594b30c51bb92a9b79edad7cd893f307c95093cd0",
+      "state_sha256": "526348e3b204aae5e81c4ff36e29d4a6044970b83a17ccc6e0f16b0fe285ab84",
+      "device": "cpu",
+      "precision": "fp32",
+      "threads": 2,
+      "inference_seconds": 44.01295109,
+      "invocation_seconds": 54.621591998999975,
+      "kind": "github-actions",
+      "url": "https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36119730300",
+      "runtime_cache_hit": false,
+      "job_seconds": 112.0,
+      "dispatch_to_complete_seconds": 126.0
+    },
+    {
+      "name": "single-warm",
+      "number": 3071,
+      "input_sha256": "b865a863b250fc3ae88fe31594b30c51bb92a9b79edad7cd893f307c95093cd0",
+      "state_sha256": "526348e3b204aae5e81c4ff36e29d4a6044970b83a17ccc6e0f16b0fe285ab84",
+      "device": "cpu",
+      "precision": "fp32",
+      "threads": 2,
+      "inference_seconds": 43.34268749699999,
+      "invocation_seconds": 61.869022698,
+      "kind": "github-actions",
+      "url": "https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36120201858",
+      "runtime_cache_hit": true,
+      "job_seconds": 76.0,
+      "dispatch_to_complete_seconds": 83.0
+    },
+    {
+      "name": "single-fp32-four",
+      "number": 3071,
+      "input_sha256": "b865a863b250fc3ae88fe31594b30c51bb92a9b79edad7cd893f307c95093cd0",
+      "state_sha256": "526348e3b204aae5e81c4ff36e29d4a6044970b83a17ccc6e0f16b0fe285ab84",
+      "device": "cpu",
+      "precision": "fp32",
+      "threads": 4,
+      "inference_seconds": 24.596344004000002,
+      "invocation_seconds": 39.53346387900001,
+      "kind": "github-actions",
+      "url": "https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36122096140",
+      "runtime_cache_hit": true,
+      "job_seconds": 51.0,
+      "dispatch_to_complete_seconds": 54.0
+    },
+    {
+      "name": "single-int8",
+      "number": 3071,
+      "input_sha256": "b865a863b250fc3ae88fe31594b30c51bb92a9b79edad7cd893f307c95093cd0",
+      "state_sha256": "526348e3b204aae5e81c4ff36e29d4a6044970b83a17ccc6e0f16b0fe285ab84",
+      "device": "cpu",
+      "precision": "int8",
+      "threads": 4,
+      "inference_seconds": 28.287316432000004,
+      "invocation_seconds": 43.130422456999995,
+      "kind": "github-actions",
+      "url": "https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36121729119",
+      "runtime_cache_hit": true,
+      "job_seconds": 58.0,
+      "dispatch_to_complete_seconds": 63.0
+    },
+    {
+      "name": "single-mps",
+      "number": 3071,
+      "input_sha256": "b865a863b250fc3ae88fe31594b30c51bb92a9b79edad7cd893f307c95093cd0",
+      "state_sha256": "526348e3b204aae5e81c4ff36e29d4a6044970b83a17ccc6e0f16b0fe285ab84",
+      "device": "mps",
+      "precision": "fp32",
+      "threads": 2,
+      "inference_seconds": 6.938245624998672,
+      "invocation_seconds": 18.344635624998773,
+      "kind": "local-process",
+      "process_seconds": 19.279149209000025,
+      "hardware": "Apple M3",
+      "weights_previously_cached": true
+    }
+  ],
+  "quality": null
+}

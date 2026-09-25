@@ -256,6 +256,20 @@ and **83s from dispatch to completion**. FP32 labels and reported probabilities
 were identical. Local model weights were already cached, and the bulk GPU
 worker was stopped during this measurement; this is one example, not a p95.
 Evidence is in `runs/single-mps/` and `runs/single-warm/`.
+See [PERFORMANCE.md](PERFORMANCE.md) for the matched-hardware CPU pilot and
+all actual dispatch timings. On both paired CPU runners, INT8/four threads
+was approximately **1.55-1.58x faster** than FP32/two threads, but it changed
+labels on one of the six pilot issues. Four threads did not improve FP32
+latency on those matched machines. The full-corpus quality comparison, not
+the small speed pilot, determines how to interpret that numerical tradeoff.
+
+To rebuild the speed report from saved evidence:
+
+```bash
+python performance_report.py --profiles runs/performance \
+  --single-runs runs/single-cold runs/single-warm runs/single-fp32-four \
+    runs/single-int8 runs/single-mps
+```
 
 Single-issue output separates GitHub reading, model loading, optional
 quantization, and inference from total invocation time. The workflow's job/step
