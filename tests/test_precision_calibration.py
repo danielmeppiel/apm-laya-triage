@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from experiments import precision_calibration
 from experiment import digest
 from experiments.precision_calibration import (
     best_threshold,
@@ -21,6 +22,7 @@ from experiments.precision_calibration import (
     select_finalists,
     threshold_policy,
 )
+from experiments.precision_protocol import file_sha256
 
 LABELS = ["area/cli", "theme/security", "type/bug", "type/feature"]
 
@@ -55,6 +57,13 @@ class PrecisionCalibrationTests(unittest.TestCase):
         self.assertEqual(result["overall"]["recall"], 0)
         self.assertEqual(result["coverage"]["whole_issue"], 0)
         self.assertEqual(result["coverage"]["observed_dimension"], 0)
+        for record in data:
+            record["proposed"] = ["theme/security"]
+        result = metrics(data, LABELS)
+        self.assertEqual(result["coverage"]["whole_issue"], 1)
+        self.assertEqual(result["coverage"]["observed_dimension"], 0)
+        self.assertEqual(result["coverage"]["observed_issue"], 0)
+        self.assertIsNone(result["overall"]["precision"])
 
     def test_ties_thresholds_and_rare_classes(self):
         self.assertEqual(best_threshold([(0.9, True), (0.9, False), (0.2, False)], 1), 0.9)
@@ -91,6 +100,16 @@ class PrecisionCalibrationTests(unittest.TestCase):
             value["development"]["overall"]["recall"] = 0.49
         self.assertIsNone(select_finalists(results)["precision_first_recall050"])
 
+    def test_variable_cardinality_does_not_invent_unsupported_dimensions(self):
+        policies = fit_candidates(records(), LABELS, 3)
+        self.assertEqual(policies["isotonic_fit_mean_nearest"]["top_k"], {"type": 1, "area": 1, "theme": 0})
+        policy = policies["isotonic_top1_plus_second0.4"]
+        predicted = predict(records()[0]["scores"], policy)
+        self.assertEqual(predicted, ["area/cli", "type/bug"])
+        self.assertNotIn("theme/security", predicted)
+        policy["calibrators"]["type/feature"] = [{"lower": 0, "upper": 1, "probability": 0.6}]
+        self.assertEqual(predict(records()[0]["scores"], policy), ["area/cli", "type/bug", "type/feature"])
+
     def test_confirmation_cannot_be_loaded_for_training(self):
         with self.assertRaisesRegex(ValueError, "cannot access confirmation"):
             load_training_data({}, Path("does-not-exist"), {}, "confirmation")
@@ -112,7 +131,8 @@ class PrecisionCalibrationTests(unittest.TestCase):
     def test_replay_survives_json_and_rejects_corruption(self):
         policy = threshold_policy(records(), LABELS, 1, "label")
         frozen = {"policy": policy, "protocol_sha256": "protocol",
-                  "snapshot_sha256": "snapshot", "baseline_sha256": "baseline"}
+                  "snapshot_sha256": "snapshot", "baseline_sha256": "baseline",
+                  "module_sha256": file_sha256(Path(precision_calibration.__file__))}
         frozen["artifact_sha256"] = digest(frozen)
         protocol = {key: frozen[key] for key in ("protocol_sha256", "snapshot_sha256", "baseline_sha256")}
         with tempfile.TemporaryDirectory() as directory:

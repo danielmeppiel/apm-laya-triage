@@ -231,6 +231,12 @@ def predict(scores: dict[str, float], policy: dict[str, Any]) -> list[str]:
         supported = [label for label in labels if policy["fit_support"][label] >= policy["min_positive_support"]]
         ranking = {label: calibrated_probability(scores[label], policy["calibrators"][label]) for label in supported}
         selected = [label for label in supported if ranking[label] >= policy["probability_floor"]]
+        if policy.get("minimum_per_dimension") == 1:
+            for dimension in DIMENSIONS:
+                candidates = [label for label in supported if label.startswith(dimension + "/") and ranking[label] > 0]
+                if candidates:
+                    selected.append(min(candidates, key=lambda label: (-ranking[label], label)))
+            selected = sorted(set(selected))
     else:
         raise ValueError(f"Unknown frozen policy kind: {kind}")
     if policy.get("top_k") is not None:
@@ -238,7 +244,8 @@ def predict(scores: dict[str, float], policy: dict[str, Any]) -> list[str]:
             label
             for dimension in DIMENSIONS
             for label in sorted((label for label in selected if label.startswith(dimension + "/")),
-                                key=lambda label: (-ranking[label], label))[:policy["top_k"]]
+                                key=lambda label: (-ranking[label], label))[
+                                    :policy["top_k"][dimension] if isinstance(policy["top_k"], dict) else policy["top_k"]]
         ]
     return sorted(selected)
 
@@ -271,6 +278,22 @@ def fit_candidates(fit: list[dict[str, Any]], labels: list[str], round_number: i
                 "min_positive_support": MIN_SUPPORT,
                 "rare_class_rule": "Suppress labels with fewer than five fit positives",
             }
+        if round_number >= 3:
+            template = policies["isotonic_floor0_cap1"]
+            for floor in (0.25, 0.4, 0.5):
+                policies[f"isotonic_top1_plus_second{floor:g}"] = {
+                    **template, "probability_floor": floor, "minimum_per_dimension": 1, "top_k": 2,
+                }
+            cardinalities = {}
+            for dimension in DIMENSIONS:
+                observed = [len(scored_sets({**record, "proposed": []}, dimension)[0]) for record in fit]
+                observed = [count for count in observed if count]
+                cardinalities[dimension] = sum(observed) / len(observed) if observed else 0
+            for name, rounding in (("nearest", lambda value: math.floor(value + 0.5)), ("ceil", math.ceil)):
+                policies[f"isotonic_fit_mean_{name}"] = {
+                    **template, "top_k": {dimension: rounding(mean) for dimension, mean in cardinalities.items()},
+                    "fit_mean_observed_cardinality": cardinalities,
+                }
     return policies
 
 
@@ -330,7 +353,12 @@ def run(args: argparse.Namespace) -> None:
               f"labels={values['development']['proposed_labels']['mean']:.2f}")
     print("Finalists:", json.dumps(metadata["finalists"]))
     if args.freeze:
-        for objective, name in metadata["finalists"].items():
+        exports = {
+            **{f"frozen_{objective}": name for objective, name in metadata["finalists"].items()},
+            "reference_original_050": "original_050",
+            "reference_most_common": "most_common",
+        }
+        for objective, name in exports.items():
             if name is None:
                 continue
             frozen = {key: value for key, value in metadata.items() if key not in ("results", "finalists")}
@@ -338,7 +366,10 @@ def run(args: argparse.Namespace) -> None:
                            "development_metrics": results[name]["development"],
                            "source_report_sha256": file_sha256(destination)})
             frozen["artifact_sha256"] = digest(frozen)
-            write_json(args.output / f"frozen_{objective}.json", frozen)
+            path = args.output / f"{objective}.json"
+            if path.exists() and read_json(path) != frozen:
+                raise ValueError(f"Refusing to replace frozen policy: {path}")
+            write_json(path, frozen)
 
 
 def load_frozen(path: Path, protocol: dict[str, Any]) -> dict[str, Any]:
@@ -350,6 +381,8 @@ def load_frozen(path: Path, protocol: dict[str, Any]) -> dict[str, Any]:
     for key in ("snapshot_sha256", "baseline_sha256"):
         if frozen[key] != protocol[key]:
             raise ValueError("Frozen policy source hash mismatch.")
+    if frozen["module_sha256"] != file_sha256(Path(__file__)):
+        raise ValueError("Replay implementation differs from the frozen calibration module.")
     return frozen
 
 
@@ -379,7 +412,7 @@ def main() -> None:
     parser.add_argument("--snapshot", type=Path, default=Path("data/snapshot.json"))
     parser.add_argument("--baseline", type=Path, default=Path("runs/baseline/predictions.jsonl"))
     parser.add_argument("--protocol", type=Path, default=Path("runs/precision/protocol.json"))
-    parser.add_argument("--round", type=int, choices=(1, 2), default=2)
+    parser.add_argument("--round", type=int, choices=(1, 2, 3), default=3)
     parser.add_argument("--output", type=Path, default=Path("runs/precision/calibration"))
     parser.add_argument("--freeze", action="store_true")
     parser.add_argument("--replay", type=Path)
