@@ -18,6 +18,7 @@ from experiment import (
     prepare_state,
     questions_for,
     read_json,
+    synchronize,
     taxonomy,
     write_json,
 )
@@ -38,13 +39,15 @@ def read_issue(repo: str, number: int) -> dict[str, Any]:
     }
 
 
-def classify(number: int, threads: int, precision: str, output: Path) -> None:
+def classify(
+    number: int, threads: int, precision: str, output: Path, device: str = "cpu"
+) -> None:
     """Measure a complete single-issue invocation, including the source read and model setup."""
     started_at = now()
     started = time.perf_counter()
     config = read_json(ROOT / "config.json")
     config.update(
-        device="cpu",
+        device=device,
         cpu_threads=threads,
         mixed_precision=False,
         cpu_precision=precision,
@@ -56,11 +59,16 @@ def classify(number: int, threads: int, precision: str, output: Path) -> None:
     github_read_seconds = time.perf_counter() - before
     agent, runtime = load_agent(config)
     state, input_metadata = prepare_state(issue, agent.tok, config)
+    synchronize(agent)
     before = time.perf_counter()
     response = agent.predict(state, questions)
+    synchronize(agent)
     inference_seconds = time.perf_counter() - before
     check_response(response, questions)
-    if agent.device.type != "cpu" or agent.amp_enabled:
+    if (
+        str(agent.device) != runtime["device"]
+        or agent.amp_enabled != runtime["mixed_precision"]
+    ):
         raise ValueError("Runtime changed device or precision during inference.")
     result = {
         "started_at": started_at,
@@ -99,10 +107,13 @@ def main() -> None:
     parser.add_argument("--threads", type=int, choices=(1, 2, 4), default=2)
     parser.add_argument("--precision", choices=("fp32", "int8"), default="fp32")
     parser.add_argument(
+        "--device", choices=("cpu", "mps", "cuda", "auto"), default="cpu"
+    )
+    parser.add_argument(
         "--output", type=Path, default=ROOT / "runs/single-issue/result.json"
     )
     args = parser.parse_args()
-    classify(args.issue, args.threads, args.precision, args.output)
+    classify(args.issue, args.threads, args.precision, args.output, args.device)
 
 
 if __name__ == "__main__":

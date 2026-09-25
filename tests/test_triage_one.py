@@ -3,10 +3,18 @@
 import unittest
 from unittest.mock import patch
 
-from triage_one import read_issue
+from triage_one import main, read_issue
 
 
 class ReadOneIssueTests(unittest.TestCase):
+    def test_cli_honors_explicit_gpu_request(self) -> None:
+        with (
+            patch("sys.argv", ["triage_one.py", "--issue", "10", "--device", "mps"]),
+            patch("triage_one.classify") as classify,
+        ):
+            main()
+        self.assertEqual(classify.call_args.args[-1], "mps")
+
     def test_only_input_fields_cross_the_boundary(self) -> None:
         response = {
             "number": 10,

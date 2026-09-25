@@ -243,7 +243,19 @@ gh workflow run triage-one.yml --repo danielmeppiel/apm-laya-triage \
 
 # Or run one issue locally after the installation above.
 python triage_one.py --issue 123 --threads 2 --precision fp32
+
+# Apple Silicon GPU (FP32; mixed precision produced invalid pilot outputs).
+python triage_one.py --issue 123 --device mps --precision fp32
 ```
+
+**Measured GPU example:** for the exact same live issue `microsoft/apm#3071`,
+the Apple M3 GPU took **6.938s for inference**, **18.345s for the invocation**,
+and **19.279s for the entire fresh Python process**. The hosted two-thread CPU
+cache-hit run took **43.343s for inference**, **61.869s for the invocation**,
+and **83s from dispatch to completion**. FP32 labels and reported probabilities
+were identical. Local model weights were already cached, and the bulk GPU
+worker was stopped during this measurement; this is one example, not a p95.
+Evidence is in `runs/single-mps/` and `runs/single-warm/`.
 
 Single-issue output separates GitHub reading, model loading, optional
 quantization, and inference from total invocation time. The workflow's job/step
@@ -251,6 +263,10 @@ timings additionally include runner setup, dependency installation or cache
 restore, and artifact upload. The first cache miss and subsequent cache hits
 are different measurements; a warm model-loop result is not end-to-end latency.
 Issue text and current labels are not saved in the single-issue artifact.
+If sub-second response time is a hard requirement, a persistent loaded GPU
+service is an architectural alternative to cold Actions dispatch. This
+repository has not measured such a service or an NVIDIA fast path; do not
+extrapolate the Apple GPU result into an unverified latency promise.
 
 The workflow is manual and read-only. It does not receive APM's issue events
 automatically: an event-triggered caller would need to live in the source

@@ -1,0 +1,7 @@
+{
+  "process_wall_seconds": 19.279149209000025,
+  "hardware": "Apple M3",
+  "memory_bytes": 17179869184,
+  "bulk_gpu_run_stopped_during_measurement": true,
+  "weights_previously_cached": true
+}
