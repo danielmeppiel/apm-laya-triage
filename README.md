@@ -8,8 +8,16 @@ agreement and latency, and keeps the evidence needed to repeat the experiment.
 accept work, prioritize issues, assign people, or edit milestones. "Labelling"
 here means writing **predicted labels to local files**.
 
-**Result: real inference works, but this configuration is not a useful
-automatic classifier.** The FP32 baseline matched the existing labels exactly
+**Precision follow-up:** a cheap **supervised text** classifier reached
+**80.2% precision, 74.6% recall and 77.3% F1** on 188 reserved confirmation
+issues, with about **2.3 ms warm prediction time**. These measure agreement
+with existing silver labels, not adjudicated correctness. Adding Laya did
+not establish a balanced F1 or precision improvement over text alone.
+Read [PRECISION.md](PRECISION.md) for the frozen comparisons, uncertainty,
+tradeoffs and replay instructions; hybrid timings exclude neural inference.
+
+**Original zero-shot result: real inference works, but this configuration
+is not a useful automatic classifier.** The FP32 baseline matched the existing labels exactly
 on **1 of 1,079 eligible issues (0.09%)**, with **14.6% precision** and
 **25.3% F1**, below a no-reading reference's **43.2% F1**. It proposed an
 average **22.78 of 25 labels** per issue. High recall here reflects
@@ -67,6 +75,43 @@ This rebuilds `REPORT.md`, `runs/baseline/metrics.json`, and
 `runs/baseline/proposals.csv` from the complete saved predictions. It requires
 no model download, GPU, Hugging Face account, or GitHub login. It refuses to
 present a partial run as a full-corpus report.
+
+To replay the **separate precision follow-up** from saved predictions,
+without model inference or extra dependencies:
+
+```bash
+python3 -m experiments.precision_confirmation \
+  --plan runs/precision/confirmation/all-taxonomy-vs-prior-plan.json \
+  --output /tmp/apm-precision-confirmation-replay.json
+```
+
+The evaluator verifies frozen evidence hashes. [PRECISION.md](PRECISION.md)
+also documents isolated setup and deterministic refitting for the cheap
+text model; do not replace the historical Laya runtime's dependency pins.
+
+### Try the cheap text-only classifier
+
+This separate path needs **no Torch, Laya weights or GPU**. Fetch one
+issue read-only and write suggestions locally:
+
+```bash
+python3.12 -m venv /tmp/apm-text-env
+/tmp/apm-text-env/bin/python -m pip install -r experiments/requirements-text.txt
+gh api repos/microsoft/apm/issues/3071 \
+  --jq '{number,title,body:(.body // "")}|@json' > /tmp/apm-issue.jsonl
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  /tmp/apm-text-env/bin/python -m experiments.precision_text \
+  --predict-frozen runs/precision/text/frozen/manifest.json \
+  --finalist text_balanced --inputs /tmp/apm-issue.jsonl \
+  --output /tmp/apm-proposals.jsonl
+```
+
+The text-only CLI accepts other issue IDs without cached neural scores.
+Each invocation refits on the frozen 677 fit controls and pays setup/import
+costs; **~2.3 ms is warm prediction with a reused fitted model**, not CLI
+startup. The recorded live example took **3.84 seconds**, excluding the
+GitHub fetch, and is a usability demonstration rather than an accuracy test.
+Use a fresh output path. No labels are applied.
 
 ### Try ten real predictions
 
@@ -209,9 +254,12 @@ unlabelled issues are listed in the CSV but **not included in success-rate
 denominators**. The report breaks down open/closed issues, context shortening,
 individual labels, and a naive most-common-label reference.
 
-This is a zero-shot exploratory baseline, not a trained or held-out accuracy
-claim. No training or threshold fitting occurs. If you tune after reading these
-results, reserve new, human-adjudicated issues for an honest subsequent test.
+The original run in [REPORT.md](REPORT.md) is a zero-shot exploratory
+baseline, not a trained or held-out accuracy claim; no training or threshold
+fitting occurred in that run. The separate [precision follow-up](PRECISION.md)
+uses fit/development/confirmation partitions and explicitly supervised
+models. Neither replaces the need for new, human-adjudicated issues before
+making a real-world correctness claim.
 
 ## Files
 
@@ -223,6 +271,8 @@ results, reserve new, human-adjudicated issues for an honest subsequent test.
 | `runs/baseline/metrics.json` | Machine-readable aggregate and per-label results |
 | `runs/baseline/proposals.csv` | All issues, existing labels and proposed labels; no source issue writes |
 | `REPORT.md` | Results for readers without an ML background, including real examples and caveats |
+| `PRECISION.md` | Frozen precision follow-up: supervised text, score-only and hybrid comparisons, uncertainty and replay |
+| `runs/precision/` | Grouped protocol, development records, frozen policies and reserved-confirmation evidence |
 | `experiment.py` | Snapshot, inference and report command-line entrypoint |
 | `evaluation.py` | Coverage-aware scoring and report generation |
 | `tests/` | Small offline tests for controls, denominators, input isolation and fail-closed behavior |
