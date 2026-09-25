@@ -1,0 +1,136 @@
+{
+  "snapshot": {
+    "path": "../../../data/snapshot.json",
+    "sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2"
+  },
+  "protocol": {
+    "path": "../protocol.json",
+    "sha256": "2a5b8baf3fc15b4a1f1ec5408b043bba09581c96484af3d807458037af088451"
+  },
+  "partition": "confirmation",
+  "dimensions": [
+    "type",
+    "area",
+    "theme"
+  ],
+  "reference": "text_broad_precision",
+  "bootstrap_samples": 4000,
+  "candidates": [
+    {
+      "name": "text_broad_precision",
+      "selected_on": "development",
+      "frozen_artifacts": [
+        {
+          "path": "registry.json",
+          "sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b"
+        },
+        {
+          "path": "../text/frozen/manifest.json",
+          "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+        },
+        {
+          "path": "../../../experiment.py",
+          "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+        },
+        {
+          "path": "../../../evaluation.py",
+          "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+        },
+        {
+          "path": "../../../cpu_runtime.py",
+          "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+        },
+        {
+          "path": "../../../experiments/precision_calibration.py",
+          "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+        },
+        {
+          "path": "../../../experiments/precision_confirmation.py",
+          "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+        },
+        {
+          "path": "../../../experiments/precision_prompts.py",
+          "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+        },
+        {
+          "path": "../../../experiments/precision_protocol.py",
+          "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+        },
+        {
+          "path": "../../../experiments/precision_score_features.py",
+          "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+        },
+        {
+          "path": "../../../experiments/precision_text.py",
+          "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+        },
+        {
+          "path": "../../../experiments/precision_typed_checkpoint.py",
+          "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+        }
+      ],
+      "predictions": {
+        "path": "text_broad_precision.jsonl",
+        "sha256": "6bc8ecec93d93ae61b070f1650578520a86eafc349070b537dd8498bd70bb9d8"
+      }
+    },
+    {
+      "name": "hybrid_broad_precision",
+      "selected_on": "development",
+      "frozen_artifacts": [
+        {
+          "path": "registry.json",
+          "sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b"
+        },
+        {
+          "path": "../text/frozen/manifest.json",
+          "sha256": "ea43d80459469dda76f6b5aa8493484c3e8223b2470277de7fc9ac9edd32227b"
+        },
+        {
+          "path": "../../../experiment.py",
+          "sha256": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc"
+        },
+        {
+          "path": "../../../evaluation.py",
+          "sha256": "eb0ad8970991df8fda25701ff8ed0ac04dbb90d8ec01bb4231a3559187ee1b56"
+        },
+        {
+          "path": "../../../cpu_runtime.py",
+          "sha256": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da"
+        },
+        {
+          "path": "../../../experiments/precision_calibration.py",
+          "sha256": "3db3019af06affcbf0b5c45ea08e4a5d2a9536c646ec1838aa821ee97f50335f"
+        },
+        {
+          "path": "../../../experiments/precision_confirmation.py",
+          "sha256": "cdcbcd32bb6d55aaccf8dc7a1bca99b351817265920b2f5b0692b4e328549797"
+        },
+        {
+          "path": "../../../experiments/precision_prompts.py",
+          "sha256": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7"
+        },
+        {
+          "path": "../../../experiments/precision_protocol.py",
+          "sha256": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698"
+        },
+        {
+          "path": "../../../experiments/precision_score_features.py",
+          "sha256": "3dd4a584bc52c6828a2652aa7cdc7dc47c0420ed1e8af76291f88af73da7237a"
+        },
+        {
+          "path": "../../../experiments/precision_text.py",
+          "sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405"
+        },
+        {
+          "path": "../../../experiments/precision_typed_checkpoint.py",
+          "sha256": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+        }
+      ],
+      "predictions": {
+        "path": "hybrid_broad_precision.jsonl",
+        "sha256": "436b7ab785fd483fa2ae6e3068665c21eb12f1b77821ac124c87c6b807e8b4db"
+      }
+    }
+  ]
+}

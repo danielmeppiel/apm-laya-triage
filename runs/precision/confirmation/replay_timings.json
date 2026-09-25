@@ -1,0 +1,50 @@
+[
+  {
+    "name": "original",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 0.1518074159976095,
+    "neural_scores": "not required"
+  },
+  {
+    "name": "prior",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 0.12257766700349748,
+    "neural_scores": "not required"
+  },
+  {
+    "name": "score_balanced",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 0.13225374999456108,
+    "neural_scores": "reused historical inference, not included in this latency"
+  },
+  {
+    "name": "score_broad_precision",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 0.13229229100397788,
+    "neural_scores": "reused historical inference, not included in this latency"
+  },
+  {
+    "name": "hybrid_balanced",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 2.522067749996495,
+    "neural_scores": "reused historical inference, not included in this latency"
+  },
+  {
+    "name": "hybrid_broad_precision",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 2.0978621670001303,
+    "neural_scores": "reused historical inference, not included in this latency"
+  },
+  {
+    "name": "text_balanced",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 1.7987357919992064,
+    "neural_scores": "not required"
+  },
+  {
+    "name": "text_broad_precision",
+    "batch_count": 188,
+    "fresh_process_batch_seconds": 1.8450575840033707,
+    "neural_scores": "not required"
+  }
+]

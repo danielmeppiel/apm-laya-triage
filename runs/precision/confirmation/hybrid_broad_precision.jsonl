@@ -1,0 +1,188 @@
+{"number": 13, "proposed": ["area/cli", "theme/portability"]}
+{"number": 17, "proposed": ["area/cli"]}
+{"number": 63, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 89, "proposed": ["theme/portability", "type/bug"]}
+{"number": 99, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 113, "proposed": ["theme/portability", "type/bug"]}
+{"number": 138, "proposed": ["area/testing", "type/automation"]}
+{"number": 146, "proposed": ["area/testing", "type/automation"]}
+{"number": 153, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 168, "proposed": ["area/testing", "theme/portability", "type/automation"]}
+{"number": 172, "proposed": ["area/cli", "theme/portability"]}
+{"number": 189, "proposed": ["area/cli", "type/bug"]}
+{"number": 194, "proposed": ["area/testing", "theme/portability", "type/automation"]}
+{"number": 198, "proposed": ["area/cli"]}
+{"number": 222, "proposed": ["area/testing", "type/automation"]}
+{"number": 236, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"number": 241, "proposed": ["area/testing", "theme/portability", "type/automation"]}
+{"number": 247, "proposed": ["area/ci-cd", "area/distribution", "area/docs-site", "theme/portability"]}
+{"number": 248, "proposed": ["area/docs-site", "theme/portability", "type/bug"]}
+{"number": 249, "proposed": ["area/cli", "type/automation"]}
+{"number": 309, "proposed": ["area/testing", "type/automation"]}
+{"number": 319, "proposed": ["area/cli", "theme/portability"]}
+{"number": 325, "proposed": ["theme/portability", "type/bug"]}
+{"number": 334, "proposed": ["area/testing", "type/automation"]}
+{"number": 352, "proposed": ["area/testing", "type/automation"]}
+{"number": 375, "proposed": ["area/audit-policy"]}
+{"number": 382, "proposed": ["area/distribution", "theme/portability", "type/bug"]}
+{"number": 438, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 488, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 501, "proposed": ["area/cli", "area/marketplace"]}
+{"number": 511, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 528, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 548, "proposed": ["area/cli", "type/bug"]}
+{"number": 611, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 612, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 621, "proposed": ["area/mcp-config", "theme/portability", "type/bug"]}
+{"number": 641, "proposed": ["area/cli", "area/marketplace", "theme/portability"]}
+{"number": 650, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 661, "proposed": ["area/cli", "area/distribution", "theme/portability", "type/bug"]}
+{"number": 669, "proposed": ["area/cli", "area/marketplace"]}
+{"number": 685, "proposed": ["area/cli", "area/docs-site", "theme/portability", "type/feature"]}
+{"number": 714, "proposed": ["area/cli"]}
+{"number": 722, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/feature"]}
+{"number": 757, "proposed": ["area/docs-site", "theme/portability"]}
+{"number": 768, "proposed": []}
+{"number": 783, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 792, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"number": 808, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"number": 817, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 831, "proposed": ["area/audit-policy", "area/cli"]}
+{"number": 841, "proposed": ["area/cli", "theme/portability"]}
+{"number": 844, "proposed": ["area/mcp-config", "theme/portability", "type/bug"]}
+{"number": 846, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 863, "proposed": ["area/multi-target", "theme/portability", "type/feature"]}
+{"number": 886, "proposed": []}
+{"number": 913, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"number": 924, "proposed": ["area/cli"]}
+{"number": 923, "proposed": ["area/cli"]}
+{"number": 935, "proposed": ["area/cli"]}
+{"number": 975, "proposed": ["area/cli", "area/lockfile", "type/feature"]}
+{"number": 992, "proposed": ["area/cli", "type/bug"]}
+{"number": 998, "proposed": ["area/cli"]}
+{"number": 1007, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1050, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1077, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1105, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/bug"]}
+{"number": 1128, "proposed": []}
+{"number": 1147, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1166, "proposed": ["area/cli"]}
+{"number": 1200, "proposed": ["area/audit-policy", "area/cli"]}
+{"number": 1203, "proposed": ["area/cli", "area/lockfile", "theme/portability"]}
+{"number": 1207, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1225, "proposed": ["area/cli", "area/mcp-config", "area/multi-target", "theme/portability", "type/feature"]}
+{"number": 1258, "proposed": ["area/lockfile", "type/bug"]}
+{"number": 1279, "proposed": ["theme/portability", "type/bug"]}
+{"number": 1297, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1323, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1326, "proposed": []}
+{"number": 1341, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1342, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 1343, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 1345, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1363, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1364, "proposed": ["area/mcp-config", "theme/portability", "type/bug"]}
+{"number": 1397, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 1400, "proposed": ["area/ci-cd", "area/testing", "theme/portability", "type/feature"]}
+{"number": 1415, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1429, "proposed": ["theme/portability", "type/feature"]}
+{"number": 1433, "proposed": ["area/cli"]}
+{"number": 1502, "proposed": ["area/docs-site", "theme/portability"]}
+{"number": 1503, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1525, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1540, "proposed": ["area/cli", "type/feature"]}
+{"number": 1548, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1557, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1571, "proposed": ["theme/portability", "type/bug"]}
+{"number": 1593, "proposed": ["area/cli"]}
+{"number": 1595, "proposed": ["area/cli"]}
+{"number": 1625, "proposed": ["theme/portability", "type/bug"]}
+{"number": 1671, "proposed": ["area/cli", "type/bug"]}
+{"number": 1691, "proposed": ["area/cli", "theme/portability"]}
+{"number": 1711, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 1762, "proposed": ["area/marketplace", "theme/portability"]}
+{"number": 1808, "proposed": ["theme/portability"]}
+{"number": 1849, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 1879, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 1935, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"number": 1954, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 1964, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"number": 1983, "proposed": ["theme/portability", "type/feature"]}
+{"number": 1988, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 1999, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/bug"]}
+{"number": 2006, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 2047, "proposed": ["area/cli", "area/mcp-config", "theme/portability", "type/feature"]}
+{"number": 2055, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 2064, "proposed": ["area/docs-site", "theme/portability"]}
+{"number": 2071, "proposed": ["area/cli", "area/multi-target", "theme/portability"]}
+{"number": 2076, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2080, "proposed": ["area/cli", "area/lockfile", "theme/portability", "type/bug"]}
+{"number": 2110, "proposed": ["area/multi-target", "theme/portability"]}
+{"number": 2130, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2137, "proposed": ["area/audit-policy", "type/bug"]}
+{"number": 2138, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2150, "proposed": []}
+{"number": 2157, "proposed": ["area/cli"]}
+{"number": 2163, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"number": 2191, "proposed": ["area/lockfile", "type/bug"]}
+{"number": 2197, "proposed": ["theme/portability", "type/bug"]}
+{"number": 2270, "proposed": ["area/cli"]}
+{"number": 2290, "proposed": ["area/cli", "type/automation"]}
+{"number": 2315, "proposed": ["area/cli", "theme/portability"]}
+{"number": 2324, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2327, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 2331, "proposed": ["area/cli"]}
+{"number": 2341, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 2345, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2353, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2371, "proposed": ["area/cli", "area/distribution", "theme/portability", "type/feature"]}
+{"number": 2375, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2378, "proposed": ["area/cli", "area/lockfile", "type/automation", "type/performance"]}
+{"number": 2383, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2388, "proposed": ["area/cli"]}
+{"number": 2391, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2399, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2402, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 2425, "proposed": ["area/cli", "area/lockfile", "type/automation", "type/performance"]}
+{"number": 2430, "proposed": ["area/cli", "area/marketplace", "theme/portability", "type/feature"]}
+{"number": 2433, "proposed": ["area/marketplace", "theme/portability", "type/bug"]}
+{"number": 2434, "proposed": ["area/cli", "area/lockfile", "type/automation", "type/performance"]}
+{"number": 2510, "proposed": ["area/mcp-config", "theme/portability", "type/bug"]}
+{"number": 2511, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2512, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2516, "proposed": ["area/cli", "area/mcp-config", "area/multi-target", "theme/portability", "type/bug"]}
+{"number": 2517, "proposed": ["area/cli", "type/automation", "type/docs"]}
+{"number": 2530, "proposed": ["area/cli"]}
+{"number": 2539, "proposed": ["area/cli", "type/automation", "type/performance"]}
+{"number": 2551, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2553, "proposed": ["area/cli", "area/marketplace", "theme/portability"]}
+{"number": 2561, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2574, "proposed": ["area/cli", "theme/portability", "type/automation", "type/docs"]}
+{"number": 2607, "proposed": ["area/cli", "type/automation", "type/performance"]}
+{"number": 2613, "proposed": ["area/cli", "type/automation", "type/performance"]}
+{"number": 2619, "proposed": ["area/lockfile", "theme/portability", "type/bug"]}
+{"number": 2629, "proposed": ["area/cli", "theme/portability"]}
+{"number": 2648, "proposed": ["area/cli", "type/automation", "type/performance"]}
+{"number": 2729, "proposed": ["area/marketplace", "theme/portability", "type/feature"]}
+{"number": 2736, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 2775, "proposed": ["area/cli", "theme/portability"]}
+{"number": 2815, "proposed": ["area/cli", "area/lockfile", "type/bug"]}
+{"number": 2816, "proposed": ["area/cli"]}
+{"number": 2821, "proposed": ["area/cli", "theme/portability"]}
+{"number": 2835, "proposed": ["area/cli"]}
+{"number": 2850, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2884, "proposed": ["area/cli", "theme/portability"]}
+{"number": 2903, "proposed": ["area/marketplace", "theme/portability", "type/feature"]}
+{"number": 2911, "proposed": ["area/cli", "type/automation", "type/performance"]}
+{"number": 2948, "proposed": ["area/cli", "theme/portability", "type/feature"]}
+{"number": 2955, "proposed": []}
+{"number": 2971, "proposed": ["area/lockfile", "theme/portability", "type/bug"]}
+{"number": 2977, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 2978, "proposed": ["area/cli", "type/automation"]}
+{"number": 2986, "proposed": ["area/cli", "area/docs-site", "theme/portability"]}
+{"number": 3015, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 3045, "proposed": ["area/docs-site", "theme/portability"]}
+{"number": 3054, "proposed": ["area/cli", "theme/portability"]}
+{"number": 3056, "proposed": ["area/cli", "theme/portability", "type/bug"]}
+{"number": 3063, "proposed": ["area/cli", "type/automation"]}
+{"number": 3073, "proposed": ["area/cli", "type/automation", "type/performance"]}
