@@ -9,7 +9,14 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
-from evaluation import aggregate, canonical_labels, fraction, percentile, scored_sets
+from evaluation import (
+    aggregate,
+    canonical_labels,
+    fraction,
+    label_metrics,
+    percentile,
+    scored_sets,
+)
 from experiments.precision_protocol import load_protocol, select_ids
 
 METRICS = ("precision", "recall", "micro_f1", "exact_agreement", "issue_coverage")
@@ -267,6 +274,12 @@ def evaluate_plan(plan_path: Path) -> dict:
     result["partition"] = plan["partition"]
     result["issue_numbers"] = numbers
     result["candidate_artifacts"] = plan["candidates"]
+    for name, records in records_by_model.items():
+        result["metrics"][name]["by_label"] = {
+            label: label_metrics(records, label)
+            for label in sorted(allowed)
+            if label.split("/", 1)[0] in scope
+        }
     return result
 
 
