@@ -1,0 +1,64 @@
+name: Single issue performance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        replicate: [0, 1]
+    env:
+      USE_TF: "0"
+      TOKENIZERS_PARALLELISM: "false"
+      HF_HUB_DISABLE_IMPLICIT_TOKEN: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Record runner hardware
+        run: |
+          mkdir -p performance
+          lscpu > performance/cpu.txt
+          free -b > performance/memory.txt
+      - name: Install identical CPU runtime
+        run: |
+          python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.txt
+      - name: Compare configurations on the same hardware
+        env:
+          REPLICATE: ${{ matrix.replicate }}
+        run: |
+          variants=(fp32:2 fp32:4 int8:2 int8:4)
+          if [[ "$REPLICATE" == "1" ]]; then
+            variants=(int8:4 int8:2 fp32:4 fp32:2)
+          fi
+          failed=0
+          for variant in "${variants[@]}"; do
+            precision="${variant%:*}"
+            threads="${variant#*:}"
+            if ! python -u benchmark_single.py --precision "$precision" --threads "$threads" --output "performance/$precision-$threads.json"; then
+              echo "[x] Configuration $variant failed; preserving diagnostics and measuring the others." >&2
+              failed=1
+            fi
+          done
+          exit "$failed"
+      - name: Preserve actual measurements, including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: single-replicate-${{ matrix.replicate }}
+          path: performance/
+          if-no-files-found: error
+          retention-days: 14

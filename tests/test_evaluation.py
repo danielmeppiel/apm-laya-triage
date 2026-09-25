@@ -18,6 +18,7 @@ from evaluation import (
     evaluate,
     fraction,
     percentile,
+    wilson,
 )
 from experiment import digest, questions_for, write_json
 
@@ -104,6 +105,8 @@ def corpus() -> tuple[dict, list[dict], dict]:
         )
     manifest = {
         "status": "complete",
+        "real_inference": True,
+        "github_writes": False,
         "source_snapshot_sha256": digest(snapshot),
         "prediction_count": 4,
         "target_count": 4,
@@ -115,6 +118,15 @@ def corpus() -> tuple[dict, list[dict], dict]:
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_intervals_handle_zero_support_and_small_classes_honestly(self) -> None:
+        self.assertIsNone(wilson(0, 0))
+        interval = wilson(1, 1)
+        self.assertAlmostEqual(interval["upper"], 1.0)
+        self.assertLess(interval["lower"], 0.21)
+        narrow = wilson(50, 100)
+        self.assertAlmostEqual(narrow["lower"], 0.4038315, places=6)
+        self.assertAlmostEqual(narrow["upper"], 0.5961685, places=6)
+
     def test_aliases_do_not_turn_human_acceptance_into_a_control(self) -> None:
         snapshot, _, _ = corpus()
         self.assertEqual(

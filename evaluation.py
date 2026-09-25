@@ -36,6 +36,22 @@ def fraction(numerator: int | float, denominator: int | float) -> float | None:
     return numerator / denominator if denominator else None
 
 
+def wilson(successes: int, observations: int) -> dict[str, float] | None:
+    """Report a bounded 95% binomial interval, never inventing observations."""
+    if not observations:
+        return None
+    z = 1.959963984540054
+    rate = successes / observations
+    scale = 1 + z * z / observations
+    center = (rate + z * z / (2 * observations)) / scale
+    half = (
+        z
+        * math.sqrt(rate * (1 - rate) / observations + z * z / (4 * observations**2))
+        / scale
+    )
+    return {"lower": max(0.0, center - half), "upper": min(1.0, center + half)}
+
+
 def scored_sets(
     record: dict[str, Any], dimension: str | None
 ) -> tuple[set[str], set[str]]:
@@ -71,6 +87,7 @@ def aggregate(
         "control_issues": controls,
         "exact_matches": exact,
         "exact_agreement": fraction(exact, controls),
+        "exact_agreement_95ci": wilson(exact, controls),
         "true_positives": tp,
         "false_positives": fp,
         "false_negatives": fn,
@@ -98,6 +115,8 @@ def label_metrics(records: list[dict[str, Any]], label: str) -> dict[str, Any]:
         "precision": fraction(tp, tp + fp),
         "recall": fraction(tp, tp + fn),
         "f1": fraction(2 * tp, 2 * tp + fp + fn),
+        "precision_95ci": wilson(tp, tp + fp),
+        "recall_95ci": wilson(tp, tp + fn),
     }
 
 
@@ -118,6 +137,13 @@ def evaluate(
     """Join an entire frozen corpus to verified model outputs and compute controls."""
     if manifest["status"] != "complete":
         raise ValueError("Run is incomplete; refusing a full-corpus success report.")
+    if (
+        manifest.get("real_inference") is not True
+        or manifest.get("github_writes") is not False
+    ):
+        raise ValueError(
+            "Report requires explicitly recorded read-only, real inference."
+        )
     if manifest["source_snapshot_sha256"] != digest(snapshot):
         raise ValueError("Snapshot does not match the inference manifest.")
     issues = {issue["number"]: issue for issue in snapshot["issues"]}
@@ -133,10 +159,20 @@ def evaluate(
             "Full report requires exactly one real prediction for every issue."
         )
     labels = taxonomy(snapshot)
+    fingerprints = {number: manifest["fingerprint"] for number in issues}
+    if "source_runs" in manifest:
+        fingerprints = {}
+        for fingerprint, source in manifest["source_runs"].items():
+            for number in source["issue_numbers"]:
+                if number in fingerprints:
+                    raise ValueError("An issue appears in more than one source shard.")
+                fingerprints[number] = fingerprint
+        if set(fingerprints) != set(issues):
+            raise ValueError("Source shards do not cover exactly the parent corpus.")
     records = []
     for prediction in predictions:
         if (
-            prediction["fingerprint"] != manifest["fingerprint"]
+            prediction["fingerprint"] != fingerprints[prediction["number"]]
             or prediction["evidence"] != "real-local-model-inference"
         ):
             raise ValueError(
@@ -234,6 +270,9 @@ def evaluate(
             ),
         },
         "per_label": per_label,
+        "low_support_labels": [
+            label for label, item in per_label.items() if item["support"] < 20
+        ],
         "macro_f1_supported_labels": statistics.mean(supported_f1)
         if supported_f1
         else None,
@@ -270,6 +309,13 @@ def pct(value: float | None) -> str:
     return f"{100 * value:.1f}%" if value is not None else "n/a"
 
 
+def interval_text(interval: dict[str, float] | None) -> str:
+    """Render interval bounds with the same percentage convention as point estimates."""
+    return (
+        f"{pct(interval['lower'])} to {pct(interval['upper'])}" if interval else "n/a"
+    )
+
+
 def escaped(text: str, limit: int = 180) -> str:
     """Keep issue prose inert in generated Markdown examples."""
     text = html.escape(" ".join(text.split())[:limit])
@@ -291,12 +337,15 @@ def report_text(
     overall = metrics["overall_observed_dimensions"]
     naive = metrics["naive_baseline"]["overall_observed_dimensions"]
     latency = metrics["latency"]
+    shard_count = manifest["runtime"].get("shard_count", 1)
+    hosted = manifest.get("execution", {}).get("kind") == "github-actions"
+    execution_name = "GitHub Actions CPU" if hosted else "local"
     lines = [
         "# APM issue labelling experiment: the plain-English report",
         "",
         "## The short answer",
         "",
-        f"We ran **real local Laya inference on all {metrics['issue_count']:,} issues**, "
+        f"We ran **real {execution_name} Laya inference on all {metrics['issue_count']:,} issues**, "
         f"including {metrics['states'].get('open', 0):,} open and "
         f"{metrics['states'].get('closed', 0):,} closed issues. Pull requests were excluded.",
         "**No APM issue, label, comment, status, assignment, or milestone was changed.**",
@@ -304,6 +353,7 @@ def report_text(
         f"On the {metrics['control_issues']:,} issues with usable existing classification labels, "
         f"the model matched every known dimension exactly on **{pct(overall['exact_agreement'])}** "
         f"({overall['exact_matches']:,}/{overall['control_issues']:,}).",
+        f"The 95% Wilson interval for exact agreement is **{interval_text(overall['exact_agreement_95ci'])}**.",
         f"Label precision was **{pct(overall['precision'])}**, recall **{pct(overall['recall'])}**, "
         f"and the combined F1 score **{pct(overall['micro_f1'])}**.",
         f"Median model time was **{latency['median']:.3f} seconds per issue** for all "
@@ -343,6 +393,16 @@ def report_text(
         "entire dimension is **not** treated as proof that every label in it should be absent. "
         "Within an observed dimension, additional proposed labels count as disagreements; "
         "some could be reasonable labels that maintainers never added.",
+        "The intervals assume independent, representative issues. They do not correct wrong "
+        "reference labels, correlated issue clusters, or future topic drift; this frozen "
+        "corpus is not a random sample of every future issue.",
+        "Labels with fewer than 20 positive controls are flagged as low-support, not "
+        "treated as proven classes: "
+        + (
+            ", ".join(f"`{label}`" for label in metrics["low_support_labels"])
+            or "(none)"
+        )
+        + ". Per-label precision/recall intervals are included in metrics.json.",
         "",
         "## Results by kind of label",
         "",
@@ -435,6 +495,7 @@ def report_text(
             f"- Mean / maximum: **{latency['mean']:.3f}s / {latency['max']:.3f}s**.",
             f"- Total measured inference: **{latency['sum_inference_seconds'] / 60:.1f} minutes**.",
             f"- Amortized throughput: **{latency['amortized_issues_per_minute']:.1f} issues/minute**.",
+            f"- Inference shards: **{shard_count}**. Load/checksum figures below are summed across shards, not parallel wall time.",
             f"- Recorded model load: **{manifest['runtime']['model_load_seconds']:.2f}s**; "
             f"download/cache lookup plus checksum: **{manifest['runtime']['download_and_hash_seconds']:.2f}s**.",
             "",
@@ -442,10 +503,16 @@ def report_text(
             "the time taken to queue GPU work. All label questions run together; multiplying the "
             "per-issue latency by the label count would double-count work. Installation, GitHub "
             "snapshot download, and report generation are not included in model latency. This run "
-            "reused cached weights; a cold installation also downloads an approximately 843 MB model.",
+            "may reuse cached weights; a cold installation also downloads an approximately 843 MB model per runner.",
             "",
-            "A GitHub-hosted CPU runner is a different machine and will have different latency. "
-            "The repository includes a manual workflow, but this result is a local run, not a hosted Actions run.",
+            (
+                "These are actual GitHub-hosted CPU measurements. The sum of inference times is "
+                "total work across runners, not elapsed workflow time. Shards ran in parallel, "
+                "and their original predictions and fingerprints are preserved unchanged."
+                if hosted
+                else "A GitHub-hosted CPU runner is a different machine and has different latency. "
+                "This report measures the local run. See README.md for separate hosted execution evidence."
+            ),
             "",
             "## Important limitations",
             "",

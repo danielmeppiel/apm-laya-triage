@@ -1,4 +1,4 @@
-# APM issue triage: a private, read-only Laya experiment
+# APM issue triage: a read-only Laya experiment
 
 Can an open model reproduce the classification labels already on
 `microsoft/apm` issues? This repository runs real local inference, measures
@@ -202,31 +202,68 @@ results, reserve new, human-adjudicated issues for an honest subsequent test.
 | `evaluation.py` | Coverage-aware scoring and report generation |
 | `tests/` | Small offline tests for controls, denominators, input isolation and fail-closed behavior |
 
-The dataset is public issue content, but this repository and its artifacts are
-private by default. Review snapshots for sensitive information before sharing
-or publishing them. Do not put tokens or model weights in Git.
+The repository is **public**, including the frozen public APM issue content
+and committed results. Review snapshots for sensitive information before
+sharing or publishing them. Do not put tokens or model weights in Git.
 
-## Optional GitHub Actions rerun
+## Single-issue speed and optional batch evaluation
 
-The manual **Laya experiment** workflow defaults to a 25-issue inference smoke
-run. Set `limit` to **0** for the whole corpus. Set `refresh_snapshot` to true
-to fetch current public APM issues first. No custom model secret is required.
-The built-in GitHub token is used only by the snapshot read step.
+The production-shaped target is **one issue per dispatch**. Whole-corpus
+batching is an evaluation convenience, not a requirement for issue triage.
+
+- **Laya smoke experiment** runs a small prefix of the snapshot; default 25.
+- **Single issue performance** compares FP32/INT8 and two/four CPU threads on
+  matched hardware. Two runners execute every configuration in opposite orders.
+  Six predetermined issues are each measured three times per configuration.
+  These are separate single-issue calls with all 25 labels, not a throughput batch.
+  This is a configuration pilot, not a large-sample accuracy claim.
+- **Full Laya experiment** evaluates every issue in eight disjoint CPU shards.
+  It captures one source snapshot for all runners, validates complete coverage
+  and compatible runtimes, and retains each original prediction unchanged.
+
+Use `refresh_snapshot` on a corpus workflow to fetch current public APM issues.
+No custom model secret is required. The built-in GitHub token is used only by
+the snapshot read step. Performance pilots do not change the pinned baseline,
+its questions, its threshold, or its reference labels.
 
 Hosted runs use **CPU**, have a six-hour timeout, and upload raw results,
-the run manifest, snapshot, and report as private Actions artifacts. They do
-not commit results or modify APM. Private-repository Actions minutes still
-count against the account's quota; no hosted model API is being billed.
+the run manifest, snapshot, and report as Actions artifacts. They do
+not commit results or modify APM. Standard GitHub-hosted runner usage is
+[free for public repositories](https://docs.github.com/en/billing/concepts/product-billing/github-actions);
+artifact-storage limits still apply. No hosted model API is being billed.
 Local measured latency must not be presented as GitHub-hosted CPU latency.
 The full-corpus run and a hosted smoke run are separate experiments: a
 successful small Actions run does not demonstrate full-corpus hosted latency.
 
 **Observed hosted status:** [the initial manual attempt](https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36115959642)
-was blocked before any job step started. GitHub reported an account
-payment/spending-limit restriction. No hosted inference ran, so the workflow
-is syntax-checked but **not execution-validated**. Resolve the account's
-Actions billing restriction before rerunning it; local execution is independent
-of that restriction.
+was blocked before any job step started while this repository was private.
+GitHub reported an account payment/spending-limit restriction. At the owner's
+request the repository was made public, and
+[the retry](https://github.com/danielmeppiel/apm-laya-triage/actions/runs/36116396070)
+**completed 25 actual CPU predictions**. Its median inference latency was
+**23.707 seconds per issue**; total inference was **498.406 seconds**.
+All 25 label sets matched the corresponding local FP32 predictions. The raw
+evidence is in `runs/hosted-smoke/`. These are small-prefix timing results,
+not full-corpus accuracy or the fastest configuration.
+
+### Control-group discipline
+
+The frozen corpus has **1,079 issues with classification controls** and
+**249 without them**. Available controls cover type on 1,067 issues, area on
+741, and theme on 453. Every eligible issue is evaluated, not just easy or
+successful examples. Model output is never used to create its own reference.
+
+That is enough to measure overall agreement usefully, but not every rare label:
+`type/release` has only **one** positive control and `area/mcp-trust` has **11**.
+The report must expose low support rather than claim proven accuracy for all
+classes. Existing labels are not guaranteed human-adjudicated truth.
+
+The baseline threshold was fixed at 0.50 before inference; no threshold is
+fitted against these outcomes. The six-issue speed pilot cannot establish
+accuracy. Any faster numerical mode needs a larger comparison against the
+frozen controls and the FP32 reference before being treated as equivalent.
+Future task/threshold tuning needs a separately reserved or freshly collected
+test set, rather than repeated optimization against the reported results.
 
 ## Upstream sources
 
