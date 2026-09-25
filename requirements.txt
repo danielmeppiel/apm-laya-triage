@@ -1,0 +1,6 @@
+laya @ git+https://github.com/NandhaKishorM/laya.git@23a17522aa4942da6cce53a995a275760320b691
+torch==2.8.0
+transformers==4.57.6
+huggingface_hub==0.36.2
+safetensors==0.8.0
+numpy==2.5.3

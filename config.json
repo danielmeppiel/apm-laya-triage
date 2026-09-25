@@ -1,0 +1,14 @@
+{
+  "source_repo": "microsoft/apm",
+  "model_repo": "convaiinnovations/laya",
+  "model_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851",
+  "weights_sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c",
+  "runtime_source_revision": "23a17522aa4942da6cce53a995a275760320b691",
+  "device": "cpu",
+  "mixed_precision": false,
+  "cpu_threads": 2,
+  "state_token_budget": 300,
+  "binary_threshold": 0.5,
+  "project_context": "APM is Microsoft's Agent Package Manager: a Python CLI for installing and distributing agent skills, instructions, prompts and agent packages across coding assistants. It includes lockfiles, MCP configuration, policy enforcement, security scanning and CI workflows.",
+  "control_contract_path": "packages/autopilot/autopilot-issue-triage-scheduler/.apm/skills/autopilot-issue-triage-scheduler/assets/label-contract.json"
+}
