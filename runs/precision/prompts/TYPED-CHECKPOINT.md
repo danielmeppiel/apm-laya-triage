@@ -93,7 +93,11 @@ $PY -m experiments.precision_typed_checkpoint run --partition confirmation96 \
 
 They were **not run during this development experiment**. Scoring confirmation
 is deliberately unavailable in either runner; the parent owns outcome evaluation
-and grouped uncertainty estimates. Upstream reports0.766 versus0.362 on four
+and grouped uncertainty estimates. After the parent's committed global freeze
+and explicit authorization, both prediction-only runs completed; their gate,
+row counts, hashes and non-overlapping execution timestamps are preserved in
+`confirmation-gate.json`. No confirmation scoring or tuning occurred here.
+Upstream reports0.766 versus0.362 on four
 synthetic workflows, explicitly warns that transfer elsewhere may not improve,
 and notes temperature calibration problems. Those numbers are not APM evidence.
 

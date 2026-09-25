@@ -1,0 +1,35 @@
+{
+  "status": "complete-prediction-only",
+  "completed_at": "2026-09-25T12:51:51.825201+00:00",
+  "global_freeze_commit": "0bd0c0ecf9b6c300380c4ad662b80fe46f563e13",
+  "global_freeze_registry_path": "runs/precision/confirmation/registry.json",
+  "global_freeze_registry_sha256": "c703333a087b25146e477d7e7251fc23a4d7042f36580ff39ef76f0478ac1f4b",
+  "authorization_received_at": "2026-09-25T12:48:45.162+00:00",
+  "authorization_source": "parent session b1b5b053-d5a6-4fe7-9567-3bd961c113e0 explicitly authorized both frozen96 runs after committing global registry",
+  "no_scoring_or_tuning": true,
+  "execution": "base then typed, serialized fresh processes, FP32 MPS, offline cache, two CPU threads",
+  "runs": [
+    {
+      "directory": "runs/precision/prompts/confirmation-base-type-theme",
+      "count": 96,
+      "policy_sha256": "cba66c0922802eb3cc1826132a82b24fbe5b132665c844e4241a8eb1a7aff96d",
+      "predictions_sha256": "4e1ec86050717518e5735109b1449dbb91c4ba3a3790fd2b0f7e91676fcd75bb",
+      "manifest_sha256": "137bd7c8cbde5c5cbd46b99a15153d020c5ff6b6138702282f8dc3067d9c0f81",
+      "started_at": "2026-09-25T12:49:15.713270+00:00",
+      "completed_at": "2026-09-25T12:50:00.122898+00:00",
+      "inference_seconds": 36.54121254196798,
+      "invocation_seconds": 44.440273167005216
+    },
+    {
+      "directory": "runs/precision/prompts/confirmation-typed-type-theme",
+      "count": 96,
+      "policy_sha256": "efa1c51da2cc0d50dadec46df397ba7089cc5ab83a4e79a658f91f45fc357d87",
+      "predictions_sha256": "84c99c986e59b61d6a293ed56153357ecc0082468ea6bc36041892be80759575",
+      "manifest_sha256": "8d36070acdf262eed6a4a9680656e79fe1c0e711cefbf76e21e4cc2fec0b3c18",
+      "started_at": "2026-09-25T12:50:01.091551+00:00",
+      "completed_at": "2026-09-25T12:50:48.536405+00:00",
+      "inference_seconds": 39.02384079797048,
+      "invocation_seconds": 47.4881272499988
+    }
+  ]
+}

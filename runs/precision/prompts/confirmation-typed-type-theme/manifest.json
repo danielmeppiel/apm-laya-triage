@@ -1,0 +1,291 @@
+{
+  "started_at": "2026-09-25T12:50:01.091551+00:00",
+  "status": "complete",
+  "partition": "confirmation96",
+  "issue_numbers": [
+    1935,
+    1225,
+    2331,
+    382,
+    1363,
+    2064,
+    2353,
+    808,
+    913,
+    2324,
+    661,
+    352,
+    2736,
+    1166,
+    189,
+    2006,
+    2816,
+    248,
+    438,
+    1671,
+    1571,
+    2512,
+    641,
+    2629,
+    3063,
+    511,
+    841,
+    924,
+    2391,
+    375,
+    1849,
+    2977,
+    2648,
+    2607,
+    2137,
+    1999,
+    2191,
+    1595,
+    2729,
+    1540,
+    2434,
+    1323,
+    1105,
+    153,
+    488,
+    1433,
+    247,
+    168,
+    757,
+    1557,
+    2150,
+    146,
+    2433,
+    2080,
+    1279,
+    2971,
+    1297,
+    2399,
+    548,
+    2345,
+    249,
+    2076,
+    2430,
+    89,
+    2978,
+    1343,
+    501,
+    792,
+    2290,
+    194,
+    1983,
+    3073,
+    1879,
+    722,
+    2821,
+    685,
+    2402,
+    992,
+    319,
+    2574,
+    2775,
+    923,
+    1964,
+    1203,
+    222,
+    241,
+    2530,
+    2517,
+    669,
+    1502,
+    2511,
+    1050,
+    99,
+    2425,
+    2047,
+    611
+  ],
+  "policy": {
+    "schema_version": 1,
+    "variant": "choice-clean",
+    "dimensions_scope": [
+      "theme",
+      "type"
+    ],
+    "config": {
+      "source_repo": "microsoft/apm",
+      "model_repo": "convaiinnovations/laya-typed-decisions",
+      "model_revision": "1a793eb568e6718f15941d08f85432581df534e3",
+      "weights_sha256": "4fa56de72383a9d3efa9cfa78955733c81b9fc8067a587ca4beb82c78107a24e",
+      "runtime_source_revision": "23a17522aa4942da6cce53a995a275760320b691",
+      "device": "mps",
+      "mixed_precision": false,
+      "cpu_threads": 2,
+      "state_token_budget": 300,
+      "binary_threshold": 0.5,
+      "project_context": "APM is Microsoft's Agent Package Manager: a Python CLI for installing and distributing agent skills, instructions, prompts and agent packages across coding assistants. It includes lockfiles, MCP configuration, policy enforcement, security scanning and CI workflows.",
+      "control_contract_path": "packages/autopilot/autopilot-issue-triage-scheduler/.apm/skills/autopilot-issue-triage-scheduler/assets/label-contract.json",
+      "cpu_precision": "fp32"
+    },
+    "questions": {
+      "theme": {
+        "type": "choice",
+        "instructions": "What is the primary theme of the requested work?",
+        "criteria": {
+          "theme/governance": "policy rules, auditing, enterprise enforcement",
+          "theme/portability": "installing or deploying across environments",
+          "theme/security": "malicious content, integrity, trust boundaries",
+          "none": "none of these, other, or insufficient information"
+        }
+      },
+      "type": {
+        "type": "choice",
+        "instructions": "What is the primary kind of work requested in this issue?",
+        "criteria": {
+          "type/architecture": "new module, design pattern, interface contract",
+          "type/automation": "automation scripts, CI workflows, dependabot",
+          "type/bug": "existing behavior is broken or incorrect",
+          "type/docs": "documentation, prose, examples",
+          "type/feature": "new capability, flag, operation",
+          "type/performance": "speed, throughput, memory usage",
+          "type/refactor": "internal restructuring without behavior change",
+          "type/release": "release, version bump, distribution packaging",
+          "none": "none of these, other, or insufficient information"
+        }
+      }
+    },
+    "questions_sha256": "a31adcd431c6daf15ed1ec66422445faba807e4f147cf12ec7dd793fe3d97a60",
+    "option_counts": {
+      "theme": 4,
+      "type": 9
+    },
+    "decision_rule": "primary-argmax-with-none",
+    "excerpt_policy": "baseline-300-token-head-tail-then-strip-project-if-clean",
+    "protocol_sha256": "dbc55b2ab2100d37167d36a631f7d1134f6cf473efeba9cd28829b802a74b8ea",
+    "source_hashes": {
+      "experiments/precision_prompts.py": "a69fa88faed6136e82c14be22e856ce72f6c2e91d0c66bc5a270e67eeb2402a7",
+      "experiments/precision_protocol.py": "dc89e1cfffeb0bff3cec19d3c770c90d3deae6a4aae2c958519d5995593df698",
+      "experiment.py": "e9c744ae94e1358e0cc6814ca8615460687bce3b5f520c7ddc1cc264f68e7acc",
+      "cpu_runtime.py": "e4fd780f631b2432520a65cc1321485115b2581b771ed83545e9c5d990a759da",
+      "requirements.txt": "6d16e33eb5bc7e61da9bac75199891fedc6019b46a1bba04fdfc66fa794fb821",
+      "experiments/precision_typed_checkpoint.py": "1103860ee71a60d8da510f2973ff2c4e80d3495a73c13cf233cd76c3d6f7f9e9"
+    },
+    "model_input_fields": [
+      "title",
+      "body"
+    ],
+    "limitations": [
+      "Silver-label agreement, not verified gold precision.",
+      "Missing control dimensions are unscored, not negative.",
+      "Development screen is nested in development64, not independent.",
+      "Confirmation is reserved from new experiments only; historical baseline saw every issue.",
+      "Choice predicts at most one label per dimension; binary baseline permits multiple.",
+      "Checkpoint was trained on four synthetic workflows, not APM labels.",
+      "Checkpoint temperatures are inherited; upstream confidence is not calibrated for APM."
+    ],
+    "base_policy_sha256": "cba66c0922802eb3cc1826132a82b24fbe5b132665c844e4241a8eb1a7aff96d",
+    "checkpoint_profile": "typed-decisions-one-authorized-checkpoint",
+    "policy_sha256": "efa1c51da2cc0d50dadec46df397ba7089cc5ab83a4e79a658f91f45fc357d87"
+  },
+  "dimensions_scope": [
+    "theme",
+    "type"
+  ],
+  "option_counts": {
+    "theme": 4,
+    "type": 9
+  },
+  "source_snapshot_sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2",
+  "source_baseline_sha256": "b10dfa16d7142bc32b765b68f2a8447c92fc86f362ce3ba00a681b50b855f42e",
+  "real_inference": true,
+  "github_writes": false,
+  "prior_inference_count": 0,
+  "reuse_path": null,
+  "segments": [
+    {
+      "completed_at": "2026-09-25T12:50:48.543570+00:00",
+      "invocation_seconds": 47.4881272499988
+    }
+  ],
+  "runtime": {
+    "device": "mps",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "cpu_threads": 2,
+    "weights_sha256": "4fa56de72383a9d3efa9cfa78955733c81b9fc8067a587ca4beb82c78107a24e",
+    "mixed_precision": false,
+    "download_and_hash_seconds": 0.3852616250005667,
+    "model_load_seconds": 5.326642874999379,
+    "optimization_seconds": 0.2205257090026862,
+    "cpu_precision": "fp32",
+    "quantized_linear_modules": 0,
+    "quantization_backend": null,
+    "quantization_scope": "none",
+    "versions": {
+      "laya": "0.3.20",
+      "torch": "2.8.0",
+      "transformers": "4.57.6",
+      "huggingface_hub": "0.36.2",
+      "safetensors": "0.8.0"
+    },
+    "laya_direct_url": {
+      "url": "https://github.com/NandhaKishorM/laya.git",
+      "vcs_info": {
+        "commit_id": "23a17522aa4942da6cce53a995a275760320b691",
+        "requested_revision": "23a17522aa4942da6cce53a995a275760320b691",
+        "vcs": "git"
+      }
+    },
+    "offline": true,
+    "hf_home": "/Users/danielmeppiel/.copilot/session-state/b1b5b053-d5a6-4fe7-9567-3bd961c113e0/files/laya-cache",
+    "load_warnings": [
+      "laya: this checkpoint ships invalid temperatures or values outside [0.5, 5]; using choice:11+=0.10058280825614929 -> 0.5. Treat confidence from the affected entries as uncalibrated."
+    ]
+  },
+  "question_encoding": {
+    "theme": {
+      "instruction_tokens": 13,
+      "option_tokens": [
+        13,
+        10,
+        11,
+        11
+      ],
+      "total_head_tokens": 62,
+      "head_max_len": 256,
+      "temperature_bucket": "choice:3-5",
+      "temperature": 1.7601518630981445,
+      "rendered_options": [
+        "theme/governance: policy rules, auditing, enterprise enforcement",
+        "theme/portability: installing or deploying across environments",
+        "theme/security: malicious content, integrity, trust boundaries",
+        "none: none of these, other, or insufficient information"
+      ]
+    },
+    "type": {
+      "instruction_tokens": 15,
+      "option_tokens": [
+        13,
+        15,
+        10,
+        9,
+        10,
+        10,
+        10,
+        11,
+        11
+      ],
+      "total_head_tokens": 123,
+      "head_max_len": 256,
+      "temperature_bucket": "choice:6-10",
+      "temperature": 1.0000158548355103,
+      "rendered_options": [
+        "type/architecture: new module, design pattern, interface contract",
+        "type/automation: automation scripts, CI workflows, dependabot",
+        "type/bug: existing behavior is broken or incorrect",
+        "type/docs: documentation, prose, examples",
+        "type/feature: new capability, flag, operation",
+        "type/performance: speed, throughput, memory usage",
+        "type/refactor: internal restructuring without behavior change",
+        "type/release: release, version bump, distribution packaging",
+        "none: none of these, other, or insufficient information"
+      ]
+    }
+  },
+  "completed_at": "2026-09-25T12:50:48.536405+00:00",
+  "prediction_count": 96
+}

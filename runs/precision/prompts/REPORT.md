@@ -116,9 +116,10 @@ Change output directories to reproduce fresh inference. Frozen policies:
 - `frozen-choice-type.json`: `47490874c502cb3f408e4244a9a1c341e50385b9b19b705f8245cfc631070a20`
 - `frozen-choice-type-theme.json`: `cba66c0922802eb3cc1826132a82b24fbe5b132665c844e4241a8eb1a7aff96d`
 
-The parent can invoke `run --partition confirmation96 --frozen <policy>
---output <new-directory>` after its explicit final gate. This stream has **not**
-run that command. The summarizer refuses confirmation. Each JSONL row includes
+The parent can authorize `run --partition confirmation96 --frozen <policy>
+--output <new-directory>` after its explicit final gate. Subsequent authorized
+prediction-only runs are recorded in `confirmation-gate.json`; neither was
+scored in this stream. The summarizer refuses confirmation. Each JSONL row includes
 `number`, `proposed`, `scores`, full response, exact state, hashes and timings.
 The historic baseline saw all issues; confirmation is reserved from *new*
 experiments only. No population-level success claim is warranted before it.
