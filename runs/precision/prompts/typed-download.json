@@ -1,0 +1,43 @@
+{
+  "started_at": "2026-09-25T12:42:09.304615+00:00",
+  "status": "complete",
+  "model_repo": "convaiinnovations/laya-typed-decisions",
+  "model_revision": "1a793eb568e6718f15941d08f85432581df534e3",
+  "weights_sha256": "4fa56de72383a9d3efa9cfa78955733c81b9fc8067a587ca4beb82c78107a24e",
+  "authorized_weight_bytes": 842609220,
+  "allow_patterns": [
+    "model.safetensors",
+    "rl_agent_config.json",
+    "encoder/config.json",
+    "tokenizer/tokenizer.json",
+    "tokenizer/tokenizer_config.json"
+  ],
+  "license": "Apache-2.0",
+  "token": false,
+  "remote_python": false,
+  "completed_at": "2026-09-25T12:43:47.467928+00:00",
+  "directory": "/Users/danielmeppiel/.copilot/session-state/b1b5b053-d5a6-4fe7-9567-3bd961c113e0/files/laya-cache/hub/models--convaiinnovations--laya-typed-decisions/snapshots/1a793eb568e6718f15941d08f85432581df534e3",
+  "files": {
+    "model.safetensors": {
+      "bytes": 842609220,
+      "sha256": "4fa56de72383a9d3efa9cfa78955733c81b9fc8067a587ca4beb82c78107a24e"
+    },
+    "rl_agent_config.json": {
+      "bytes": 847,
+      "sha256": "ebf0cd524d92342a6be5e48e9fca3d7c2babfb5a56ccd79d2171ef5d8c7f7be8"
+    },
+    "encoder/config.json": {
+      "bytes": 2084,
+      "sha256": "5268d24ad3b77c8151de5dcb0762ba4391619aad9ab0bda33e36fb083cfeae6d"
+    },
+    "tokenizer/tokenizer.json": {
+      "bytes": 3583228,
+      "sha256": "6c8aaa9a542084f2457eab775d4eeb51f92a70c0fd9de28d5edb0ddec3c08d30"
+    },
+    "tokenizer/tokenizer_config.json": {
+      "bytes": 337,
+      "sha256": "08d4cf3ac4dca381759441b85b91a6d40e688471dcd33d15d6649eb0a9a854d1"
+    }
+  },
+  "download_and_verification_seconds": 99.29263445900142
+}
