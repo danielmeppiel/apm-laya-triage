@@ -258,6 +258,14 @@ def evaluate(
             for dim in DIMENSIONS
         },
         "empty_proposals": sum(not record["proposed"] for record in records),
+        "proposal_cardinality": {
+            "mean": statistics.mean(len(record["proposed"]) for record in records),
+            "median": statistics.median(len(record["proposed"]) for record in records),
+            "all_allowed_labels_issues": sum(
+                len(record["proposed"]) == len(labels) for record in records
+            ),
+            "allowed_labels": len(labels),
+        },
         "overall_observed_dimensions": aggregate(records),
         "by_dimension": {dim: aggregate(records, dim) for dim in DIMENSIONS},
         "by_cohort": {
@@ -367,6 +375,19 @@ def report_text(
         "**This measures agreement with today's labels, not whether the model understood or fixed a bug.** "
         "The controls may be incomplete, debatable, or assigned by automation. Do not read this "
         "as a production accuracy guarantee or permission to auto-label.",
+        (
+            "**Engineering verdict: inference and the workflow work; this classifier does not "
+            "demonstrate useful triage quality.** Its F1 is below the no-reading, most-common-label reference."
+            if overall["micro_f1"] is not None
+            and naive["micro_f1"] is not None
+            and overall["micro_f1"] < naive["micro_f1"]
+            else "**Engineering verdict: actual inference is demonstrated; production triage quality is not established.**"
+        ),
+        f"The model proposed an average of **{metrics['proposal_cardinality']['mean']:.2f} of "
+        f"{metrics['proposal_cardinality']['allowed_labels']} labels per issue**, including "
+        f"every allowed label on **{metrics['proposal_cardinality']['all_allowed_labels_issues']} issues**. "
+        "Proposing almost everything can produce impressive recall while being unusable for labelling; "
+        "precision and exact agreement expose that failure.",
         "",
         "## What we asked the model to do",
         "",
@@ -489,6 +510,10 @@ def report_text(
         [
             "The model does not generate explanations. A disagreement is not evidence of a verified "
             "bug in the control labels or a known reasoning process inside the model.",
+            "A successful installation or small inference smoke test only proves that the "
+            "software runs. It does not establish accuracy for this full, multi-label taxonomy. "
+            "These results apply to this checkpoint, rubric, context policy and threshold; "
+            "they do not prove that every possible Laya-based classifier would fail.",
             "",
             "## Speed and what machine did the work",
             "",
@@ -601,7 +626,7 @@ def build_report(snapshot_path: Path, run_path: Path, output: Path) -> None:
     metrics, records = evaluate(snapshot, predictions, manifest)
     write_json(run_path / "metrics.json", metrics)
     with (run_path / "proposals.csv").open("w", encoding="utf8", newline="") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(
             [
                 "issue_number",

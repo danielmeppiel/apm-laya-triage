@@ -8,10 +8,19 @@ agreement and latency, and keeps the evidence needed to repeat the experiment.
 accept work, prioritize issues, assign people, or edit milestones. "Labelling"
 here means writing **predicted labels to local files**.
 
+**Result: real inference works, but this configuration is not a useful
+automatic classifier.** The FP32 baseline matched the existing labels exactly
+on **1 of 1,079 eligible issues (0.09%)**, with **14.6% precision** and
+**25.3% F1**, below a no-reading reference's **43.2% F1**. It proposed an
+average **22.78 of 25 labels** per issue. High recall here reflects
+over-labelling, not good triage.
+
 Read [REPORT.md](REPORT.md) for the plain-English results and examples. The
-baseline covers **all 1,328 issues** in the frozen snapshot: **168 open and
-1,160 closed**, excluding pull requests. The initial full-corpus run is in
-progress; its completed evidence and report will be committed to `main`.
+completed baseline covers **all 1,328 issues** in the frozen snapshot:
+**168 open and 1,160 closed**, excluding pull requests. Actual local GPU
+inference has **7.548s median / 8.370s p95** per issue. Read
+[PERFORMANCE.md](PERFORMANCE.md) for single-issue and hosted CPU measurements.
+The model is never given the issue's existing API label list.
 
 ## Quick start
 
@@ -85,6 +94,14 @@ Choose a new run directory. The original measured run used:
 ```bash
 python experiment.py run --output runs/baseline --device mps
 ```
+
+The original FP32 baseline used the driver at commit `465eeac`. The current
+driver additionally shares the CPU precision policy and records more
+provenance, so it has a different run fingerprint. Rebuild the saved report
+with current code, or rerun into a **new** directory; do not append current
+code's output to the historical baseline. The GPU run was paused after 752
+issues for the isolated single-issue measurement, then resumed with the exact
+original driver. Per-issue latency excludes that pause.
 
 ### Refresh the current GitHub issues and labels
 

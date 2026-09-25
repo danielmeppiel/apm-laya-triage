@@ -138,6 +138,10 @@ class EvaluationTests(unittest.TestCase):
         metrics, _ = evaluate(*corpus())
         self.assertEqual(metrics["control_issues"], 3)
         self.assertEqual(metrics["unscored_issues"], 1)
+        self.assertEqual(metrics["proposal_cardinality"]["mean"], 2.0)
+        self.assertEqual(
+            metrics["proposal_cardinality"]["all_allowed_labels_issues"], 0
+        )
         overall = metrics["overall_observed_dimensions"]
         self.assertEqual(overall["exact_matches"], 2)
         self.assertAlmostEqual(overall["exact_agreement"], 2 / 3)
@@ -272,6 +276,7 @@ class EvaluationTests(unittest.TestCase):
             self.assertEqual(len(proposals), 4)
             self.assertEqual(proposals[0]["title"], "'=1+1")
             self.assertEqual(proposals[2]["observed_dimensions_exact_match"], "")
+            self.assertNotIn(b"\r\n", (run_path / "proposals.csv").read_bytes())
 
 
 if __name__ == "__main__":
