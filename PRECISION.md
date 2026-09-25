@@ -118,8 +118,8 @@ confirmation controls**. No policies were retuned on confirmation.
 The main development findings were:
 
 - Changing raw Laya cutoffs or picking its highest raw scores was not
-  enough. Per-label isotonic calibration helped ranking, but the joint
-  25-score logistic model was stronger.
+  enough. Per-label isotonic calibration improved comparisons between
+  labels' scores, but the joint 25-score logistic model was stronger.
 - Cheap word TF-IDF plus one-vs-rest logistic regression provided the
   largest useful gain. Weighting the title three times added only about
   0.001 F1. Five-neighbor text retrieval did not beat logistic regression.
