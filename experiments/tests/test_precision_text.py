@@ -17,6 +17,7 @@ from experiments.precision_text import (
     agreement_metrics,
     choose_dimension_policy,
     choose_policies,
+    load_excerpt_inputs,
     policy_predict,
     predict_records,
     read_selected_scores,
@@ -245,6 +246,41 @@ class TextBaselineTests(unittest.TestCase):
             path.write_text(json.dumps({"schema_version": 1, "manifest_sha256": "wrong"}))
             with self.assertRaisesRegex(ValueError, "content hash"):
                 refit_frozen(path, "balanced", Path(directory))
+
+    def test_excerpt_override_is_exact_budget_and_reserved_ids_are_rejected(self):
+        protocol = {"splits": {
+            "fit": {"control_ids": [1]}, "development": {"control_ids": [2]},
+            "confirmation": {"control_ids": [3]},
+        }}
+        excerpt_rows = []
+        baseline = []
+        for issue in TEXTS[:2]:
+            state = f"Title: {issue['title']}\nBody: retained exact body"
+            excerpt_rows.append({
+                "number": issue["number"], "state": state, "state_sha256": digest(state),
+                "input_sha256": digest({"title": issue["title"], "body": issue["body"]}),
+                "baseline_state_sha256": "baseline-" + str(issue["number"]),
+                "used_state_tokens": 20, "shortened": True,
+            })
+            baseline.append({"number": issue["number"],
+                             "state_sha256": "baseline-" + str(issue["number"])})
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "excerpts.jsonl"
+            baseline_path = Path(directory) / "baseline.jsonl"
+            baseline_path.write_text("".join(json.dumps(row) + "\n" for row in baseline))
+            path.write_text("".join(json.dumps(row) + "\n" for row in excerpt_rows))
+            inputs, compact = load_excerpt_inputs(path, protocol, {"issues": TEXTS}, baseline_path)
+            self.assertEqual(set(inputs), {1, 2})
+            self.assertEqual(inputs[1]["title"], TEXTS[0]["title"])
+            self.assertEqual(inputs[1]["body"], "retained exact body")
+            self.assertEqual(len(compact), 2)
+            for modification in ({"number": 3}, {"state_sha256": "wrong"},
+                                 {"baseline_state_sha256": "wrong"}, {"used_state_tokens": 301}):
+                changed = copy.deepcopy(excerpt_rows)
+                changed[0].update(modification)
+                path.write_text("".join(json.dumps(row) + "\n" for row in changed))
+                with self.assertRaises(ValueError):
+                    load_excerpt_inputs(path, protocol, {"issues": TEXTS}, baseline_path)
 
 
 if __name__ == "__main__":

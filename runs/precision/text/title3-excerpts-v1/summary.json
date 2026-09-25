@@ -1,0 +1,1340 @@
+{
+  "schema_version": 1,
+  "stage": "development_selection_only",
+  "fit_count": 677,
+  "development_count": 214,
+  "protocol_sha256": "dbc55b2ab2100d37167d36a631f7d1134f6cf473efeba9cd28829b802a74b8ea",
+  "snapshot_sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2",
+  "baseline_sha256": "b10dfa16d7142bc32b765b68f2a8447c92fc86f362ce3ba00a681b50b855f42e",
+  "code_sha256": "64a457a999dac2a7e4185b97aef492236af09dd875be1fc39b115b4a19117405",
+  "dependency_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "model": {
+    "config": {
+      "kind": "word",
+      "title_weight": 3,
+      "c": 4.0,
+      "score_weight": 0.25,
+      "max_features": 15000,
+      "min_df": 2,
+      "neighbors": 5,
+      "strip_title_tags": false
+    },
+    "labels": [
+      "area/audit-policy",
+      "area/ci-cd",
+      "area/cli",
+      "area/content-security",
+      "area/distribution",
+      "area/docs-site",
+      "area/enterprise",
+      "area/lockfile",
+      "area/marketplace",
+      "area/mcp-config",
+      "area/mcp-trust",
+      "area/multi-target",
+      "area/package-authoring",
+      "area/testing",
+      "theme/governance",
+      "theme/portability",
+      "theme/security",
+      "type/architecture",
+      "type/automation",
+      "type/bug",
+      "type/docs",
+      "type/feature",
+      "type/performance",
+      "type/refactor",
+      "type/release"
+    ],
+    "fit_seconds": 0.20958279100159416,
+    "training_support": {
+      "area/audit-policy": {
+        "observed_issues": 469,
+        "positive_issues": 35,
+        "negative_issues": 434,
+        "fit_status": "learned"
+      },
+      "area/ci-cd": {
+        "observed_issues": 469,
+        "positive_issues": 29,
+        "negative_issues": 440,
+        "fit_status": "learned"
+      },
+      "area/cli": {
+        "observed_issues": 469,
+        "positive_issues": 210,
+        "negative_issues": 259,
+        "fit_status": "learned"
+      },
+      "area/content-security": {
+        "observed_issues": 469,
+        "positive_issues": 16,
+        "negative_issues": 453,
+        "fit_status": "learned"
+      },
+      "area/distribution": {
+        "observed_issues": 469,
+        "positive_issues": 46,
+        "negative_issues": 423,
+        "fit_status": "learned"
+      },
+      "area/docs-site": {
+        "observed_issues": 469,
+        "positive_issues": 58,
+        "negative_issues": 411,
+        "fit_status": "learned"
+      },
+      "area/enterprise": {
+        "observed_issues": 469,
+        "positive_issues": 22,
+        "negative_issues": 447,
+        "fit_status": "learned"
+      },
+      "area/lockfile": {
+        "observed_issues": 469,
+        "positive_issues": 55,
+        "negative_issues": 414,
+        "fit_status": "learned"
+      },
+      "area/marketplace": {
+        "observed_issues": 469,
+        "positive_issues": 44,
+        "negative_issues": 425,
+        "fit_status": "learned"
+      },
+      "area/mcp-config": {
+        "observed_issues": 469,
+        "positive_issues": 43,
+        "negative_issues": 426,
+        "fit_status": "learned"
+      },
+      "area/mcp-trust": {
+        "observed_issues": 469,
+        "positive_issues": 8,
+        "negative_issues": 461,
+        "fit_status": "learned"
+      },
+      "area/multi-target": {
+        "observed_issues": 469,
+        "positive_issues": 62,
+        "negative_issues": 407,
+        "fit_status": "learned"
+      },
+      "area/package-authoring": {
+        "observed_issues": 469,
+        "positive_issues": 31,
+        "negative_issues": 438,
+        "fit_status": "learned"
+      },
+      "area/testing": {
+        "observed_issues": 469,
+        "positive_issues": 38,
+        "negative_issues": 431,
+        "fit_status": "learned"
+      },
+      "theme/governance": {
+        "observed_issues": 292,
+        "positive_issues": 60,
+        "negative_issues": 232,
+        "fit_status": "learned"
+      },
+      "theme/portability": {
+        "observed_issues": 292,
+        "positive_issues": 182,
+        "negative_issues": 110,
+        "fit_status": "learned"
+      },
+      "theme/security": {
+        "observed_issues": 292,
+        "positive_issues": 68,
+        "negative_issues": 224,
+        "fit_status": "learned"
+      },
+      "type/architecture": {
+        "observed_issues": 671,
+        "positive_issues": 19,
+        "negative_issues": 652,
+        "fit_status": "learned"
+      },
+      "type/automation": {
+        "observed_issues": 671,
+        "positive_issues": 136,
+        "negative_issues": 535,
+        "fit_status": "learned"
+      },
+      "type/bug": {
+        "observed_issues": 671,
+        "positive_issues": 289,
+        "negative_issues": 382,
+        "fit_status": "learned"
+      },
+      "type/docs": {
+        "observed_issues": 671,
+        "positive_issues": 89,
+        "negative_issues": 582,
+        "fit_status": "learned"
+      },
+      "type/feature": {
+        "observed_issues": 671,
+        "positive_issues": 212,
+        "negative_issues": 459,
+        "fit_status": "learned"
+      },
+      "type/performance": {
+        "observed_issues": 671,
+        "positive_issues": 37,
+        "negative_issues": 634,
+        "fit_status": "learned"
+      },
+      "type/refactor": {
+        "observed_issues": 671,
+        "positive_issues": 17,
+        "negative_issues": 654,
+        "fit_status": "learned"
+      },
+      "type/release": {
+        "observed_issues": 671,
+        "positive_issues": 1,
+        "negative_issues": 670,
+        "fit_status": "learned"
+      }
+    },
+    "vocabulary_size": 9750,
+    "empty_vocabulary": false,
+    "cpu_threads": 1,
+    "feature_fields": [
+      "title",
+      "body"
+    ],
+    "score_semantics": "Supervised silver-reference agreement scores; not adjudicated or calibration-validated.",
+    "nearest_zero_similarity": "Fit observed-dimension prevalence"
+  },
+  "threshold_grid": [
+    0.05,
+    0.075,
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2,
+    0.225,
+    0.25,
+    0.275,
+    0.3,
+    0.325,
+    0.35,
+    0.375,
+    0.4,
+    0.425,
+    0.45,
+    0.475,
+    0.5,
+    0.525,
+    0.55,
+    0.575,
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7,
+    0.725,
+    0.75,
+    0.775,
+    0.8,
+    0.825,
+    0.85,
+    0.875,
+    0.9,
+    0.925,
+    0.95
+  ],
+  "precision_recall_floor": 0.5,
+  "latency": {
+    "fit_seconds": 0.20958279100159416,
+    "development_batch_seconds": 0.016838125004142057,
+    "amortized_issue_seconds": 7.868282712215915e-05,
+    "single_issue_sample_count": 16,
+    "single_issue_median_seconds": 0.0018372495032963343,
+    "single_issue_p95_seconds": 0.002197333747972152,
+    "scope": "In-process preprocessing and classical classifier only; excludes startup, disk IO and cached Laya generation."
+  },
+  "policies": {
+    "balanced": {
+      "policy": {
+        "kind": "threshold",
+        "threshold": 0.3
+      },
+      "metrics": {
+        "overall_observed_dimensions": {
+          "control_issues": 214,
+          "exact_matches": 107,
+          "exact_agreement": 0.5,
+          "exact_agreement_95ci": {
+            "lower": 0.4336030963436888,
+            "upper": 0.5663969036563112
+          },
+          "true_positives": 403,
+          "false_positives": 116,
+          "false_negatives": 162,
+          "precision": 0.7764932562620424,
+          "recall": 0.7132743362831858,
+          "micro_f1": 0.7435424354243543,
+          "mean_jaccard": 0.7179238985313752
+        },
+        "by_dimension": {
+          "type": {
+            "control_issues": 212,
+            "exact_matches": 168,
+            "exact_agreement": 0.7924528301886793,
+            "exact_agreement_95ci": {
+              "lower": 0.7328945303950045,
+              "upper": 0.8416012160547564
+            },
+            "true_positives": 241,
+            "false_positives": 42,
+            "false_negatives": 17,
+            "precision": 0.8515901060070671,
+            "recall": 0.9341085271317829,
+            "micro_f1": 0.8909426987060998,
+            "mean_jaccard": 0.8655660377358491,
+            "prediction_coverage": 0.9905660377358491
+          },
+          "area": {
+            "control_issues": 145,
+            "exact_matches": 57,
+            "exact_agreement": 0.3931034482758621,
+            "exact_agreement_95ci": {
+              "lower": 0.3173450841066292,
+              "upper": 0.47437961245560356
+            },
+            "true_positives": 99,
+            "false_positives": 32,
+            "false_negatives": 114,
+            "precision": 0.7557251908396947,
+            "recall": 0.4647887323943662,
+            "micro_f1": 0.5755813953488372,
+            "mean_jaccard": 0.5097701149425288,
+            "prediction_coverage": 0.8068965517241379
+          },
+          "theme": {
+            "control_issues": 91,
+            "exact_matches": 49,
+            "exact_agreement": 0.5384615384615384,
+            "exact_agreement_95ci": {
+              "lower": 0.43656172336109367,
+              "upper": 0.6372456609520694
+            },
+            "true_positives": 63,
+            "false_positives": 42,
+            "false_negatives": 31,
+            "precision": 0.6,
+            "recall": 0.6702127659574468,
+            "micro_f1": 0.6331658291457286,
+            "mean_jaccard": 0.6135531135531136,
+            "prediction_coverage": 1.0
+          }
+        },
+        "per_label": {
+          "area/audit-policy": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 3,
+            "true_positives": 3,
+            "false_positives": 0,
+            "false_negatives": 5,
+            "precision": 1.0,
+            "recall": 0.375,
+            "f1": 0.5454545454545454,
+            "precision_95ci": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.13684428582359742,
+              "upper": 0.6942576053973727
+            }
+          },
+          "area/ci-cd": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 3,
+            "true_positives": 2,
+            "false_positives": 1,
+            "false_negatives": 8,
+            "precision": 0.6666666666666666,
+            "recall": 0.2,
+            "f1": 0.3076923076923077,
+            "precision_95ci": {
+              "lower": 0.2076596008020477,
+              "upper": 0.9385080552796037
+            },
+            "recall_95ci": {
+              "lower": 0.05668215145437519,
+              "upper": 0.5098375284633583
+            }
+          },
+          "area/cli": {
+            "control_issues_in_dimension": 145,
+            "support": 76,
+            "proposed_count": 94,
+            "true_positives": 66,
+            "false_positives": 28,
+            "false_negatives": 10,
+            "precision": 0.7021276595744681,
+            "recall": 0.868421052631579,
+            "f1": 0.7764705882352941,
+            "precision_95ci": {
+              "lower": 0.6032278520902814,
+              "upper": 0.7851555638769665
+            },
+            "recall_95ci": {
+              "lower": 0.7744588056311937,
+              "upper": 0.9269311843208105
+            }
+          },
+          "area/content-security": {
+            "control_issues_in_dimension": 145,
+            "support": 4,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "area/distribution": {
+            "control_issues_in_dimension": 145,
+            "support": 17,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 16,
+            "precision": 1.0,
+            "recall": 0.058823529411764705,
+            "f1": 0.1111111111111111,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.010460400984997592,
+              "upper": 0.26982030637575405
+            }
+          },
+          "area/docs-site": {
+            "control_issues_in_dimension": 145,
+            "support": 23,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 22,
+            "precision": 1.0,
+            "recall": 0.043478260869565216,
+            "f1": 0.08333333333333333,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.007716666143453149,
+              "upper": 0.20991155070258877
+            }
+          },
+          "area/enterprise": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.32440756488388023
+            }
+          },
+          "area/lockfile": {
+            "control_issues_in_dimension": 145,
+            "support": 14,
+            "proposed_count": 5,
+            "true_positives": 4,
+            "false_positives": 1,
+            "false_negatives": 10,
+            "precision": 0.8,
+            "recall": 0.2857142857142857,
+            "f1": 0.42105263157894735,
+            "precision_95ci": {
+              "lower": 0.37553462976252533,
+              "upper": 0.9637758913675698
+            },
+            "recall_95ci": {
+              "lower": 0.11721378644576919,
+              "upper": 0.5464908432989318
+            }
+          },
+          "area/marketplace": {
+            "control_issues_in_dimension": 145,
+            "support": 11,
+            "proposed_count": 10,
+            "true_positives": 9,
+            "false_positives": 1,
+            "false_negatives": 2,
+            "precision": 0.9,
+            "recall": 0.8181818181818182,
+            "f1": 0.8571428571428571,
+            "precision_95ci": {
+              "lower": 0.5958499732047615,
+              "upper": 0.9821237869049271
+            },
+            "recall_95ci": {
+              "lower": 0.523019438039156,
+              "upper": 0.9486323102539149
+            }
+          },
+          "area/mcp-config": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 7,
+            "true_positives": 7,
+            "false_positives": 0,
+            "false_negatives": 3,
+            "precision": 1.0,
+            "recall": 0.7,
+            "f1": 0.8235294117647058,
+            "precision_95ci": {
+              "lower": 0.6456695649333126,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.39677814746114537,
+              "upper": 0.8922087325936989
+            }
+          },
+          "area/mcp-trust": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "area/multi-target": {
+            "control_issues_in_dimension": 145,
+            "support": 15,
+            "proposed_count": 7,
+            "true_positives": 6,
+            "false_positives": 1,
+            "false_negatives": 9,
+            "precision": 0.8571428571428571,
+            "recall": 0.4,
+            "f1": 0.5454545454545454,
+            "precision_95ci": {
+              "lower": 0.4868721707256811,
+              "upper": 0.9743203756552565
+            },
+            "recall_95ci": {
+              "lower": 0.1982449614134158,
+              "upper": 0.6425316987937539
+            }
+          },
+          "area/package-authoring": {
+            "control_issues_in_dimension": 145,
+            "support": 13,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 13,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.22809537235419838
+            }
+          },
+          "area/testing": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "theme/governance": {
+            "control_issues_in_dimension": 91,
+            "support": 20,
+            "proposed_count": 7,
+            "true_positives": 4,
+            "false_positives": 3,
+            "false_negatives": 16,
+            "precision": 0.5714285714285714,
+            "recall": 0.2,
+            "f1": 0.2962962962962963,
+            "precision_95ci": {
+              "lower": 0.2504583645276572,
+              "upper": 0.8417801447485302
+            },
+            "recall_95ci": {
+              "lower": 0.08065766257979806,
+              "upper": 0.41601743225189364
+            }
+          },
+          "theme/portability": {
+            "control_issues_in_dimension": 91,
+            "support": 52,
+            "proposed_count": 88,
+            "true_positives": 52,
+            "false_positives": 36,
+            "false_negatives": 0,
+            "precision": 0.5909090909090909,
+            "recall": 1.0,
+            "f1": 0.7428571428571429,
+            "precision_95ci": {
+              "lower": 0.4864808526118738,
+              "upper": 0.6877324079945095
+            },
+            "recall_95ci": {
+              "lower": 0.9312077638761376,
+              "upper": 1.0
+            }
+          },
+          "theme/security": {
+            "control_issues_in_dimension": 91,
+            "support": 22,
+            "proposed_count": 10,
+            "true_positives": 7,
+            "false_positives": 3,
+            "false_negatives": 15,
+            "precision": 0.7,
+            "recall": 0.3181818181818182,
+            "f1": 0.4375,
+            "precision_95ci": {
+              "lower": 0.39677814746114537,
+              "upper": 0.8922087325936989
+            },
+            "recall_95ci": {
+              "lower": 0.1636059318135624,
+              "upper": 0.5268140225895723
+            }
+          },
+          "type/architecture": {
+            "control_issues_in_dimension": 212,
+            "support": 5,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": 1.0,
+            "recall": 0.2,
+            "f1": 0.3333333333333333,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.03622410863243014,
+              "upper": 0.6244653702374747
+            }
+          },
+          "type/automation": {
+            "control_issues_in_dimension": 212,
+            "support": 48,
+            "proposed_count": 46,
+            "true_positives": 46,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": 1.0,
+            "recall": 0.9583333333333334,
+            "f1": 0.9787234042553191,
+            "precision_95ci": {
+              "lower": 0.9229264369144198,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.8602434412954456,
+              "upper": 0.9884981065106133
+            }
+          },
+          "type/bug": {
+            "control_issues_in_dimension": 212,
+            "support": 92,
+            "proposed_count": 113,
+            "true_positives": 91,
+            "false_positives": 22,
+            "false_negatives": 1,
+            "precision": 0.8053097345132744,
+            "recall": 0.9891304347826086,
+            "f1": 0.8878048780487805,
+            "precision_95ci": {
+              "lower": 0.7227771200548647,
+              "upper": 0.8677666877376071
+            },
+            "recall_95ci": {
+              "lower": 0.9409721438693747,
+              "upper": 0.9980786709599082
+            }
+          },
+          "type/docs": {
+            "control_issues_in_dimension": 212,
+            "support": 32,
+            "proposed_count": 31,
+            "true_positives": 27,
+            "false_positives": 4,
+            "false_negatives": 5,
+            "precision": 0.8709677419354839,
+            "recall": 0.84375,
+            "f1": 0.8571428571428571,
+            "precision_95ci": {
+              "lower": 0.7114759374369357,
+              "upper": 0.9486571562537085
+            },
+            "recall_95ci": {
+              "lower": 0.682458504024696,
+              "upper": 0.9313557971749429
+            }
+          },
+          "type/feature": {
+            "control_issues_in_dimension": 212,
+            "support": 60,
+            "proposed_count": 75,
+            "true_positives": 59,
+            "false_positives": 16,
+            "false_negatives": 1,
+            "precision": 0.7866666666666666,
+            "recall": 0.9833333333333333,
+            "f1": 0.8740740740740741,
+            "precision_95ci": {
+              "lower": 0.6812003421070318,
+              "upper": 0.8641979882028261
+            },
+            "recall_95ci": {
+              "lower": 0.9114487027240993,
+              "upper": 0.9970518402052136
+            }
+          },
+          "type/performance": {
+            "control_issues_in_dimension": 212,
+            "support": 15,
+            "proposed_count": 15,
+            "true_positives": 15,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "precision_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            }
+          },
+          "type/refactor": {
+            "control_issues_in_dimension": 212,
+            "support": 6,
+            "proposed_count": 2,
+            "true_positives": 2,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1": 0.5,
+            "precision_95ci": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.09677141110578041,
+              "upper": 0.700006684861608
+            }
+          },
+          "type/release": {
+            "control_issues_in_dimension": 212,
+            "support": 0,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "precision_95ci": null,
+            "recall_95ci": null
+          }
+        },
+        "issue_prediction_coverage": 1.0,
+        "observed_issue_prediction_coverage": 0.9953271028037384,
+        "mean_labels_all_dimensions": 3.3457943925233646,
+        "mean_labels_observed_dimensions": 2.425233644859813,
+        "total_labels_all_dimensions": 716,
+        "total_labels_observed_dimensions": 519,
+        "unscored_proposals": 197
+      }
+    },
+    "precision_first": {
+      "policy": {
+        "kind": "threshold",
+        "threshold": 0.625
+      },
+      "metrics": {
+        "overall_observed_dimensions": {
+          "control_issues": 214,
+          "exact_matches": 90,
+          "exact_agreement": 0.4205607476635514,
+          "exact_agreement_95ci": {
+            "lower": 0.35639308934657565,
+            "upper": 0.4875301005546383
+          },
+          "true_positives": 285,
+          "false_positives": 19,
+          "false_negatives": 280,
+          "precision": 0.9375,
+          "recall": 0.504424778761062,
+          "micro_f1": 0.6559263521288837,
+          "mean_jaccard": 0.5895304850912327
+        },
+        "by_dimension": {
+          "type": {
+            "control_issues": 212,
+            "exact_matches": 156,
+            "exact_agreement": 0.7358490566037735,
+            "exact_agreement_95ci": {
+              "lower": 0.672685157232874,
+              "upper": 0.7906178640975783
+            },
+            "true_positives": 203,
+            "false_positives": 4,
+            "false_negatives": 55,
+            "precision": 0.9806763285024155,
+            "recall": 0.7868217054263565,
+            "micro_f1": 0.8731182795698925,
+            "mean_jaccard": 0.7476415094339622,
+            "prediction_coverage": 0.7641509433962265
+          },
+          "area": {
+            "control_issues": 145,
+            "exact_matches": 35,
+            "exact_agreement": 0.2413793103448276,
+            "exact_agreement_95ci": {
+              "lower": 0.17898462510957547,
+              "upper": 0.31712351173453623
+            },
+            "true_positives": 38,
+            "false_positives": 0,
+            "false_negatives": 175,
+            "precision": 1.0,
+            "recall": 0.1784037558685446,
+            "micro_f1": 0.30278884462151395,
+            "mean_jaccard": 0.2517241379310345,
+            "prediction_coverage": 0.2620689655172414
+          },
+          "theme": {
+            "control_issues": 91,
+            "exact_matches": 44,
+            "exact_agreement": 0.4835164835164835,
+            "exact_agreement_95ci": {
+              "lower": 0.3836085805153106,
+              "upper": 0.5847596833504768
+            },
+            "true_positives": 44,
+            "false_positives": 15,
+            "false_negatives": 50,
+            "precision": 0.7457627118644068,
+            "recall": 0.46808510638297873,
+            "micro_f1": 0.5751633986928104,
+            "mean_jaccard": 0.4835164835164835,
+            "prediction_coverage": 0.6483516483516484
+          }
+        },
+        "per_label": {
+          "area/audit-policy": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.32440756488388023
+            }
+          },
+          "area/ci-cd": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 10,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.2775327998628892
+            }
+          },
+          "area/cli": {
+            "control_issues_in_dimension": 145,
+            "support": 76,
+            "proposed_count": 37,
+            "true_positives": 37,
+            "false_positives": 0,
+            "false_negatives": 39,
+            "precision": 1.0,
+            "recall": 0.4868421052631579,
+            "f1": 0.6548672566371682,
+            "precision_95ci": {
+              "lower": 0.9059421741627975,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.3778372877915117,
+              "upper": 0.5971130697102026
+            }
+          },
+          "area/content-security": {
+            "control_issues_in_dimension": 145,
+            "support": 4,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "area/distribution": {
+            "control_issues_in_dimension": 145,
+            "support": 17,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 17,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.1843181350088518
+            }
+          },
+          "area/docs-site": {
+            "control_issues_in_dimension": 145,
+            "support": 23,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 23,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.14311661845042686
+            }
+          },
+          "area/enterprise": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.32440756488388023
+            }
+          },
+          "area/lockfile": {
+            "control_issues_in_dimension": 145,
+            "support": 14,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 14,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 1.3877787807814457e-17,
+              "upper": 0.2153108027376358
+            }
+          },
+          "area/marketplace": {
+            "control_issues_in_dimension": 145,
+            "support": 11,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 11,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.2588329669680317
+            }
+          },
+          "area/mcp-config": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 9,
+            "precision": 1.0,
+            "recall": 0.1,
+            "f1": 0.18181818181818182,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.017876213095072896,
+              "upper": 0.4041500267952385
+            }
+          },
+          "area/mcp-trust": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "area/multi-target": {
+            "control_issues_in_dimension": 145,
+            "support": 15,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 15,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.20388330103584862
+            }
+          },
+          "area/package-authoring": {
+            "control_issues_in_dimension": 145,
+            "support": 13,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 13,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.22809537235419838
+            }
+          },
+          "area/testing": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "theme/governance": {
+            "control_issues_in_dimension": 91,
+            "support": 20,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 20,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.16112515805281938
+            }
+          },
+          "theme/portability": {
+            "control_issues_in_dimension": 91,
+            "support": 52,
+            "proposed_count": 58,
+            "true_positives": 43,
+            "false_positives": 15,
+            "false_negatives": 9,
+            "precision": 0.7413793103448276,
+            "recall": 0.8269230769230769,
+            "f1": 0.7818181818181819,
+            "precision_95ci": {
+              "lower": 0.6162261423525959,
+              "upper": 0.8365445479570304
+            },
+            "recall_95ci": {
+              "lower": 0.702691358755192,
+              "upper": 0.9061752560868979
+            }
+          },
+          "theme/security": {
+            "control_issues_in_dimension": 91,
+            "support": 22,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 21,
+            "precision": 1.0,
+            "recall": 0.045454545454545456,
+            "f1": 0.08695652173913043,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.00806942762126385,
+              "upper": 0.21798045838657332
+            }
+          },
+          "type/architecture": {
+            "control_issues_in_dimension": 212,
+            "support": 5,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 5,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.43448246478317476
+            }
+          },
+          "type/automation": {
+            "control_issues_in_dimension": 212,
+            "support": 48,
+            "proposed_count": 46,
+            "true_positives": 46,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": 1.0,
+            "recall": 0.9583333333333334,
+            "f1": 0.9787234042553191,
+            "precision_95ci": {
+              "lower": 0.9229264369144198,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.8602434412954456,
+              "upper": 0.9884981065106133
+            }
+          },
+          "type/bug": {
+            "control_issues_in_dimension": 212,
+            "support": 92,
+            "proposed_count": 82,
+            "true_positives": 82,
+            "false_positives": 0,
+            "false_negatives": 10,
+            "precision": 1.0,
+            "recall": 0.8913043478260869,
+            "f1": 0.9425287356321839,
+            "precision_95ci": {
+              "lower": 0.9552493763098998,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.8113621754329581,
+              "upper": 0.9398784764304682
+            }
+          },
+          "type/docs": {
+            "control_issues_in_dimension": 212,
+            "support": 32,
+            "proposed_count": 30,
+            "true_positives": 27,
+            "false_positives": 3,
+            "false_negatives": 5,
+            "precision": 0.9,
+            "recall": 0.84375,
+            "f1": 0.8709677419354839,
+            "precision_95ci": {
+              "lower": 0.7437891742081593,
+              "upper": 0.9654001112526658
+            },
+            "recall_95ci": {
+              "lower": 0.682458504024696,
+              "upper": 0.9313557971749429
+            }
+          },
+          "type/feature": {
+            "control_issues_in_dimension": 212,
+            "support": 60,
+            "proposed_count": 34,
+            "true_positives": 33,
+            "false_positives": 1,
+            "false_negatives": 27,
+            "precision": 0.9705882352941176,
+            "recall": 0.55,
+            "f1": 0.7021276595744681,
+            "precision_95ci": {
+              "lower": 0.8508442670731406,
+              "upper": 0.9947890937237309
+            },
+            "recall_95ci": {
+              "lower": 0.4249193588533434,
+              "upper": 0.6690634559324476
+            }
+          },
+          "type/performance": {
+            "control_issues_in_dimension": 212,
+            "support": 15,
+            "proposed_count": 15,
+            "true_positives": 15,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "precision_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            }
+          },
+          "type/refactor": {
+            "control_issues_in_dimension": 212,
+            "support": 6,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 6,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 2.7755575615628914e-17,
+              "upper": 0.3903342879021653
+            }
+          },
+          "type/release": {
+            "control_issues_in_dimension": 212,
+            "support": 0,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "precision_95ci": null,
+            "recall_95ci": null
+          }
+        },
+        "issue_prediction_coverage": 0.8364485981308412,
+        "observed_issue_prediction_coverage": 0.822429906542056,
+        "mean_labels_all_dimensions": 1.6635514018691588,
+        "mean_labels_observed_dimensions": 1.4205607476635513,
+        "total_labels_all_dimensions": 356,
+        "total_labels_observed_dimensions": 304,
+        "unscored_proposals": 52
+      }
+    }
+  },
+  "limitations": [
+    "All-corpus results were previously inspected; confirmation is reserved from NEW experiments only, not never-seen data.",
+    "Text-only splitting is not label-stratified; label and dimension support can differ or be absent.",
+    "Near-duplicate grouping is lexical, not semantic; paraphrases may remain across splits.",
+    "Exact shared titles/bodies and transitive closure can overgroup templates or generic reports.",
+    "Unbalanced group sizes mean realized fractions need not equal targets exactly.",
+    "Control-label presence is used only for eligibility after assignment, not for outcome-based selection.",
+    "The development screen and full development are reused for selection, not independent validation.",
+    "This model is supervised on current silver labels, not zero-shot Laya.",
+    "Selection reuses the full development set; development is not confirmation.",
+    "Unobserved dimensions are excluded from target fitting and agreement metrics.",
+    "No neural inference is run; hybrid and scores reuse pre-existing Laya outputs."
+  ],
+  "text_budget_diagnostic": {
+    "source_excerpts_sha256": "2a723267e8bb8957b4333ec3c13e7962f0fd2365f3c1d403c8e3b31c20cdf230",
+    "row_count": 891,
+    "shortened_rows": 825,
+    "method": "Exact baseline300-token head/tail states, removing only fixed Project prefix; parse retained Title/Body markers and reuse title_weight=3. No extra source text.",
+    "selection_eligible": false,
+    "all_original_input_and_baseline_state_hashes_verified": true
+  }
+}

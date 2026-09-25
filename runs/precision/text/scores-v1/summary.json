@@ -1,0 +1,1334 @@
+{
+  "schema_version": 1,
+  "stage": "development_selection_only",
+  "fit_count": 677,
+  "development_count": 214,
+  "protocol_sha256": "dbc55b2ab2100d37167d36a631f7d1134f6cf473efeba9cd28829b802a74b8ea",
+  "snapshot_sha256": "faaf10e8fc748a49cf1376045b8ce8eec9bf983374f6b67a9f4835911e0229f2",
+  "baseline_sha256": "b10dfa16d7142bc32b765b68f2a8447c92fc86f362ce3ba00a681b50b855f42e",
+  "code_sha256": "c7b41b71318ded9d2a876b1fb743c762ea525f75a6bf420360ddfdebd047b09c",
+  "dependency_versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "model": {
+    "config": {
+      "kind": "scores",
+      "title_weight": 1,
+      "c": 4.0,
+      "score_weight": 0.25,
+      "max_features": 15000,
+      "min_df": 2,
+      "neighbors": 5
+    },
+    "labels": [
+      "area/audit-policy",
+      "area/ci-cd",
+      "area/cli",
+      "area/content-security",
+      "area/distribution",
+      "area/docs-site",
+      "area/enterprise",
+      "area/lockfile",
+      "area/marketplace",
+      "area/mcp-config",
+      "area/mcp-trust",
+      "area/multi-target",
+      "area/package-authoring",
+      "area/testing",
+      "theme/governance",
+      "theme/portability",
+      "theme/security",
+      "type/architecture",
+      "type/automation",
+      "type/bug",
+      "type/docs",
+      "type/feature",
+      "type/performance",
+      "type/refactor",
+      "type/release"
+    ],
+    "fit_seconds": 0.04401258399593644,
+    "training_support": {
+      "area/audit-policy": {
+        "observed_issues": 469,
+        "positive_issues": 35,
+        "negative_issues": 434,
+        "fit_status": "learned"
+      },
+      "area/ci-cd": {
+        "observed_issues": 469,
+        "positive_issues": 29,
+        "negative_issues": 440,
+        "fit_status": "learned"
+      },
+      "area/cli": {
+        "observed_issues": 469,
+        "positive_issues": 210,
+        "negative_issues": 259,
+        "fit_status": "learned"
+      },
+      "area/content-security": {
+        "observed_issues": 469,
+        "positive_issues": 16,
+        "negative_issues": 453,
+        "fit_status": "learned"
+      },
+      "area/distribution": {
+        "observed_issues": 469,
+        "positive_issues": 46,
+        "negative_issues": 423,
+        "fit_status": "learned"
+      },
+      "area/docs-site": {
+        "observed_issues": 469,
+        "positive_issues": 58,
+        "negative_issues": 411,
+        "fit_status": "learned"
+      },
+      "area/enterprise": {
+        "observed_issues": 469,
+        "positive_issues": 22,
+        "negative_issues": 447,
+        "fit_status": "learned"
+      },
+      "area/lockfile": {
+        "observed_issues": 469,
+        "positive_issues": 55,
+        "negative_issues": 414,
+        "fit_status": "learned"
+      },
+      "area/marketplace": {
+        "observed_issues": 469,
+        "positive_issues": 44,
+        "negative_issues": 425,
+        "fit_status": "learned"
+      },
+      "area/mcp-config": {
+        "observed_issues": 469,
+        "positive_issues": 43,
+        "negative_issues": 426,
+        "fit_status": "learned"
+      },
+      "area/mcp-trust": {
+        "observed_issues": 469,
+        "positive_issues": 8,
+        "negative_issues": 461,
+        "fit_status": "learned"
+      },
+      "area/multi-target": {
+        "observed_issues": 469,
+        "positive_issues": 62,
+        "negative_issues": 407,
+        "fit_status": "learned"
+      },
+      "area/package-authoring": {
+        "observed_issues": 469,
+        "positive_issues": 31,
+        "negative_issues": 438,
+        "fit_status": "learned"
+      },
+      "area/testing": {
+        "observed_issues": 469,
+        "positive_issues": 38,
+        "negative_issues": 431,
+        "fit_status": "learned"
+      },
+      "theme/governance": {
+        "observed_issues": 292,
+        "positive_issues": 60,
+        "negative_issues": 232,
+        "fit_status": "learned"
+      },
+      "theme/portability": {
+        "observed_issues": 292,
+        "positive_issues": 182,
+        "negative_issues": 110,
+        "fit_status": "learned"
+      },
+      "theme/security": {
+        "observed_issues": 292,
+        "positive_issues": 68,
+        "negative_issues": 224,
+        "fit_status": "learned"
+      },
+      "type/architecture": {
+        "observed_issues": 671,
+        "positive_issues": 19,
+        "negative_issues": 652,
+        "fit_status": "learned"
+      },
+      "type/automation": {
+        "observed_issues": 671,
+        "positive_issues": 136,
+        "negative_issues": 535,
+        "fit_status": "learned"
+      },
+      "type/bug": {
+        "observed_issues": 671,
+        "positive_issues": 289,
+        "negative_issues": 382,
+        "fit_status": "learned"
+      },
+      "type/docs": {
+        "observed_issues": 671,
+        "positive_issues": 89,
+        "negative_issues": 582,
+        "fit_status": "learned"
+      },
+      "type/feature": {
+        "observed_issues": 671,
+        "positive_issues": 212,
+        "negative_issues": 459,
+        "fit_status": "learned"
+      },
+      "type/performance": {
+        "observed_issues": 671,
+        "positive_issues": 37,
+        "negative_issues": 634,
+        "fit_status": "learned"
+      },
+      "type/refactor": {
+        "observed_issues": 671,
+        "positive_issues": 17,
+        "negative_issues": 654,
+        "fit_status": "learned"
+      },
+      "type/release": {
+        "observed_issues": 671,
+        "positive_issues": 1,
+        "negative_issues": 670,
+        "fit_status": "learned"
+      }
+    },
+    "vocabulary_size": 0,
+    "empty_vocabulary": false,
+    "cpu_threads": 1,
+    "feature_fields": [
+      "title",
+      "body"
+    ],
+    "score_semantics": "Supervised silver-reference agreement scores; not adjudicated or calibration-validated.",
+    "nearest_zero_similarity": "Fit observed-dimension prevalence"
+  },
+  "threshold_grid": [
+    0.05,
+    0.075,
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2,
+    0.225,
+    0.25,
+    0.275,
+    0.3,
+    0.325,
+    0.35,
+    0.375,
+    0.4,
+    0.425,
+    0.45,
+    0.475,
+    0.5,
+    0.525,
+    0.55,
+    0.575,
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7,
+    0.725,
+    0.75,
+    0.775,
+    0.8,
+    0.825,
+    0.85,
+    0.875,
+    0.9,
+    0.925,
+    0.95
+  ],
+  "precision_recall_floor": 0.5,
+  "latency": {
+    "fit_seconds": 0.04401258399593644,
+    "development_batch_seconds": 0.002913917000114452,
+    "amortized_issue_seconds": 1.3616434579974076e-05,
+    "single_issue_sample_count": 16,
+    "single_issue_median_seconds": 0.0017283334964304231,
+    "single_issue_p95_seconds": 0.001814958248360199,
+    "scope": "In-process preprocessing and classical classifier only; excludes startup, disk IO and cached Laya generation."
+  },
+  "policies": {
+    "balanced": {
+      "policy": {
+        "kind": "threshold",
+        "threshold": 0.425
+      },
+      "metrics": {
+        "overall_observed_dimensions": {
+          "control_issues": 214,
+          "exact_matches": 95,
+          "exact_agreement": 0.4439252336448598,
+          "exact_agreement_95ci": {
+            "lower": 0.3789286291918119,
+            "upper": 0.5108995048561038
+          },
+          "true_positives": 338,
+          "false_positives": 93,
+          "false_negatives": 227,
+          "precision": 0.7842227378190255,
+          "recall": 0.5982300884955752,
+          "micro_f1": 0.678714859437751,
+          "mean_jaccard": 0.6414663996439698
+        },
+        "by_dimension": {
+          "type": {
+            "control_issues": 212,
+            "exact_matches": 167,
+            "exact_agreement": 0.7877358490566038,
+            "exact_agreement_95ci": {
+              "lower": 0.7278231796367213,
+              "upper": 0.8374065063864305
+            },
+            "true_positives": 220,
+            "false_positives": 26,
+            "false_negatives": 38,
+            "precision": 0.8943089430894309,
+            "recall": 0.8527131782945736,
+            "micro_f1": 0.873015873015873,
+            "mean_jaccard": 0.8136792452830188,
+            "prediction_coverage": 0.9198113207547169
+          },
+          "area": {
+            "control_issues": 145,
+            "exact_matches": 45,
+            "exact_agreement": 0.3103448275862069,
+            "exact_agreement_95ci": {
+              "lower": 0.24075544374774624,
+              "upper": 0.3897238566046023
+            },
+            "true_positives": 62,
+            "false_positives": 34,
+            "false_negatives": 151,
+            "precision": 0.6458333333333334,
+            "recall": 0.29107981220657275,
+            "micro_f1": 0.40129449838187703,
+            "mean_jaccard": 0.3626436781609195,
+            "prediction_coverage": 0.6206896551724138
+          },
+          "theme": {
+            "control_issues": 91,
+            "exact_matches": 53,
+            "exact_agreement": 0.5824175824175825,
+            "exact_agreement_95ci": {
+              "lower": 0.47977166187867143,
+              "upper": 0.6783870187923923
+            },
+            "true_positives": 56,
+            "false_positives": 33,
+            "false_negatives": 38,
+            "precision": 0.6292134831460674,
+            "recall": 0.5957446808510638,
+            "micro_f1": 0.6120218579234973,
+            "mean_jaccard": 0.5989010989010989,
+            "prediction_coverage": 0.9560439560439561
+          }
+        },
+        "per_label": {
+          "area/audit-policy": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 3,
+            "true_positives": 2,
+            "false_positives": 1,
+            "false_negatives": 6,
+            "precision": 0.6666666666666666,
+            "recall": 0.25,
+            "f1": 0.36363636363636365,
+            "precision_95ci": {
+              "lower": 0.2076596008020477,
+              "upper": 0.9385080552796037
+            },
+            "recall_95ci": {
+              "lower": 0.071479212752109,
+              "upper": 0.5907245696898311
+            }
+          },
+          "area/ci-cd": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 2,
+            "true_positives": 1,
+            "false_positives": 1,
+            "false_negatives": 9,
+            "precision": 0.5,
+            "recall": 0.1,
+            "f1": 0.16666666666666666,
+            "precision_95ci": {
+              "lower": 0.09453120573423074,
+              "upper": 0.9054687942657693
+            },
+            "recall_95ci": {
+              "lower": 0.017876213095072896,
+              "upper": 0.4041500267952385
+            }
+          },
+          "area/cli": {
+            "control_issues_in_dimension": 145,
+            "support": 76,
+            "proposed_count": 76,
+            "true_positives": 56,
+            "false_positives": 20,
+            "false_negatives": 20,
+            "precision": 0.7368421052631579,
+            "recall": 0.7368421052631579,
+            "f1": 0.7368421052631579,
+            "precision_95ci": {
+              "lower": 0.6281875545908703,
+              "upper": 0.8227060103782752
+            },
+            "recall_95ci": {
+              "lower": 0.6281875545908703,
+              "upper": 0.8227060103782752
+            }
+          },
+          "area/content-security": {
+            "control_issues_in_dimension": 145,
+            "support": 4,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "area/distribution": {
+            "control_issues_in_dimension": 145,
+            "support": 17,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 17,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.1843181350088518
+            }
+          },
+          "area/docs-site": {
+            "control_issues_in_dimension": 145,
+            "support": 23,
+            "proposed_count": 2,
+            "true_positives": 2,
+            "false_positives": 0,
+            "false_negatives": 21,
+            "precision": 1.0,
+            "recall": 0.08695652173913043,
+            "f1": 0.16,
+            "precision_95ci": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.024180004484220363,
+              "upper": 0.26795981075743663
+            }
+          },
+          "area/enterprise": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.32440756488388023
+            }
+          },
+          "area/lockfile": {
+            "control_issues_in_dimension": 145,
+            "support": 14,
+            "proposed_count": 7,
+            "true_positives": 0,
+            "false_positives": 7,
+            "false_negatives": 14,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 5.551115123125783e-17,
+              "upper": 0.35433043506668743
+            },
+            "recall_95ci": {
+              "lower": 1.3877787807814457e-17,
+              "upper": 0.2153108027376358
+            }
+          },
+          "area/marketplace": {
+            "control_issues_in_dimension": 145,
+            "support": 11,
+            "proposed_count": 2,
+            "true_positives": 1,
+            "false_positives": 1,
+            "false_negatives": 10,
+            "precision": 0.5,
+            "recall": 0.09090909090909091,
+            "f1": 0.15384615384615385,
+            "precision_95ci": {
+              "lower": 0.09453120573423074,
+              "upper": 0.9054687942657693
+            },
+            "recall_95ci": {
+              "lower": 0.016232172885884855,
+              "upper": 0.37735843645159567
+            }
+          },
+          "area/mcp-config": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 1,
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            },
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.2775327998628892
+            }
+          },
+          "area/mcp-trust": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "area/multi-target": {
+            "control_issues_in_dimension": 145,
+            "support": 15,
+            "proposed_count": 2,
+            "true_positives": 0,
+            "false_positives": 2,
+            "false_negatives": 15,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            },
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.20388330103584862
+            }
+          },
+          "area/package-authoring": {
+            "control_issues_in_dimension": 145,
+            "support": 13,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 13,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.22809537235419838
+            }
+          },
+          "area/testing": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 1,
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            },
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "theme/governance": {
+            "control_issues_in_dimension": 91,
+            "support": 20,
+            "proposed_count": 3,
+            "true_positives": 2,
+            "false_positives": 1,
+            "false_negatives": 18,
+            "precision": 0.6666666666666666,
+            "recall": 0.1,
+            "f1": 0.17391304347826086,
+            "precision_95ci": {
+              "lower": 0.2076596008020477,
+              "upper": 0.9385080552796037
+            },
+            "recall_95ci": {
+              "lower": 0.027866481213768224,
+              "upper": 0.3010336452284873
+            }
+          },
+          "theme/portability": {
+            "control_issues_in_dimension": 91,
+            "support": 52,
+            "proposed_count": 80,
+            "true_positives": 50,
+            "false_positives": 30,
+            "false_negatives": 2,
+            "precision": 0.625,
+            "recall": 0.9615384615384616,
+            "f1": 0.7575757575757576,
+            "precision_95ci": {
+              "lower": 0.5154872546314301,
+              "upper": 0.7230582129846882
+            },
+            "recall_95ci": {
+              "lower": 0.8701881084254424,
+              "upper": 0.9893882889986847
+            }
+          },
+          "theme/security": {
+            "control_issues_in_dimension": 91,
+            "support": 22,
+            "proposed_count": 6,
+            "true_positives": 4,
+            "false_positives": 2,
+            "false_negatives": 18,
+            "precision": 0.6666666666666666,
+            "recall": 0.18181818181818182,
+            "f1": 0.2857142857142857,
+            "precision_95ci": {
+              "lower": 0.299993315138392,
+              "upper": 0.9032285888942195
+            },
+            "recall_95ci": {
+              "lower": 0.07306884583422052,
+              "upper": 0.38516607437126543
+            }
+          },
+          "type/architecture": {
+            "control_issues_in_dimension": 212,
+            "support": 5,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 5,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.43448246478317476
+            }
+          },
+          "type/automation": {
+            "control_issues_in_dimension": 212,
+            "support": 48,
+            "proposed_count": 47,
+            "true_positives": 46,
+            "false_positives": 1,
+            "false_negatives": 2,
+            "precision": 0.9787234042553191,
+            "recall": 0.9583333333333334,
+            "f1": 0.968421052631579,
+            "precision_95ci": {
+              "lower": 0.8888701895837066,
+              "upper": 0.996234231961403
+            },
+            "recall_95ci": {
+              "lower": 0.8602434412954456,
+              "upper": 0.9884981065106133
+            }
+          },
+          "type/bug": {
+            "control_issues_in_dimension": 212,
+            "support": 92,
+            "proposed_count": 88,
+            "true_positives": 83,
+            "false_positives": 5,
+            "false_negatives": 9,
+            "precision": 0.9431818181818182,
+            "recall": 0.9021739130434783,
+            "f1": 0.9222222222222223,
+            "precision_95ci": {
+              "lower": 0.8738006734299275,
+              "upper": 0.9754889720261908
+            },
+            "recall_95ci": {
+              "lower": 0.8244322048381333,
+              "upper": 0.9476762429103883
+            }
+          },
+          "type/docs": {
+            "control_issues_in_dimension": 212,
+            "support": 32,
+            "proposed_count": 34,
+            "true_positives": 28,
+            "false_positives": 6,
+            "false_negatives": 4,
+            "precision": 0.8235294117647058,
+            "recall": 0.875,
+            "f1": 0.8484848484848485,
+            "precision_95ci": {
+              "lower": 0.6648626260015724,
+              "upper": 0.9165103095462768
+            },
+            "recall_95ci": {
+              "lower": 0.7193169451834978,
+              "upper": 0.9502986561251991
+            }
+          },
+          "type/feature": {
+            "control_issues_in_dimension": 212,
+            "support": 60,
+            "proposed_count": 62,
+            "true_positives": 48,
+            "false_positives": 14,
+            "false_negatives": 12,
+            "precision": 0.7741935483870968,
+            "recall": 0.8,
+            "f1": 0.7868852459016393,
+            "precision_95ci": {
+              "lower": 0.6559437908464204,
+              "upper": 0.8604481696141172
+            },
+            "recall_95ci": {
+              "lower": 0.6821819419437211,
+              "upper": 0.8817149467710251
+            }
+          },
+          "type/performance": {
+            "control_issues_in_dimension": 212,
+            "support": 15,
+            "proposed_count": 15,
+            "true_positives": 15,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "precision_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.7961166989641515,
+              "upper": 1.0
+            }
+          },
+          "type/refactor": {
+            "control_issues_in_dimension": 212,
+            "support": 6,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 6,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 2.7755575615628914e-17,
+              "upper": 0.3903342879021653
+            }
+          },
+          "type/release": {
+            "control_issues_in_dimension": 212,
+            "support": 0,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "precision_95ci": null,
+            "recall_95ci": null
+          }
+        },
+        "issue_prediction_coverage": 1.0,
+        "observed_issue_prediction_coverage": 0.9813084112149533,
+        "mean_labels_all_dimensions": 2.7990654205607477,
+        "mean_labels_observed_dimensions": 2.014018691588785,
+        "total_labels_all_dimensions": 599,
+        "total_labels_observed_dimensions": 431,
+        "unscored_proposals": 168
+      }
+    },
+    "precision_first": {
+      "policy": {
+        "kind": "threshold",
+        "threshold": 0.625
+      },
+      "metrics": {
+        "overall_observed_dimensions": {
+          "control_issues": 214,
+          "exact_matches": 81,
+          "exact_agreement": 0.37850467289719625,
+          "exact_agreement_95ci": {
+            "lower": 0.31620462333047195,
+            "upper": 0.44508966710667874
+          },
+          "true_positives": 289,
+          "false_positives": 37,
+          "false_negatives": 276,
+          "precision": 0.8865030674846626,
+          "recall": 0.511504424778761,
+          "micro_f1": 0.6487093153759821,
+          "mean_jaccard": 0.5788940809968848
+        },
+        "by_dimension": {
+          "type": {
+            "control_issues": 212,
+            "exact_matches": 155,
+            "exact_agreement": 0.7311320754716981,
+            "exact_agreement_95ci": {
+              "lower": 0.6677265197466454,
+              "upper": 0.7863104411571978
+            },
+            "true_positives": 204,
+            "false_positives": 14,
+            "false_negatives": 54,
+            "precision": 0.9357798165137615,
+            "recall": 0.7906976744186046,
+            "micro_f1": 0.8571428571428571,
+            "mean_jaccard": 0.7617924528301887,
+            "prediction_coverage": 0.839622641509434
+          },
+          "area": {
+            "control_issues": 145,
+            "exact_matches": 37,
+            "exact_agreement": 0.25517241379310346,
+            "exact_agreement_95ci": {
+              "lower": 0.1911691856457023,
+              "upper": 0.33181318390005676
+            },
+            "true_positives": 45,
+            "false_positives": 8,
+            "false_negatives": 168,
+            "precision": 0.8490566037735849,
+            "recall": 0.2112676056338028,
+            "micro_f1": 0.3383458646616541,
+            "mean_jaccard": 0.28160919540229884,
+            "prediction_coverage": 0.3586206896551724
+          },
+          "theme": {
+            "control_issues": 91,
+            "exact_matches": 40,
+            "exact_agreement": 0.43956043956043955,
+            "exact_agreement_95ci": {
+              "lower": 0.34208833970079755,
+              "upper": 0.5419286278070892
+            },
+            "true_positives": 40,
+            "false_positives": 15,
+            "false_negatives": 54,
+            "precision": 0.7272727272727273,
+            "recall": 0.425531914893617,
+            "micro_f1": 0.5369127516778524,
+            "mean_jaccard": 0.43956043956043955,
+            "prediction_coverage": 0.6043956043956044
+          }
+        },
+        "per_label": {
+          "area/audit-policy": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 2,
+            "true_positives": 2,
+            "false_positives": 0,
+            "false_negatives": 6,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4,
+            "precision_95ci": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.071479212752109,
+              "upper": 0.5907245696898311
+            }
+          },
+          "area/ci-cd": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 9,
+            "precision": 1.0,
+            "recall": 0.1,
+            "f1": 0.18181818181818182,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.017876213095072896,
+              "upper": 0.4041500267952385
+            }
+          },
+          "area/cli": {
+            "control_issues_in_dimension": 145,
+            "support": 76,
+            "proposed_count": 44,
+            "true_positives": 41,
+            "false_positives": 3,
+            "false_negatives": 35,
+            "precision": 0.9318181818181818,
+            "recall": 0.5394736842105263,
+            "f1": 0.6833333333333333,
+            "precision_95ci": {
+              "lower": 0.8177495562977846,
+              "upper": 0.9765406040926183
+            },
+            "recall_95ci": {
+              "lower": 0.4282262398210874,
+              "upper": 0.6469226876737701
+            }
+          },
+          "area/content-security": {
+            "control_issues_in_dimension": 145,
+            "support": 4,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 4,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "area/distribution": {
+            "control_issues_in_dimension": 145,
+            "support": 17,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 17,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.1843181350088518
+            }
+          },
+          "area/docs-site": {
+            "control_issues_in_dimension": 145,
+            "support": 23,
+            "proposed_count": 1,
+            "true_positives": 1,
+            "false_positives": 0,
+            "false_negatives": 22,
+            "precision": 1.0,
+            "recall": 0.043478260869565216,
+            "f1": 0.08333333333333333,
+            "precision_95ci": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.007716666143453149,
+              "upper": 0.20991155070258877
+            }
+          },
+          "area/enterprise": {
+            "control_issues_in_dimension": 145,
+            "support": 8,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 8,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.32440756488388023
+            }
+          },
+          "area/lockfile": {
+            "control_issues_in_dimension": 145,
+            "support": 14,
+            "proposed_count": 4,
+            "true_positives": 0,
+            "false_positives": 4,
+            "false_negatives": 14,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            },
+            "recall_95ci": {
+              "lower": 1.3877787807814457e-17,
+              "upper": 0.2153108027376358
+            }
+          },
+          "area/marketplace": {
+            "control_issues_in_dimension": 145,
+            "support": 11,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 11,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.2588329669680317
+            }
+          },
+          "area/mcp-config": {
+            "control_issues_in_dimension": 145,
+            "support": 10,
+            "proposed_count": 1,
+            "true_positives": 0,
+            "false_positives": 1,
+            "false_negatives": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            },
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.2775327998628892
+            }
+          },
+          "area/mcp-trust": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "area/multi-target": {
+            "control_issues_in_dimension": 145,
+            "support": 15,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 15,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.20388330103584862
+            }
+          },
+          "area/package-authoring": {
+            "control_issues_in_dimension": 145,
+            "support": 13,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 13,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.22809537235419838
+            }
+          },
+          "area/testing": {
+            "control_issues_in_dimension": 145,
+            "support": 2,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "theme/governance": {
+            "control_issues_in_dimension": 91,
+            "support": 20,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 20,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.16112515805281938
+            }
+          },
+          "theme/portability": {
+            "control_issues_in_dimension": 91,
+            "support": 52,
+            "proposed_count": 55,
+            "true_positives": 40,
+            "false_positives": 15,
+            "false_negatives": 12,
+            "precision": 0.7272727272727273,
+            "recall": 0.7692307692307693,
+            "f1": 0.7476635514018691,
+            "precision_95ci": {
+              "lower": 0.5976780188832919,
+              "upper": 0.8271924806089416
+            },
+            "recall_95ci": {
+              "lower": 0.6386621744190016,
+              "upper": 0.8627573907450726
+            }
+          },
+          "theme/security": {
+            "control_issues_in_dimension": 91,
+            "support": 22,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 22,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.14865487460862087
+            }
+          },
+          "type/architecture": {
+            "control_issues_in_dimension": 212,
+            "support": 5,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 5,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 0.0,
+              "upper": 0.43448246478317476
+            }
+          },
+          "type/automation": {
+            "control_issues_in_dimension": 212,
+            "support": 48,
+            "proposed_count": 46,
+            "true_positives": 46,
+            "false_positives": 0,
+            "false_negatives": 2,
+            "precision": 1.0,
+            "recall": 0.9583333333333334,
+            "f1": 0.9787234042553191,
+            "precision_95ci": {
+              "lower": 0.9229264369144198,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.8602434412954456,
+              "upper": 0.9884981065106133
+            }
+          },
+          "type/bug": {
+            "control_issues_in_dimension": 212,
+            "support": 92,
+            "proposed_count": 82,
+            "true_positives": 79,
+            "false_positives": 3,
+            "false_negatives": 13,
+            "precision": 0.9634146341463414,
+            "recall": 0.8586956521739131,
+            "f1": 0.9080459770114943,
+            "precision_95ci": {
+              "lower": 0.8978726535639152,
+              "upper": 0.9874804269184307
+            },
+            "recall_95ci": {
+              "lower": 0.7731141979919699,
+              "upper": 0.915523066216171
+            }
+          },
+          "type/docs": {
+            "control_issues_in_dimension": 212,
+            "support": 32,
+            "proposed_count": 26,
+            "true_positives": 22,
+            "false_positives": 4,
+            "false_negatives": 10,
+            "precision": 0.8461538461538461,
+            "recall": 0.6875,
+            "f1": 0.7586206896551724,
+            "precision_95ci": {
+              "lower": 0.6646880067178652,
+              "upper": 0.9384996627642165
+            },
+            "recall_95ci": {
+              "lower": 0.5143332169904459,
+              "upper": 0.8204745836639026
+            }
+          },
+          "type/feature": {
+            "control_issues_in_dimension": 212,
+            "support": 60,
+            "proposed_count": 50,
+            "true_positives": 43,
+            "false_positives": 7,
+            "false_negatives": 17,
+            "precision": 0.86,
+            "recall": 0.7166666666666667,
+            "f1": 0.7818181818181819,
+            "precision_95ci": {
+              "lower": 0.7381380628941446,
+              "upper": 0.9304916657298371
+            },
+            "recall_95ci": {
+              "lower": 0.5923271483560882,
+              "upper": 0.8149317157156729
+            }
+          },
+          "type/performance": {
+            "control_issues_in_dimension": 212,
+            "support": 15,
+            "proposed_count": 14,
+            "true_positives": 14,
+            "false_positives": 0,
+            "false_negatives": 1,
+            "precision": 1.0,
+            "recall": 0.9333333333333333,
+            "f1": 0.9655172413793104,
+            "precision_95ci": {
+              "lower": 0.7846891972623643,
+              "upper": 1.0
+            },
+            "recall_95ci": {
+              "lower": 0.7018347012621998,
+              "upper": 0.9881331045067315
+            }
+          },
+          "type/refactor": {
+            "control_issues_in_dimension": 212,
+            "support": 6,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 6,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0,
+            "precision_95ci": null,
+            "recall_95ci": {
+              "lower": 2.7755575615628914e-17,
+              "upper": 0.3903342879021653
+            }
+          },
+          "type/release": {
+            "control_issues_in_dimension": 212,
+            "support": 0,
+            "proposed_count": 0,
+            "true_positives": 0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "precision_95ci": null,
+            "recall_95ci": null
+          }
+        },
+        "issue_prediction_coverage": 0.9252336448598131,
+        "observed_issue_prediction_coverage": 0.8878504672897196,
+        "mean_labels_all_dimensions": 1.939252336448598,
+        "mean_labels_observed_dimensions": 1.5233644859813085,
+        "total_labels_all_dimensions": 415,
+        "total_labels_observed_dimensions": 326,
+        "unscored_proposals": 89
+      }
+    }
+  },
+  "limitations": [
+    "All-corpus results were previously inspected; confirmation is reserved from NEW experiments only, not never-seen data.",
+    "Text-only splitting is not label-stratified; label and dimension support can differ or be absent.",
+    "Near-duplicate grouping is lexical, not semantic; paraphrases may remain across splits.",
+    "Exact shared titles/bodies and transitive closure can overgroup templates or generic reports.",
+    "Unbalanced group sizes mean realized fractions need not equal targets exactly.",
+    "Control-label presence is used only for eligibility after assignment, not for outcome-based selection.",
+    "The development screen and full development are reused for selection, not independent validation.",
+    "This model is supervised on current silver labels, not zero-shot Laya.",
+    "Selection reuses the full development set; development is not confirmation.",
+    "Unobserved dimensions are excluded from target fitting and agreement metrics.",
+    "No neural inference is run; hybrid and scores reuse pre-existing Laya outputs."
+  ]
+}

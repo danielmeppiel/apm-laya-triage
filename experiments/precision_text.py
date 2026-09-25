@@ -449,6 +449,7 @@ def read_selected_scores(
 def fit_from_protocol(
     protocol: Mapping[str, Any], snapshot: Mapping[str, Any],
     baseline_path: Path, config: TextConfig,
+    text_overrides: Mapping[int, Mapping[str, Any]] | None = None,
 ) -> TextBaseline:
     fit_ids = select_ids(protocol, "fit")
     issues = {issue["number"]: issue for issue in snapshot["issues"]}
@@ -462,6 +463,10 @@ def fit_from_protocol(
         read_selected_scores(baseline_path, inputs, labels)
         if config.kind in {"scores", "hybrid"} else None
     )
+    if text_overrides is not None:
+        if config.kind != "word":
+            raise ValueError("Text-budget overrides are diagnostic-only lexical inputs.")
+        inputs = [text_overrides[number] for number in fit_ids]
     return TextBaseline(labels, config).fit(inputs, expected, scores)
 
 
@@ -527,6 +532,10 @@ def derive_dimension_policies(root: Path, runs: Sequence[Path], output: Path) ->
             "config": summary["model"]["config"],
             "feasible": policy is not None,
             "policy": policy,
+            "selection_eligible": (
+                not summary.get("text_budget_diagnostic")
+                and not summary["model"]["config"].get("strip_title_tags", False)
+            ),
         }
         if policy is not None:
             records = records_for(ids, expected, values, labels, policy)
@@ -564,7 +573,10 @@ def refit_frozen(
     protocol = load_protocol(root / "runs/precision/protocol.json")
     if protocol["protocol_sha256"] != manifest["protocol_sha256"]:
         raise ValueError("Frozen protocol changed.")
-    candidate = manifest["finalists"][finalist]
+    candidates = {**manifest["finalists"], **manifest.get("comparators", {})}
+    if finalist not in candidates:
+        raise ValueError(f"Unknown frozen candidate: {finalist}")
+    candidate = candidates[finalist]
     model = fit_from_protocol(
         protocol, read_json(root / "data/snapshot.json"),
         root / "runs/baseline/predictions.jsonl", TextConfig(**candidate["config"]),
@@ -572,7 +584,9 @@ def refit_frozen(
     return model, candidate["policy"]
 
 
-def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dict[str, Any]:
+def freeze_finalists(
+    root: Path, dimension_directory: Path, output: Path, reference_run: str | None = None
+) -> dict[str, Any]:
     """Freeze at most two policies after development selection, with replay proof."""
     if output.exists():
         raise ValueError("Choose a new directory; frozen policies cannot be overwritten.")
@@ -582,6 +596,8 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
         raise ValueError("Dimension selection belongs to a different protocol.")
     candidates = []
     for run in dimension["runs"].values():
+        if not run.get("selection_eligible", True):
+            continue
         path = root / run["source_run"]
         if (file_sha256(path / "summary.json") != run["source_summary_sha256"]
                 or file_sha256(path / "scores.jsonl") != run["source_scores_sha256"]):
@@ -592,11 +608,16 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
             "config": run["config"], "policy": balanced["policy"],
             "metrics": balanced["metrics"], "source_run": run["source_run"],
         })
+    if not candidates:
+        raise ValueError("No selection-eligible development candidates.")
     balanced = max(candidates, key=lambda row: (
         row["metrics"]["overall_observed_dimensions"]["micro_f1"],
         row["metrics"]["overall_observed_dimensions"]["precision"], row["source_run"],
     ))
-    feasible = [row for row in dimension["runs"].values() if row["feasible"]]
+    feasible = [
+        row for row in dimension["runs"].values()
+        if row["feasible"] and row.get("selection_eligible", True)
+    ]
     if not feasible:
         raise ValueError("No broad precision policy reaches the per-dimension recall floors.")
     precision = max(feasible, key=lambda row: (
@@ -609,6 +630,21 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
             key: precision[key] for key in ("config", "policy", "metrics", "source_run")
         },
     }
+    comparators = {}
+    if reference_run is not None:
+        reference = dimension["runs"][reference_run]
+        if (reference["config"]["kind"] != "word" or not reference["feasible"]
+                or not reference.get("selection_eligible", True)):
+            raise ValueError("The matched comparator must be a feasible text-only model.")
+        balanced_reference = next(
+            row for row in candidates if row["source_run"] == reference["source_run"]
+        )
+        comparators = {
+            "text_balanced": balanced_reference,
+            "text_broad_precision": {
+                key: reference[key] for key in ("config", "policy", "metrics", "source_run")
+            },
+        }
     source_paths = [
         "experiments/precision_text.py", "experiments/precision_protocol.py", "evaluation.py",
         "experiment.py", "experiments/requirements-text.txt",
@@ -625,6 +661,7 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
         "development_id_digest": digest(select_ids(protocol, "development")),
         "confirmation_accessed": False,
         "finalists": finalists,
+        "comparators": comparators,
     }
     manifest["manifest_sha256"] = digest(manifest)
     snapshot = read_json(root / "data/snapshot.json")
@@ -632,7 +669,7 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
     ids = select_ids(protocol, "development")
     inputs = prediction_inputs([by_number[number] for number in ids])
     replayed = {}
-    for name, candidate in finalists.items():
+    for name, candidate in {**finalists, **comparators}.items():
         model = fit_from_protocol(
             protocol, snapshot, root / "runs/baseline/predictions.jsonl",
             TextConfig(**candidate["config"]),
@@ -660,7 +697,54 @@ def freeze_finalists(root: Path, dimension_directory: Path, output: Path) -> dic
     return manifest
 
 
-def run_development(root: Path, output: Path, config: TextConfig) -> dict[str, Any]:
+def load_excerpt_inputs(
+    path: Path, protocol: Mapping[str, Any], snapshot: Mapping[str, Any], baseline_path: Path
+) -> tuple[dict[int, dict[str, Any]], list[dict[str, Any]]]:
+    """Validate exact cached states for fit/development only, without tokenization."""
+    allowed = set(select_ids(protocol, "fit") + select_ids(protocol, "development"))
+    issues = {issue["number"]: issue for issue in snapshot["issues"] if issue["number"] in allowed}
+    states = {}
+    with baseline_path.open(encoding="utf8") as stream:
+        for line in stream:
+            row = json.loads(line)
+            if row["number"] in allowed:
+                if row["number"] in states:
+                    raise ValueError("Duplicate cached baseline state.")
+                states[row["number"]] = row["state_sha256"]
+    inputs, compact = {}, []
+    with path.open(encoding="utf8") as stream:
+        for line in stream:
+            row = json.loads(line)
+            number = row["number"]
+            if number not in allowed or number in inputs:
+                raise ValueError("Excerpts must contain each fit/development ID once and nothing else.")
+            issue = issues[number]
+            if row["input_sha256"] != digest({"title": issue["title"], "body": issue["body"]}):
+                raise ValueError("Excerpt original-input digest mismatch.")
+            if row["baseline_state_sha256"] != states.get(number):
+                raise ValueError("Excerpt does not match the recorded baseline state.")
+            state = row["state"]
+            if digest(state) != row["state_sha256"]:
+                raise ValueError("Excerpt state digest mismatch.")
+            if (type(row["used_state_tokens"]) is not int
+                    or not 0 < row["used_state_tokens"] <= 300):
+                raise ValueError("Excerpt exceeds the declared baseline token budget.")
+            if not state.startswith("Title: ") or "\nBody:" not in state:
+                raise ValueError("Exact excerpt title/body delimiters were not retained.")
+            title, body = state.removeprefix("Title: ").split("\nBody:", 1)
+            inputs[number] = {"number": number, "title": title, "body": body.removeprefix(" ")}
+            compact.append({key: row[key] for key in (
+                "number", "state", "input_sha256", "state_sha256", "baseline_state_sha256",
+                "shortened", "used_state_tokens",
+            )})
+    if set(inputs) != allowed:
+        raise ValueError("Missing fit/development excerpts.")
+    return inputs, compact
+
+
+def run_development(
+    root: Path, output: Path, config: TextConfig, excerpts_path: Path | None = None
+) -> dict[str, Any]:
     if output.exists():
         raise ValueError("Choose a new run directory; development evidence is immutable.")
     protocol_path = root / "runs/precision/protocol.json"
@@ -669,11 +753,18 @@ def run_development(root: Path, output: Path, config: TextConfig) -> dict[str, A
     protocol = load_protocol(protocol_path)
     verify_sources(protocol, snapshot_path, baseline_path)
     snapshot = read_json(snapshot_path)
-    model = fit_from_protocol(protocol, snapshot, baseline_path, config)
+    overrides, excerpt_rows = None, []
+    if excerpts_path is not None:
+        overrides, excerpt_rows = load_excerpt_inputs(
+            excerpts_path, protocol, snapshot, baseline_path
+        )
+    model = fit_from_protocol(protocol, snapshot, baseline_path, config, overrides)
     development_ids = select_ids(protocol, "development")
     by_number = {issue["number"]: issue for issue in snapshot["issues"]}
     development = [by_number[number] for number in development_ids]
     inputs = prediction_inputs(development)
+    if overrides is not None:
+        inputs = [overrides[number] for number in development_ids]
     cached = (
         read_selected_scores(baseline_path, inputs, model.labels)
         if config.kind in {"scores", "hybrid"} else None
@@ -728,6 +819,18 @@ def run_development(root: Path, output: Path, config: TextConfig) -> dict[str, A
             "No neural inference is run; hybrid and scores reuse pre-existing Laya outputs.",
         ],
     }
+    if excerpts_path is not None:
+        summary["text_budget_diagnostic"] = {
+            "source_excerpts_sha256": file_sha256(excerpts_path),
+            "row_count": len(excerpt_rows),
+            "shortened_rows": sum(row["shortened"] for row in excerpt_rows),
+            "method": "Exact baseline300-token head/tail states, removing only fixed Project prefix; parse retained Title/Body markers and reuse title_weight=3. No extra source text.",
+            "selection_eligible": False,
+            "all_original_input_and_baseline_state_hashes_verified": True,
+        }
+        (output / "excerpts.jsonl").write_text(
+            "".join(json.dumps(row) + "\n" for row in excerpt_rows), encoding="utf8"
+        )
     write_json(output / "summary.json", summary)
     write_json(output / "thresholds.json", candidates)
     (output / "scores.jsonl").write_text(
@@ -754,10 +857,13 @@ def main() -> None:
                         help="Derive three dev thresholds from existing run scores; no refitting.")
     parser.add_argument("--freeze-from", type=Path,
                         help="Freeze two finalists from a dimension-policy directory.")
+    parser.add_argument("--reference-run", help="Named text-only comparator from dimension selection.")
     parser.add_argument("--predict-frozen", type=Path,
                         help="Frozen manifest to refit and predict on parent-supplied input JSONL.")
-    parser.add_argument("--finalist", choices=["balanced", "broad_precision"])
+    parser.add_argument("--finalist", help="Frozen finalist or named comparator key.")
     parser.add_argument("--inputs", type=Path, help="Prediction JSONL with number/title/body only.")
+    parser.add_argument("--text-excerpts", type=Path,
+                        help="Diagnostic-only exact baseline-state JSONL for fit/development.")
     args = parser.parse_args()
     if args.describe:
         print(json.dumps(asdict(TextConfig()), indent=2))
@@ -776,11 +882,13 @@ def main() -> None:
         }, indent=2))
         return
     if args.freeze_from:
-        manifest = freeze_finalists(root, args.freeze_from, args.output)
+        manifest = freeze_finalists(root, args.freeze_from, args.output, args.reference_run)
         print(json.dumps({
             "manifest_sha256": manifest["manifest_sha256"],
             "finalists": {name: {"config": row["config"], "policy": row["policy"]}
                           for name, row in manifest["finalists"].items()},
+            "comparators": {name: {"config": row["config"], "policy": row["policy"]}
+                            for name, row in manifest["comparators"].items()},
             "deterministic_development_replay": "exact",
         }, indent=2))
         return
@@ -811,7 +919,7 @@ def main() -> None:
         kind=args.kind, title_weight=args.title_weight, c=args.c, score_weight=args.score_weight,
         strip_title_tags=args.strip_title_tags,
     )
-    summary = run_development(root, args.output, config)
+    summary = run_development(root, args.output, config, args.text_excerpts)
     print(json.dumps({
         "output": str(args.output),
         "latency": summary["latency"],
